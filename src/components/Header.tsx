@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Moon, Sun, Menu, X } from 'lucide-react';
+import { Menu, X } from 'lucide-react';
 import ThemeToggle from './ThemeToggle';
 
 interface HeaderProps {
@@ -49,8 +49,9 @@ const Header: React.FC<HeaderProps> = ({ darkMode, toggleDarkMode }) => {
           <a 
             href="#hero" 
             className="text-xl md:text-2xl font-bold text-gray-900 dark:text-white transition-colors relative z-50"
+            aria-label="Subhan Shahid Portfolio"
           >
-            Portfolio
+            Subhan Shahid <span className="hidden sm:inline">| Portfolio</span>
           </a>
 
           {/* Desktop Navigation */}

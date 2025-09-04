@@ -27,7 +27,8 @@ const HeroSection: React.FC<HeroSectionProps> = ({ data }) => {
           <AnimatedElement className="flex-1">
             <div className="max-w-2xl space-y-6">
               <h3 className="text-lg md:text-xl text-blue-600 dark:text-blue-400 font-medium animate-fade-in">
-My name is Subhan shahid              </h3>
+                Hi, I'm <span className="font-bold">Subhan Shahid</span>
+              </h3>
               <h1 className="text-4xl md:text-6xl font-bold text-gray-900 dark:text-white bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600 animate-fade-in">
                 {data.name}
               </h1>
