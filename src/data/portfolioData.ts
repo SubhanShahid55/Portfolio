@@ -139,15 +139,15 @@ const portfolioData: PortfolioData = {
     ]
   },
   projects: {
-    categories: ["Web Development", "Frontend", "University Projects", "Freelance", "Python", "React", "Lead Generation"],
+    categories: ["Web Development", "Frontend", "University Projects", "Freelance", "Python", "React", "Lead Generation", "Business"],
     projects: [
       {
-        id: "innovaleads",
-        title: "InnovaLeads - Lead Generation Platform",
-        description: "A comprehensive lead generation and business development platform designed to help companies identify, connect with, and convert potential clients. Features modern UI/UX design, responsive layout, and professional service presentation for B2B lead generation solutions.",
-        imageUrl: "https://images.pexels.com/photos/590016/pexels-photo-590016.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
-        tags: ["Web Development", "Freelance", "Lead Generation", "Business"],
-        demoUrl: "https://innovaleads.us/",
+        id: "homixa",
+        title: "Homixa - Home Services Website",
+        description: "A modern, responsive website for Homixa showcasing home services and solutions, with clear service sections, contact options, and a professional brand presence.",
+  imageUrl: "/projects/homixa.png",
+        tags: ["Web Development", "Freelance", "Business"],
+        demoUrl: "https://www.homixa.us/",
         codeUrl: "https://github.com/SubhanShahid55"
       },
       {

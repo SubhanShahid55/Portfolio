@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { Menu, X } from 'lucide-react';
+import { Menu, X, Github, Linkedin, Instagram } from 'lucide-react';
 import ThemeToggle from './ThemeToggle';
+import portfolioData from '../data/portfolioData';
 
 interface HeaderProps {
   darkMode: boolean;
@@ -36,6 +37,8 @@ const Header: React.FC<HeaderProps> = ({ darkMode, toggleDarkMode }) => {
     setMobileMenuOpen(false);
   };
 
+  const { github, linkedin, instagram } = portfolioData.contact.socials;
+
   return (
     <header 
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
@@ -48,7 +51,7 @@ const Header: React.FC<HeaderProps> = ({ darkMode, toggleDarkMode }) => {
         <div className="flex items-center justify-between">
           <a 
             href="#hero" 
-            className="text-xl md:text-2xl font-bold text-gray-900 dark:text-white transition-colors relative z-50"
+            className="text-xl md:text-2xl font-bold text-gray-900 dark:text-white transition-colors relative z-10"
             aria-label="Subhan Shahid Portfolio"
           >
             Subhan Shahid <span className="hidden sm:inline">| Portfolio</span>
@@ -64,11 +67,11 @@ const Header: React.FC<HeaderProps> = ({ darkMode, toggleDarkMode }) => {
           </nav>
 
           {/* Mobile Navigation Toggle */}
-          <div className="flex md:hidden items-center space-x-4">
+      <div className="flex md:hidden items-center space-x-4 relative z-10">
             <ThemeToggle darkMode={darkMode} toggleDarkMode={toggleDarkMode} />
             <button 
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="text-gray-800 dark:text-gray-200 p-2 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-lg transition-colors relative z-50"
+        className="text-gray-800 dark:text-gray-200 p-2 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-lg transition-colors"
               aria-label="Toggle menu"
             >
               {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
@@ -78,8 +81,8 @@ const Header: React.FC<HeaderProps> = ({ darkMode, toggleDarkMode }) => {
       </div>
 
       {/* Mobile Menu Overlay */}
-      <div 
-        className={`fixed inset-0 bg-black/50 backdrop-blur-sm transition-opacity duration-300 md:hidden ${
+  <div 
+        className={`fixed inset-0 bg-black/50 backdrop-blur-sm transition-opacity duration-300 md:hidden z-40 ${
           mobileMenuOpen ? 'opacity-100' : 'opacity-0 pointer-events-none'
         }`}
         onClick={handleMobileNavClick}
@@ -87,7 +90,7 @@ const Header: React.FC<HeaderProps> = ({ darkMode, toggleDarkMode }) => {
 
       {/* Mobile Menu */}
       <div 
-        className={`fixed inset-y-0 right-0 w-64 bg-white dark:bg-gray-900 shadow-xl transform transition-transform duration-300 ease-in-out md:hidden ${
+        className={`fixed inset-y-0 right-0 w-64 bg-white dark:bg-gray-900 shadow-xl transform transition-transform duration-300 ease-in-out md:hidden z-50 ${
           mobileMenuOpen ? 'translate-x-0' : 'translate-x-full'
         }`}
       >
@@ -122,6 +125,48 @@ const Header: React.FC<HeaderProps> = ({ darkMode, toggleDarkMode }) => {
               Contact
             </a>
           </div>
+
+          {/* Social links footer */}
+          {(github || linkedin || instagram) && (
+            <div className="pt-6 border-t border-gray-200 dark:border-gray-800">
+              <p className="text-sm text-gray-500 dark:text-gray-400 mb-3">Connect</p>
+              <div className="flex items-center gap-4">
+                {github && (
+                  <a
+                    href={github}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="p-2 rounded-lg bg-gray-100 dark:bg-gray-800 text-gray-800 dark:text-gray-200 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors"
+                    aria-label="GitHub"
+                  >
+                    <Github size={20} />
+                  </a>
+                )}
+                {linkedin && (
+                  <a
+                    href={linkedin}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="p-2 rounded-lg bg-gray-100 dark:bg-gray-800 text-gray-800 dark:text-gray-200 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors"
+                    aria-label="LinkedIn"
+                  >
+                    <Linkedin size={20} />
+                  </a>
+                )}
+                {instagram && (
+                  <a
+                    href={instagram}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="p-2 rounded-lg bg-gray-100 dark:bg-gray-800 text-gray-800 dark:text-gray-200 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors"
+                    aria-label="Instagram"
+                  >
+                    <Instagram size={20} />
+                  </a>
+                )}
+              </div>
+            </div>
+          )}
         </nav>
       </div>
     </header>
