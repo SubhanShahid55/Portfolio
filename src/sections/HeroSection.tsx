@@ -52,7 +52,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({ data }) => {
                   View Projects
                 </a>
                 <a
-                  href="/My CV.pdf"
+                  href="/MY_CV.pdf"
                   download
                   className="px-6 py-3 border border-blue-600 text-blue-700 dark:text-blue-400 hover:bg-blue-50 dark:hover:bg-blue-950/30 rounded-lg transition-all duration-300 hover:-translate-y-1"
                   aria-label="Download Subhan Shahid CV"
