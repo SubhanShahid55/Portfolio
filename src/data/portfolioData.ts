@@ -200,7 +200,7 @@ const portfolioData: PortfolioData = {
     location: "Rawalpindi, Pakistan",
     socials: {
       github: "https://github.com/SubhanShahid55",
-      linkedin: "www.linkedin.com/in/muhammad-subhan-shahid-564160384",
+      linkedin: "https://www.linkedin.com/in/muhammad-subhan-shahid-564160384",
       instagram: "https://www.instagram.com/iamsubhanshahid/"
     }
   }
