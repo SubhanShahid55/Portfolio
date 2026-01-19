@@ -1,65 +1,36 @@
-import React, { useState, useEffect } from 'react';
-import Header from './components/Header';
-import HeroSection from './sections/HeroSection';
-import AboutSection from './sections/AboutSection';
-import SkillsSection from './sections/SkillsSection';
-import ProjectsSection from './sections/ProjectsSection';
-import ContactSection from './sections/ContactSection';
-import Footer from './components/Footer';
-import AnimatedBackground from './components/AnimatedBackground';
-import portfolioData from './data/portfolioData';
-import './index.css';
+import { Toaster } from "@/components/ui/toaster";
+import { Toaster as Sonner } from "@/components/ui/sonner";
+import { TooltipProvider } from "@/components/ui/tooltip";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Home from "./pages/Home";
+import About from "./pages/About";
+import Experience from "./pages/Experience";
+import Projects from "./pages/Projects";
+import Testimonials from "./pages/Testimonials";
+import Contact from "./pages/Contact";
+import NotFound from "./pages/NotFound";
 
-const App: React.FC = () => {
-  const [darkMode, setDarkMode] = useState<boolean>(false);
+const queryClient = new QueryClient();
 
-  useEffect(() => {
-    // Check if user has a dark mode preference
-    const isDarkMode = localStorage.getItem('darkMode') === 'true';
-    setDarkMode(isDarkMode);
-    
-    // Apply dark mode class to html element
-    if (isDarkMode) {
-      document.documentElement.classList.add('dark');
-    } else {
-      document.documentElement.classList.remove('dark');
-    }
-  }, []);
-
-  const toggleDarkMode = () => {
-    setDarkMode(prevMode => {
-      const newMode = !prevMode;
-      localStorage.setItem('darkMode', newMode.toString());
-      
-      if (newMode) {
-        document.documentElement.classList.add('dark');
-      } else {
-        document.documentElement.classList.remove('dark');
-      }
-      
-      return newMode;
-    });
-  };
-
-  return (
-    <div className="min-h-screen bg-white dark:bg-gray-900 transition-colors duration-300 relative">
-      <AnimatedBackground />
-      
-      <div className="relative z-10">
-        <Header darkMode={darkMode} toggleDarkMode={toggleDarkMode} />
-        
-        <main>
-          <HeroSection data={portfolioData.hero} />
-          <AboutSection data={portfolioData.about} />
-          <SkillsSection data={portfolioData.skills} />
-          <ProjectsSection data={portfolioData.projects} />
-          <ContactSection data={portfolioData.contact} />
-        </main>
-        
-        <Footer />
-      </div>
-    </div>
-  );
-};
+const App = () => (
+  <QueryClientProvider client={queryClient}>
+    <TooltipProvider>
+      <Toaster />
+      <Sonner />
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/experience" element={<Experience />} />
+          <Route path="/projects" element={<Projects />} />
+          <Route path="/testimonials" element={<Testimonials />} />
+          <Route path="/contact" element={<Contact />} />
+          <Route path="*" element={<NotFound />} />
+        </Routes>
+      </BrowserRouter>
+    </TooltipProvider>
+  </QueryClientProvider>
+);
 
 export default App;

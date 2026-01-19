@@ -1,4 +1,4 @@
-interface PortfolioData {
+export interface PortfolioData {
   hero: {
     name: string;
     title: string;
@@ -139,14 +139,14 @@ const portfolioData: PortfolioData = {
     ]
   },
   projects: {
-    categories: ["Web Development", "Frontend", "University Projects", "Freelance", "Python", "React", "Lead Generation", "Business"],
+    categories: ["All", "Web Development", "Frontend", "University Projects", "Freelance", "Python", "React"],
     projects: [
       {
         id: "homixa",
         title: "Homixa - Home Services Website",
         description: "A modern, responsive website for Homixa showcasing home services and solutions, with clear service sections, contact options, and a professional brand presence.",
-  imageUrl: "/projects/homixa.png",
-        tags: ["Web Development", "Freelance", "Business"],
+        imageUrl: "https://images.pexels.com/photos/1396122/pexels-photo-1396122.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+        tags: ["Web Development", "Freelance"],
         demoUrl: "https://www.homixa.us/",
         codeUrl: "https://github.com/SubhanShahid55"
       },
@@ -155,7 +155,7 @@ const portfolioData: PortfolioData = {
         title: "Meme Coins Agent",
         description: "A comprehensive cryptocurrency information platform providing real-time data, market analysis, and insights about meme coins and crypto markets.",
         imageUrl: "https://images.pexels.com/photos/844124/pexels-photo-844124.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
-        tags: ["Web Development", "Freelance", "Crypto"],
+        tags: ["Web Development", "Freelance"],
         demoUrl: "https://memecoinsagent.info/",
         codeUrl: "https://github.com/SubhanShahid55"
       },
@@ -172,7 +172,7 @@ const portfolioData: PortfolioData = {
         title: "Fraud Detection System",
         description: "Developed during my Python internship, this system uses machine learning algorithms to detect fraudulent transactions in real-time. Built with Python and advanced data analysis techniques.",
         imageUrl: "https://images.pexels.com/photos/5473298/pexels-photo-5473298.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
-        tags: ["Python", "Machine Learning", "University Projects"],
+        tags: ["Python", "University Projects"],
         demoUrl: "https://fraud-system.vercel.app/",
         codeUrl: "https://github.com/SubhanShahid55/Fraud-System"
       },
@@ -181,7 +181,7 @@ const portfolioData: PortfolioData = {
         title: "E-commerce Website Frontend",
         description: "Developed the frontend of an e-commerce website as a university project using HTML, CSS, and JavaScript. Features include a homepage with product listings, about page, contact form, and shopping cart functionality.",
         imageUrl: "https://images.pexels.com/photos/5632402/pexels-photo-5632402.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
-        tags: ["University Projects", "Frontend", "E-commerce"],
+        tags: ["University Projects", "Frontend"],
         codeUrl: "https://github.com/SubhanShahid55/ICONIC-ZONE-FRONT-END"
       },
       {
@@ -189,7 +189,7 @@ const portfolioData: PortfolioData = {
         title: "Personal Portfolio",
         description: "A modern portfolio website built with React, TypeScript, and Tailwind CSS, featuring responsive design, dark mode, and smooth animations.",
         imageUrl: "https://images.pexels.com/photos/196644/pexels-photo-196644.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
-        tags: ["Frontend", "React", "TypeScript"],
+        tags: ["Frontend", "React"],
         codeUrl: "https://github.com/SubhanShahid55/portfolio"
       }
     ]
