@@ -185,6 +185,7 @@ const Home = () => {
                     <Github size={24} />
                   </motion.a>
                 )}
+                {/* Floating WhatsApp button is rendered globally in Layout */}
               </motion.div>
             </div>
 

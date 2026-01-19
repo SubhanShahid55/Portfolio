@@ -32,7 +32,7 @@ const Footer = () => {
 
           <div className="flex flex-col items-center md:items-end gap-4">
             <div className="flex gap-4">
-              <a href="https://linkedin.com/in/muhammad-subhan-shahid" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary transition-colors">
+              <a href="https://www.linkedin.com/in/muhammad-subhan-shahid-564160384/" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary transition-colors">
                 <Linkedin size={20} />
               </a>
               <a href="https://instagram.com/iamsubhanshahid" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary transition-colors">

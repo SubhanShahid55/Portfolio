@@ -148,7 +148,7 @@ const ContactSection = () => {
                 <p className="text-muted-foreground mb-4">Connect with me</p>
                 <div className="flex gap-4">
                   <motion.a
-                    href="https://linkedin.com/in/muhammad-subhan-shahid"
+                    href="https://www.linkedin.com/in/muhammad-subhan-shahid-564160384/"
                     target="_blank"
                     rel="noopener noreferrer"
                     whileHover={{ scale: 1.1, y: -2 }}

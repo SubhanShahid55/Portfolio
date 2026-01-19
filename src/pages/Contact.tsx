@@ -218,6 +218,7 @@ const Contact = () => {
                         <Github size={24} />
                       </motion.a>
                     )}
+                    {/* Floating WhatsApp button is rendered globally in Layout */}
                   </div>
                 </div>
               </div>

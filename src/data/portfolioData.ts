@@ -41,6 +41,7 @@ export interface PortfolioData {
       github?: string;
       linkedin?: string;
       instagram?: string;
+      whatsapp?: string;
     };
   };
 }
@@ -219,7 +220,8 @@ const portfolioData: PortfolioData = {
     socials: {
       github: "https://github.com/SubhanShahid55",
       linkedin: "https://www.linkedin.com/in/muhammad-subhan-shahid-564160384",
-      instagram: "https://www.instagram.com/iamsubhanshahid/"
+        instagram: "https://www.instagram.com/iamsubhanshahid/",
+        whatsapp: "https://wa.me/923240545602"
     }
   }
 };

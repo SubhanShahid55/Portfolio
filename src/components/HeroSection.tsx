@@ -132,7 +132,7 @@ const HeroSection = () => {
           className="flex items-center justify-center gap-6"
         >
           <motion.a
-            href="https://linkedin.com/in/muhammad-subhan-shahid"
+            href="https://www.linkedin.com/in/muhammad-subhan-shahid-564160384/"
             target="_blank"
             rel="noopener noreferrer"
             whileHover={{ scale: 1.2, rotate: 5 }}
