@@ -71,7 +71,7 @@ const About = () => {
       <SEOHead
         title="About Me"
         description={portfolioData.about.bio}
-        canonical="https://subhansportfolio.vercel.app/about"
+        canonical="https://subhanshahidportfolio.vercel.app/about"
       />
 
       <section className="section-container">

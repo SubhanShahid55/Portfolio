@@ -38,7 +38,7 @@ const Home = () => {
       <SEOHead
         title="Freelance Web Developer"
         description={portfolioData.hero.description}
-        canonical="https://subhansportfolio.vercel.app/"
+        canonical="https://subhanshahidportfolio.vercel.app/"
       />
       
       <section className="relative min-h-[90vh] flex items-center justify-center overflow-hidden">

@@ -106,7 +106,7 @@ const Contact = () => {
       <SEOHead
         title="Contact Me"
         description="Get in touch with Muhammad Subhan Shahid for project inquiries, collaboration opportunities, or freelance work."
-        canonical="https://subhansportfolio.vercel.app/contact"
+        canonical="https://subhanshahidportfolio.vercel.app/contact"
       />
 
       <section className="section-container">

@@ -42,7 +42,7 @@ const Projects = () => {
       <SEOHead
         title="Projects Portfolio"
         description="Explore Muhammad Subhan Shahid's portfolio of web development and React projects."
-        canonical="https://subhansportfolio.vercel.app/projects"
+        canonical="https://subhanshahidportfolio.vercel.app/projects"
       />
 
       <section className="section-container">

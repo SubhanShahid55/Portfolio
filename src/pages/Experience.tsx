@@ -59,7 +59,7 @@ const Experience = () => {
       <SEOHead
         title="Work Experience"
         description="Professional experience of Muhammad Subhan Shahid in software development, including roles at Devmerce and Smile Check AI."
-        canonical="https://subhansportfolio.vercel.app/experience"
+        canonical="https://subhanshahidportfolio.vercel.app/experience"
       />
 
       <section className="section-container">

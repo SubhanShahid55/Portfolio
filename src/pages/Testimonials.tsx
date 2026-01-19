@@ -83,7 +83,7 @@ const Testimonials = () => {
       <SEOHead
         title="Testimonials & Certifications"
         description="Client testimonials and professional certifications of Muhammad Subhan Shahid."
-        canonical="https://subhansportfolio.vercel.app/testimonials"
+        canonical="https://subhanshahidportfolio.vercel.app/testimonials"
       />
 
       <section className="section-container">

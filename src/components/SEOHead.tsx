@@ -38,6 +38,16 @@ const SEOHead = ({ title, description, canonical, type = 'website' }: SEOProps) 
       if (canonicalLink) {
         canonicalLink.setAttribute('href', canonical);
       }
+
+      const ogUrl = document.querySelector('meta[property="og:url"]');
+      if (ogUrl) {
+        ogUrl.setAttribute('content', canonical);
+      }
+
+      const twitterUrl = document.querySelector('meta[name="twitter:url"]');
+      if (twitterUrl) {
+        twitterUrl.setAttribute('content', canonical);
+      }
     }
   }, [title, description, canonical, type]);
 
