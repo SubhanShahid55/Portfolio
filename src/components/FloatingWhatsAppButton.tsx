@@ -12,9 +12,10 @@ const FloatingWhatsAppButton: React.FC = () => {
       target="_blank"
       rel="noopener noreferrer"
       aria-label="Chat on WhatsApp"
-      className="fixed bottom-6 right-6 z-50 w-14 h-14 md:w-16 md:h-16 rounded-full bg-[#25D366] text-white flex items-center justify-center shadow-lg hover:scale-105 transition-transform ring-4 ring-white/10"
+      className="fixed bottom-4 right-4 z-50 w-14 h-14 sm:bottom-6 sm:right-6 sm:w-16 sm:h-16 rounded-full bg-[#25D366] text-white flex items-center justify-center shadow-lg active:scale-95 transition-transform ring-4 ring-white/10 touch-manipulation"
+      style={{ touchAction: 'manipulation' }}
     >
-      <WhatsAppIcon size={26} className="text-white" />
+      <WhatsAppIcon size={20} className="text-white" />
     </a>
   );
 };

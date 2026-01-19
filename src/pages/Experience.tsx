@@ -36,6 +36,21 @@ const experiences = [
     technologies: ['Rust', 'PostgreSQL', 'Docker', 'AWS'],
     current: false,
   },
+  {
+    title: 'Front End Developer',
+    company: 'Grow Station',
+    location: 'Remote / Onsite',
+    period: 'September 2023 - December 2023',
+    description: 'Worked as a Front End Developer building and maintaining Laravel (Blade) driven web applications and PHP backends for industry projects.',
+    highlights: [
+      'Implemented dynamic Blade templates and reusable components improving frontend development speed',
+      'Integrated PHP backend endpoints with frontend interfaces for real client projects',
+      'Collaborated with designers and backend engineers to deliver production-ready features on schedule',
+      'Learned Laravel ecosystem, Blade templating, and modern PHP best practices through hands-on projects',
+    ],
+    technologies: ['Laravel', 'Blade', 'PHP', 'HTML', 'CSS', 'JavaScript'],
+    current: false,
+  },
 ];
 
 const Experience = () => {

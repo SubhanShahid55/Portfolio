@@ -57,11 +57,12 @@ const Navbar = () => {
             >
               <Link
                 to={item.href}
-                className={`relative text-sm font-medium transition-colors group ${
+                className={`relative text-sm font-medium transition-colors flex items-center gap-2 group ${
                   location.pathname === item.href ? 'text-primary' : 'text-muted-foreground hover:text-foreground'
                 }`}
               >
-                {item.label}
+                <span className={`${location.pathname === item.href ? 'block' : 'hidden'} w-2 h-2 rounded-full bg-primary`} />
+                <span>{item.label}</span>
                 <span className={`absolute -bottom-1 left-0 h-0.5 bg-primary transition-all duration-300 ${
                   location.pathname === item.href ? 'w-full' : 'w-0 group-hover:w-full'
                 }`} />
@@ -97,13 +98,14 @@ const Navbar = () => {
                 >
                   <Link
                     to={item.href}
-                    className={`block px-6 py-3 transition-colors ${
+                    className={`px-6 py-3 transition-colors flex items-center gap-3 ${
                       location.pathname === item.href 
                         ? 'text-primary bg-primary/10' 
                         : 'text-muted-foreground hover:text-foreground hover:bg-muted/50'
                     }`}
                   >
-                    {item.label}
+                    <span className={`${location.pathname === item.href ? 'block' : 'hidden'} w-2 h-2 rounded-full bg-primary`} />
+                    <span>{item.label}</span>
                   </Link>
                 </motion.li>
               ))}

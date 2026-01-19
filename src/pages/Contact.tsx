@@ -130,7 +130,7 @@ const Contact = () => {
         canonical="https://subhanshahidportfolio.vercel.app/contact"
       />
 
-      <section className="section-container">
+      <section className="section-container px-4 sm:px-6">
         <motion.div
           ref={ref}
           variants={containerVariants}
@@ -147,10 +147,10 @@ const Contact = () => {
             </p>
           </motion.div>
 
-          <div className="grid lg:grid-cols-2 gap-12 max-w-6xl mx-auto">
+          <div className="grid grid-cols-1 gap-8 lg:grid-cols-2 lg:gap-12 max-w-6xl mx-auto">
             {/* Contact Info */}
-            <motion.div variants={itemVariants} className="space-y-8">
-              <div className="glass-card p-8">
+            <motion.div variants={itemVariants} className="space-y-6">
+              <div className="glass-card p-6 sm:p-8">
                 <h2 className="text-2xl font-bold mb-2">Let's Connect</h2>
                 <p className="text-muted-foreground mb-8">
                   I'm always open to discussing new projects, creative ideas, or opportunities to be part of your vision.
@@ -164,8 +164,8 @@ const Contact = () => {
                       whileHover={{ x: 10 }}
                       className="flex items-center gap-4 group"
                     >
-                      <div className="w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center group-hover:bg-primary/20 transition-colors">
-                        <item.icon className="w-6 h-6 text-primary" />
+                      <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-xl bg-primary/10 flex items-center justify-center group-hover:bg-primary/20 transition-colors">
+                        <item.icon className="w-5 h-5 sm:w-6 sm:h-6 text-primary" />
                       </div>
                       <div>
                         <p className="text-sm text-muted-foreground">{item.label}</p>
@@ -181,7 +181,7 @@ const Contact = () => {
                 {/* Social Links */}
                 <div className="mt-8 pt-8 border-t border-border">
                   <p className="text-muted-foreground mb-4">Connect with me on social media</p>
-                  <div className="flex gap-4">
+                  <div className="flex gap-3">
                     {portfolioData.contact.socials.linkedin && (
                       <motion.a
                         href={portfolioData.contact.socials.linkedin}
@@ -189,7 +189,7 @@ const Contact = () => {
                         rel="noopener noreferrer"
                         whileHover={{ scale: 1.1, y: -2 }}
                         whileTap={{ scale: 0.95 }}
-                        className="w-14 h-14 glass-card rounded-xl flex items-center justify-center text-muted-foreground hover:text-primary hover:border-primary/50 transition-colors"
+                        className="w-12 h-12 sm:w-14 sm:h-14 glass-card rounded-xl flex items-center justify-center text-muted-foreground hover:text-primary hover:border-primary/50 transition-colors"
                       >
                         <Linkedin size={24} />
                       </motion.a>
@@ -201,7 +201,7 @@ const Contact = () => {
                         rel="noopener noreferrer"
                         whileHover={{ scale: 1.1, y: -2 }}
                         whileTap={{ scale: 0.95 }}
-                        className="w-14 h-14 glass-card rounded-xl flex items-center justify-center text-muted-foreground hover:text-primary hover:border-primary/50 transition-colors"
+                        className="w-12 h-12 sm:w-14 sm:h-14 glass-card rounded-xl flex items-center justify-center text-muted-foreground hover:text-primary hover:border-primary/50 transition-colors"
                       >
                         <Instagram size={24} />
                       </motion.a>
@@ -213,7 +213,7 @@ const Contact = () => {
                         rel="noopener noreferrer"
                         whileHover={{ scale: 1.1, y: -2 }}
                         whileTap={{ scale: 0.95 }}
-                        className="w-14 h-14 glass-card rounded-xl flex items-center justify-center text-muted-foreground hover:text-primary hover:border-primary/50 transition-colors"
+                        className="w-12 h-12 sm:w-14 sm:h-14 glass-card rounded-xl flex items-center justify-center text-muted-foreground hover:text-primary hover:border-primary/50 transition-colors"
                       >
                         <Github size={24} />
                       </motion.a>
