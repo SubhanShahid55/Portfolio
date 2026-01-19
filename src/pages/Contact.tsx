@@ -63,15 +63,36 @@ const Contact = () => {
     if (!validateForm()) return;
 
     setIsSubmitting(true);
-    
-    // Simulate form submission
-    await new Promise((resolve) => setTimeout(resolve, 1500));
-    
-    setIsSubmitting(false);
-    setSubmitStatus('success');
-    setFormData({ name: '', email: '', subject: '', message: '' });
-    
-    setTimeout(() => setSubmitStatus('idle'), 5000);
+    try {
+      const resp = await fetch('https://formspree.io/f/xrbqbqwa', {
+        method: 'POST',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          subject: formData.subject,
+          message: formData.message,
+        }),
+      });
+
+      const result = await resp.json();
+      if (resp.ok) {
+        setSubmitStatus('success');
+        setFormData({ name: '', email: '', subject: '', message: '' });
+      } else {
+        console.error('Formspree error', result);
+        setSubmitStatus('error');
+      }
+    } catch (err) {
+      console.error('Form submission failed', err);
+      setSubmitStatus('error');
+    } finally {
+      setIsSubmitting(false);
+      setTimeout(() => setSubmitStatus('idle'), 5000);
+    }
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -341,6 +362,16 @@ const Contact = () => {
                   >
                     <CheckCircle size={18} />
                     Message sent successfully! I'll get back to you soon.
+                  </motion.div>
+                )}
+                {submitStatus === 'error' && (
+                  <motion.div
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    className="flex items-center gap-2 text-destructive bg-destructive/10 px-4 py-3 rounded-lg"
+                  >
+                    <AlertCircle size={18} />
+                    Failed to send message. Please try again or email rajpootsubhan41@gmail.com.
                   </motion.div>
                 )}
               </form>

@@ -95,6 +95,18 @@ const portfolioData: PortfolioData = {
         category: "Programming"
       },
       { 
+        name: "Python",
+        imageUrl: "https://raw.githubusercontent.com/devicons/devicon/master/icons/python/python-original.svg",
+        level: 80,
+        category: "Programming"
+      },
+      { 
+        name: "Rust",
+        imageUrl: "https://raw.githubusercontent.com/devicons/devicon/master/icons/rust/rust-original.svg",
+        level: 75,
+        category: "Programming"
+      },
+      { 
         name: "HTML5",
         imageUrl: "https://raw.githubusercontent.com/devicons/devicon/master/icons/html5/html5-original.svg",
         level: 90,
@@ -121,6 +133,12 @@ const portfolioData: PortfolioData = {
       { 
         name: "VS Code",
         imageUrl: "https://raw.githubusercontent.com/devicons/devicon/master/icons/vscode/vscode-original.svg",
+        level: 85,
+        category: "Tools"
+      },
+      { 
+        name: "Canva",
+        imageUrl: "https://raw.githubusercontent.com/devicons/devicon/master/icons/canva/canva-original.svg",
         level: 85,
         category: "Tools"
       },
