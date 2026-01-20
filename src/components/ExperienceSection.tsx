@@ -4,6 +4,18 @@ import { Briefcase, Calendar, ChevronRight } from 'lucide-react';
 
 const experiences = [
   {
+    title: 'Junior Software Engineer',
+    company: 'Brawse',
+    period: 'June 2025 - Present',
+    description: 'Working on the Brawse browser extension, implementing front-end features and UI improvements.',
+    highlights: [
+      'Developing and maintaining the Brawse extension using HTML, CSS, and JavaScript',
+      'Implemented extension UI, popup flows, and options pages with responsive design',
+      'Collaborated with the team to integrate extension with backend APIs and third-party services',
+    ],
+    current: true,
+  },
+  {
     title: 'Freelance Full-Stack Developer',
     company: 'Devmerce',
     period: 'January 2025 - Present',
@@ -16,16 +28,16 @@ const experiences = [
     current: true,
   },
   {
-    title: 'Backend Developer Intern',
+    title: 'Backend Developer',
     company: 'Smile Check AI',
-    period: 'June 2024 - August 2024',
-    description: 'Engineered high-performance Rust backend services for AI diagnostics',
+    period: 'June 2024 - Present',
+    description: 'Working on backend services and APIs to support AI-driven diagnostics and data processing.',
     highlights: [
-      'Engineered Rust backend services processing 10,000+ daily AI diagnostic requests with 99.8% uptime',
-      'Reduced API latency by 30% through PostgreSQL optimization and Redis caching',
-      'Collaborated with 8-member Agile team, conducted code reviews and pair programming',
+      'Built and maintained backend endpoints for AI diagnostic workflows',
+      'Optimized database queries and improved API performance',
+      'Collaborated with ML engineers to productionize model inference pipelines',
     ],
-    current: false,
+    current: true,
   },
 ];
 

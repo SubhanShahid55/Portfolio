@@ -126,9 +126,39 @@ const portfolioData: PortfolioData = {
         category: "Design"
       },
       { 
-        name: "Git",
-        imageUrl: "https://raw.githubusercontent.com/devicons/devicon/master/icons/git/git-original.svg",
+        name: "Canva",
+        imageUrl: "https://raw.githubusercontent.com/devicons/devicon/master/icons/canva/canva-original.svg",
+        level: 85,
+        category: "Design"
+      },
+      { 
+        name: "Figma",
+        imageUrl: "https://raw.githubusercontent.com/devicons/devicon/master/icons/figma/figma-original.svg",
+        level: 75,
+        category: "Design"
+      },
+      { 
+        name: "V0",
+        imageUrl: "public/v0.png",
         level: 80,
+        category: "Tools"
+      },
+      { 
+        name: "Bolt",
+        imageUrl: "public/bolt.png",
+        level: 80,
+        category: "Tools"
+      },
+      { 
+        name: "Replit",
+        imageUrl: "public/replit.png",
+        level: 80,
+        category: "Tools"
+      },
+      { 
+        name: "GitHub",
+        imageUrl: "https://raw.githubusercontent.com/devicons/devicon/master/icons/github/github-original.svg",
+        level: 85,
         category: "Tools"
       },
       { 
@@ -136,18 +166,6 @@ const portfolioData: PortfolioData = {
         imageUrl: "https://raw.githubusercontent.com/devicons/devicon/master/icons/vscode/vscode-original.svg",
         level: 85,
         category: "Tools"
-      },
-      { 
-        name: "Canva",
-        imageUrl: "https://raw.githubusercontent.com/devicons/devicon/master/icons/canva/canva-original.svg",
-        level: 85,
-        category: "Tools"
-      },
-      { 
-        name: "Figma",
-        imageUrl: "https://raw.githubusercontent.com/devicons/devicon/master/icons/figma/figma-original.svg",
-        level: 75,
-        category: "Design"
       },
       { 
         name: "Node.js",
