@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import { Briefcase, Calendar, ChevronRight, MapPin } from 'lucide-react';
-import Layout from '@/components/Layout';
+
 import SEOHead from '@/components/SEOHead';
 import TechIcon from '@/components/TechIcon';
 
@@ -85,7 +85,7 @@ const Experience = () => {
   };
 
   return (
-    <Layout>
+    <>
       <SEOHead
         title="Work Experience"
         description="Professional experience of Muhammad Subhan Shahid in software development, including roles at Devmerce and Smile Check AI."
@@ -200,7 +200,7 @@ const Experience = () => {
           </div>
         </motion.div>
       </section>
-    </Layout>
+    </>
   );
 };
 

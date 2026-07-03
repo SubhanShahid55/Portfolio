@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
-import { ExternalLink, Github, ArrowRight, Eye, Code, Briefcase, GraduationCap } from 'lucide-react';
-import Layout from '@/components/Layout';
+import { ExternalLink, Github, ArrowRight, Eye, Code, Briefcase, GraduationCap, ChevronLeft, ChevronRight } from 'lucide-react';
+
 import SEOHead from '@/components/SEOHead';
 import portfolioData from '@/data/portfolioData';
 
@@ -18,11 +18,20 @@ const tagIcons: Record<string, React.ElementType> = {
 const Projects = () => {
   const [activeCategory, setActiveCategory] = useState('All');
   const [hoveredProject, setHoveredProject] = useState<string | null>(null);
+  const [currentPage, setCurrentPage] = useState(1);
   const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.1 });
+
+  const PROJECTS_PER_PAGE = 6;
 
   const filteredProjects = activeCategory === 'All'
     ? portfolioData.projects.projects
     : portfolioData.projects.projects.filter((p) => p.tags.includes(activeCategory));
+
+  const totalPages = Math.ceil(filteredProjects.length / PROJECTS_PER_PAGE);
+  const currentProjects = filteredProjects.slice(
+    (currentPage - 1) * PROJECTS_PER_PAGE,
+    currentPage * PROJECTS_PER_PAGE
+  );
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -38,7 +47,7 @@ const Projects = () => {
   };
 
   return (
-    <Layout>
+    <>
       <SEOHead
         title="Projects Portfolio"
         description="Explore Muhammad Subhan Shahid's portfolio of web development and React projects."
@@ -70,7 +79,10 @@ const Projects = () => {
             {portfolioData.projects.categories.map((category) => (
               <motion.button
                 key={category}
-                onClick={() => setActiveCategory(category)}
+                onClick={() => {
+                  setActiveCategory(category);
+                  setCurrentPage(1);
+                }}
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 className={`px-6 py-2.5 rounded-full text-sm font-medium transition-all duration-300 ${
@@ -87,7 +99,7 @@ const Projects = () => {
           {/* Projects Grid */}
           <motion.div layout className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             <AnimatePresence mode="popLayout">
-              {filteredProjects.map((project) => {
+              {currentProjects.map((project) => {
                 const IconComponent = tagIcons[project.tags[0]] || Code;
                 
                 return (
@@ -216,6 +228,29 @@ const Projects = () => {
             </AnimatePresence>
           </motion.div>
 
+          {/* Pagination Controls */}
+          {totalPages > 1 && (
+            <motion.div variants={itemVariants} className="flex justify-center items-center gap-4 mt-12">
+              <button
+                onClick={() => setCurrentPage(p => Math.max(1, p - 1))}
+                disabled={currentPage === 1}
+                className="p-2 rounded-full glass-card disabled:opacity-50 disabled:cursor-not-allowed hover:bg-primary/10 transition-colors"
+              >
+                <ChevronLeft size={24} />
+              </button>
+              <span className="text-sm font-medium text-muted-foreground">
+                Page {currentPage} of {totalPages}
+              </span>
+              <button
+                onClick={() => setCurrentPage(p => Math.min(totalPages, p + 1))}
+                disabled={currentPage === totalPages}
+                className="p-2 rounded-full glass-card disabled:opacity-50 disabled:cursor-not-allowed hover:bg-primary/10 transition-colors"
+              >
+                <ChevronRight size={24} />
+              </button>
+            </motion.div>
+          )}
+
           {/* CTA */}
           <motion.div variants={itemVariants} className="text-center mt-12">
             <p className="text-muted-foreground mb-4">
@@ -238,7 +273,7 @@ const Projects = () => {
           </motion.div>
         </motion.div>
       </section>
-    </Layout>
+    </>
   );
 };
 

@@ -179,6 +179,14 @@ const portfolioData: PortfolioData = {
     categories: ["All", "Web Development", "Frontend", "University Projects", "Freelance", "Python", "React"],
     projects: [
       {
+        id: "digital-media-archive",
+        title: "Digital Media Archive (FYP)",
+        description: "A media management website where users can securely upload, download, and view various forms of digital media in a modern interface.",
+        imageUrl: "https://images.pexels.com/photos/1762851/pexels-photo-1762851.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+        tags: ["Web Development", "React", "Frontend", "University Projects"],
+        demoUrl: "https://digitalmediaarchive.vercel.app/"
+      },
+      {
         id: "homixa",
         title: "Homixa - Home Services Website",
         description: "A modern, responsive website for Homixa showcasing home services and solutions, with clear service sections, contact options, and a professional brand presence.",

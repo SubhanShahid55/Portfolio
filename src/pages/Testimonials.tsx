@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import { Quote, Star, Users, Heart, Award, Calendar, ExternalLink } from 'lucide-react';
-import Layout from '@/components/Layout';
+
 import SEOHead from '@/components/SEOHead';
 
 const stats = [
@@ -79,7 +79,7 @@ const Testimonials = () => {
   };
 
   return (
-    <Layout>
+    <>
       <SEOHead
         title="Testimonials & Certifications"
         description="Client testimonials and professional certifications of Muhammad Subhan Shahid."
@@ -221,7 +221,7 @@ const Testimonials = () => {
           </div>
         </motion.div>
       </section>
-    </Layout>
+    </>
   );
 };
 

@@ -2,7 +2,7 @@ import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { TypeAnimation } from 'react-type-animation';
 import { Github, Linkedin, Instagram, MapPin, Download } from 'lucide-react';
-import Layout from '@/components/Layout';
+
 import SEOHead from '@/components/SEOHead';
 import portfolioData from '@/data/portfolioData';
 import logoImage from '@/assets/logo.png';
@@ -34,7 +34,7 @@ const Home = () => {
   ];
 
   return (
-    <Layout>
+    <>
       <SEOHead
         title="Freelance Web Developer"
         description={portfolioData.hero.description}
@@ -258,7 +258,7 @@ const Home = () => {
         </motion.div>
 
       </section>
-    </Layout>
+    </>
   );
 };
 

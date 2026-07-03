@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import { Mail, Phone, MapPin, Send, Github, Linkedin, Instagram, CheckCircle, AlertCircle, ArrowRight } from 'lucide-react';
-import Layout from '@/components/Layout';
+
 import SEOHead from '@/components/SEOHead';
 import portfolioData from '@/data/portfolioData';
 
@@ -123,7 +123,7 @@ const Contact = () => {
   ];
 
   return (
-    <Layout>
+    <>
       <SEOHead
         title="Contact Me"
         description="Get in touch with Muhammad Subhan Shahid for project inquiries, collaboration opportunities, or freelance work."
@@ -380,7 +380,7 @@ const Contact = () => {
           </div>
         </motion.div>
       </section>
-    </Layout>
+    </>
   );
 };
 

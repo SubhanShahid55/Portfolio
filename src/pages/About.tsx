@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import { Download, Users, Trophy, Zap, Target, Palette, Code, Wrench, Monitor } from 'lucide-react';
-import Layout from '@/components/Layout';
+
 import SEOHead from '@/components/SEOHead';
 import portfolioData from '@/data/portfolioData';
 import logoImage from '@/assets/logo.png';
@@ -67,7 +67,7 @@ const About = () => {
   }, {} as Record<string, typeof portfolioData.skills.skills>);
 
   return (
-    <Layout>
+    <>
       <SEOHead
         title="About Me"
         description={portfolioData.about.bio}
@@ -202,7 +202,7 @@ const About = () => {
           </motion.div>
         </motion.div>
       </section>
-    </Layout>
+    </>
   );
 };
 
