@@ -41,7 +41,7 @@ const Navbar = () => {
           <motion.img
             src="/logo.png"
             alt="Muhammad Subhan Shahid"
-            className="h-10 w-auto"
+            className="h-16 md:h-20 w-auto"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           />

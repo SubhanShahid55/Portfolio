@@ -5,7 +5,32 @@ import { Briefcase, Calendar, ChevronRight, MapPin } from 'lucide-react';
 import SEOHead from '@/components/SEOHead';
 import TechIcon from '@/components/TechIcon';
 
-const experiences = [
+const experiences: Array<{
+  title: string;
+  company: string;
+  location: string;
+  period: string;
+  description: string;
+  highlights: string[];
+  technologies: string[];
+  current: boolean;
+  logo?: string;
+}> = [
+  {
+    title: 'Summer Intern',
+    company: 'EasyPaisa',
+    location: 'Onsite',
+    period: 'July 2026 - August 2026',
+    description: 'Worked as a Summer Intern at EasyPaisa digital banks.',
+    highlights: [
+      'Supported the Channel and Development Solutions Team during a summer internship at EasyPaisa.',
+      'Programmed and maintained features for merchant and retail applications.',
+      'Evaluated EasyPaisa APIs and financial technology concepts during technical sessions.',
+    ],
+    technologies: ['APIs', 'FinTech', 'Software Development'],
+    current: false,
+    logo: '/easypaisa.webp',
+  },
   {
     title: 'Junior Software Engineer',
     company: 'Brawse',
@@ -155,7 +180,11 @@ const Experience = () => {
                     <h3 className="text-xl md:text-2xl font-bold text-foreground mb-2">{exp.title}</h3>
                     <div className="flex flex-wrap items-center gap-4 text-sm">
                       <div className="flex items-center gap-2 text-primary font-medium">
-                        <Briefcase size={16} />
+                        {exp.logo ? (
+                          <img src={exp.logo} alt={exp.company} className="h-5 w-auto object-contain" />
+                        ) : (
+                          <Briefcase size={16} />
+                        )}
                         <span>{exp.company}</span>
                       </div>
                       <div className="flex items-center gap-2 text-muted-foreground">
