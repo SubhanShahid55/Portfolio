@@ -13,7 +13,7 @@ const Layout = ({ children }: LayoutProps) => {
     <div className="min-h-screen bg-background overflow-x-hidden animated-gradient">
       <ParticleBackground />
       <Navbar />
-      <main className="relative z-10 pt-20">
+      <main className="relative z-10 pt-32 md:pt-40">
         {children}
       </main>
       <Footer />

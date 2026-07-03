@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { TypeAnimation } from 'react-type-animation';
-import { Github, Linkedin, Instagram, MapPin, Download, ArrowRight } from 'lucide-react';
+import { Github, Linkedin, Instagram, MapPin, Download, ArrowRight, CheckCircle2, MessageSquare } from 'lucide-react';
 
 import SEOHead from '@/components/SEOHead';
 import portfolioData from '@/data/portfolioData';
@@ -353,6 +353,65 @@ const Home = () => {
                </div>
             </motion.div>
           </div>
+        </motion.div>
+      </section>
+
+      {/* Why Work With Me Section */}
+      <section className="section-container pb-12">
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-100px" }}
+          variants={containerVariants}
+          className="container mx-auto px-4 md:px-6"
+        >
+          <motion.div variants={itemVariants} className="text-center mb-12">
+            <h2 className="text-3xl font-bold mb-4">Why <span className="gradient-text">Work With Me?</span></h2>
+            <p className="text-muted-foreground max-w-2xl mx-auto">I combine technical expertise with a strong focus on delivering high-quality, scalable solutions tailored to your specific needs.</p>
+          </motion.div>
+          
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {portfolioData.about.values.map((value) => (
+              <motion.div key={value.title} variants={itemVariants} className="glass-card p-6 rounded-2xl relative overflow-hidden group hover:border-primary/50 transition-colors">
+                <div className="absolute top-0 right-0 w-24 h-24 bg-primary/10 rounded-full blur-2xl -mr-10 -mt-10 transition-transform duration-500 group-hover:scale-150" />
+                <CheckCircle2 size={32} className="text-primary mb-4" />
+                <h3 className="text-lg font-semibold text-foreground mb-3">{value.title}</h3>
+                <p className="text-muted-foreground text-sm leading-relaxed">{value.description}</p>
+              </motion.div>
+            ))}
+          </div>
+        </motion.div>
+      </section>
+
+      {/* CTA Section */}
+      <section className="section-container pt-0 pb-20">
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          variants={containerVariants}
+          className="container mx-auto px-4 md:px-6"
+        >
+          <motion.div variants={itemVariants} className="glass-card rounded-3xl p-8 md:p-12 text-center relative overflow-hidden border border-primary/20 hover:border-primary/40 transition-colors">
+            <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-transparent to-accent/10 opacity-50 pointer-events-none" />
+            
+            <div className="relative z-10 max-w-2xl mx-auto">
+              <h2 className="text-3xl md:text-5xl font-bold mb-6">Have a project in mind?</h2>
+              <p className="text-lg text-muted-foreground mb-8">
+                Let's work together to create something amazing. I'm currently available for freelance work and full-time opportunities.
+              </p>
+              <Link to="/contact">
+                <motion.button 
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  className="btn-primary inline-flex items-center gap-2 text-lg px-8 py-3"
+                >
+                  <MessageSquare size={20} />
+                  Let's Talk
+                </motion.button>
+              </Link>
+            </div>
+          </motion.div>
         </motion.div>
       </section>
     </>
