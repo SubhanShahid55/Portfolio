@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { TypeAnimation } from 'react-type-animation';
-import { Github, Linkedin, Instagram, MapPin, Download } from 'lucide-react';
+import { Github, Linkedin, Instagram, MapPin, Download, ArrowRight } from 'lucide-react';
 
 import SEOHead from '@/components/SEOHead';
 import portfolioData from '@/data/portfolioData';
@@ -257,6 +257,103 @@ const Home = () => {
           </motion.div>
         </motion.div>
 
+      </section>
+
+      {/* Featured Skills Section */}
+      <section className="section-container pb-12 pt-0">
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-100px" }}
+          variants={containerVariants}
+          className="container mx-auto px-4 md:px-6"
+        >
+          <motion.div variants={itemVariants} className="text-center mb-10">
+            <h2 className="text-3xl font-bold mb-2">My <span className="gradient-text">Top Skills</span></h2>
+          </motion.div>
+          
+          <motion.div variants={itemVariants} className="flex flex-wrap justify-center gap-6 md:gap-10">
+            {portfolioData.skills.skills.slice(0, 8).map((skill) => (
+              <div key={skill.name} className="flex flex-col items-center gap-2 group">
+                <div className="w-16 h-16 md:w-20 md:h-20 rounded-2xl glass-card flex items-center justify-center group-hover:scale-110 group-hover:border-primary/50 transition-all duration-300 shadow-lg hover:shadow-primary/20">
+                  <img src={skill.imageUrl} alt={skill.name} className="w-8 h-8 md:w-10 md:h-10 object-contain" />
+                </div>
+                <span className="text-sm font-medium text-muted-foreground group-hover:text-primary transition-colors">{skill.name}</span>
+              </div>
+            ))}
+          </motion.div>
+        </motion.div>
+      </section>
+
+      {/* About & Featured Projects Preview Section */}
+      <section className="section-container bg-muted/10 relative overflow-hidden">
+        {/* Subtle background decoration */}
+        <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-primary/5 rounded-full blur-[100px] -translate-y-1/2 translate-x-1/3 pointer-events-none" />
+        
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          variants={containerVariants}
+          className="container mx-auto px-4 md:px-6 relative z-10"
+        >
+          <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+            {/* Left side: About Me text */}
+            <motion.div variants={itemVariants}>
+              <h2 className="text-3xl md:text-4xl font-bold mb-6">A bit <span className="gradient-text">About Me</span></h2>
+              <p className="text-muted-foreground text-lg leading-relaxed mb-6">
+                {portfolioData.about.bio}
+              </p>
+              
+              <div className="grid sm:grid-cols-2 gap-4 mb-8">
+                {portfolioData.about.values.slice(0, 2).map((value) => (
+                  <div key={value.title} className="glass-card p-5 rounded-xl border-l-2 border-l-primary/50 hover:border-l-primary transition-colors">
+                    <h3 className="font-semibold text-foreground mb-2 text-lg">{value.title}</h3>
+                    <p className="text-sm text-muted-foreground">{value.description}</p>
+                  </div>
+                ))}
+              </div>
+              
+              <Link to="/about">
+                <motion.button 
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  className="btn-outline inline-flex items-center gap-2"
+                >
+                  Learn More About Me <ArrowRight size={16} />
+                </motion.button>
+              </Link>
+            </motion.div>
+            
+            {/* Right side: Mini projects grid */}
+            <motion.div variants={itemVariants} className="relative">
+               <h3 className="text-2xl font-bold mb-6 text-center lg:text-left">Recent <span className="gradient-text">Work</span></h3>
+               <div className="grid grid-cols-2 gap-4 md:gap-6">
+                 {portfolioData.projects.projects.slice(0, 4).map((project, idx) => (
+                   <Link key={project.id} to="/projects" className={`glass-card overflow-hidden rounded-xl group block ${idx % 2 === 1 ? 'mt-8' : ''}`}>
+                     <div className="h-32 md:h-40 overflow-hidden relative">
+                       <img src={project.imageUrl} alt={project.title} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
+                       <div className="absolute inset-0 bg-background/80 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center backdrop-blur-sm">
+                          <span className="text-primary font-medium text-sm bg-primary/10 px-4 py-2 rounded-full flex items-center gap-2">
+                            View Project <ArrowRight size={14} />
+                          </span>
+                       </div>
+                     </div>
+                     <div className="p-4 border-t border-primary/10">
+                       <h4 className="font-semibold text-sm truncate text-foreground group-hover:text-primary transition-colors">{project.title}</h4>
+                     </div>
+                   </Link>
+                 ))}
+               </div>
+               
+               <div className="mt-8 text-center lg:text-left">
+                 <Link to="/projects" className="text-primary text-sm font-medium hover:underline inline-flex items-center gap-1">
+                   See all projects <ArrowRight size={14} />
+                 </Link>
+               </div>
+            </motion.div>
+          </div>
+        </motion.div>
       </section>
     </>
   );
