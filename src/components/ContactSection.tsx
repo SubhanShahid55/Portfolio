@@ -93,7 +93,7 @@ const ContactSection = () => {
   };
 
   const contactInfo = [
-    { icon: Mail, label: 'Email', value: 'rajpootsubhan41@gmail.com', href: 'mailto:rajpootsubhan41@gmail.com' },
+    { icon: Mail, label: 'Email', value: 'subhanshahid.dev@gmail.com', href: 'mailto:subhanshahid.dev@gmail.com' },
     { icon: Phone, label: 'Phone', value: '+92-324-0545602', href: 'tel:+923240545602' },
     { icon: MapPin, label: 'Location', value: 'Rawalpindi, Pakistan', href: '#' },
   ];

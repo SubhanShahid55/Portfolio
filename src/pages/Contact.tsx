@@ -372,7 +372,7 @@ const Contact = () => {
                     className="flex items-center gap-2 text-destructive bg-destructive/10 px-4 py-3 rounded-lg"
                   >
                     <AlertCircle size={18} />
-                    Failed to send message. Please try again or email rajpootsubhan41@gmail.com.
+                    Failed to send message. Please try again or email subhanshahid.dev@gmail.com.
                   </motion.div>
                 )}
               </form>

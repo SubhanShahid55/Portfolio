@@ -240,7 +240,7 @@ const portfolioData: PortfolioData = {
     ]
   },
   contact: {
-    email: "rajpootsubhan41@gmail.com",
+    email: "subhanshahid.dev@gmail.com",
     phone: "+92 324-0545602",
     location: "Rawalpindi, Pakistan",
     socials: {
