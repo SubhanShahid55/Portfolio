@@ -17,7 +17,7 @@ const projects = [
       '99.9% uptime on AWS infrastructure',
       'RESTful APIs handling 50,000+ daily requests with <200ms response time',
     ],
-    demoLink: '#',
+    demoLink: 'https://www.homixaleads.online/',
     githubLink: '#',
   },
   {

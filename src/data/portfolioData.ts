@@ -192,7 +192,7 @@ const portfolioData: PortfolioData = {
         description: "A modern, responsive website for Homixa showcasing home services and solutions, with clear service sections, contact options, and a professional brand presence.",
         imageUrl: "https://images.pexels.com/photos/1396122/pexels-photo-1396122.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
         tags: ["Web Development", "Freelance"],
-        demoUrl: "https://www.homixa.us/",
+        demoUrl: "https://www.homixaleads.online/",
         codeUrl: "https://github.com/SubhanShahid55"
       },
       {
