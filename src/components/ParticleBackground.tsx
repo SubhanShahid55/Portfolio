@@ -28,7 +28,10 @@ const ParticleBackground = () => {
     }
 
     const particles: Particle[] = [];
-    const particleCount = 80;
+    // Reduce particle count significantly on mobile to improve performance
+    const isMobile = window.innerWidth < 768;
+    const particleCount = isMobile ? 30 : 80;
+    const connectionDistance = isMobile ? 100 : 150;
 
     for (let i = 0; i < particleCount; i++) {
       particles.push({
@@ -40,6 +43,8 @@ const ParticleBackground = () => {
         opacity: Math.random() * 0.5 + 0.1,
       });
     }
+
+    let animationFrameId: number;
 
     const animate = () => {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -62,24 +67,25 @@ const ParticleBackground = () => {
           const dy = particle.y - otherParticle.y;
           const distance = Math.sqrt(dx * dx + dy * dy);
 
-          if (distance < 150) {
+          if (distance < connectionDistance) {
             ctx.beginPath();
             ctx.moveTo(particle.x, particle.y);
             ctx.lineTo(otherParticle.x, otherParticle.y);
-            ctx.strokeStyle = `rgba(0, 212, 255, ${0.1 * (1 - distance / 150)})`;
+            ctx.strokeStyle = `rgba(0, 212, 255, ${0.1 * (1 - distance / connectionDistance)})`;
             ctx.lineWidth = 0.5;
             ctx.stroke();
           }
         });
       });
 
-      requestAnimationFrame(animate);
+      animationFrameId = requestAnimationFrame(animate);
     };
 
     animate();
 
     return () => {
       window.removeEventListener('resize', setCanvasSize);
+      cancelAnimationFrame(animationFrameId);
     };
   }, []);
 
