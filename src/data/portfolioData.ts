@@ -139,19 +139,19 @@ const portfolioData: PortfolioData = {
       },
       { 
         name: "V0",
-        imageUrl: "public/v0.png",
+        imageUrl: "/v0.svg",
         level: 80,
         category: "Tools"
       },
       { 
         name: "Bolt",
-        imageUrl: "public/bolt.png",
+        imageUrl: "/bolt.svg",
         level: 80,
         category: "Tools"
       },
       { 
         name: "Replit",
-        imageUrl: "public/replit.png",
+        imageUrl: "/replit.svg",
         level: 80,
         category: "Tools"
       },
