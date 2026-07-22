@@ -67,6 +67,21 @@ const Navbar = () => {
               </motion.li>
             ))}
           </ul>
+
+          {/* Mobile Get a Quote Button */}
+          <motion.div 
+            className="md:hidden"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.5 }}
+          >
+            <Link 
+              to="/contact" 
+              className="bg-primary text-background font-medium px-4 py-2 rounded-lg text-sm shadow-[0_0_15px_hsla(190,100%,50%,0.3)] active:scale-95 transition-all"
+            >
+              Get a Quote
+            </Link>
+          </motion.div>
         </div>
       </motion.nav>
 
