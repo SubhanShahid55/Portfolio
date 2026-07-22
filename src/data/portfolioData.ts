@@ -98,7 +98,7 @@ const portfolioData: PortfolioData = {
       { 
         name: "Python",
         imageUrl: "https://raw.githubusercontent.com/devicons/devicon/master/icons/python/python-original.svg",
-        level: 80,
+        level: 50,
         category: "Programming"
       },
       { 
