@@ -1,4 +1,10 @@
 User-agent: *
 Allow: /
 
+# LLM-readable files
+# See https://llmstxt.org for the llms.txt standard
+Allow: /llms.txt
+Allow: /llms-full.txt
+
+# Sitemaps
 Sitemap: https://subhanshahidportfolio.vercel.app/sitemap.xml

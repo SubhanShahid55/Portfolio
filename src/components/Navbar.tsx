@@ -8,6 +8,7 @@ const navItems = [
   { label: 'About', href: '/about', icon: User },
   { label: 'Experience', href: '/experience', icon: Briefcase },
   { label: 'Projects', href: '/projects', icon: Code },
+  { label: 'MERN Stack', href: '/mern-stack', icon: Briefcase },
   { label: 'Testimonials', href: '/testimonials', icon: MessageSquare },
   { label: 'Contact', href: '/contact', icon: Mail },
 ];

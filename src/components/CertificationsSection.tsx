@@ -4,10 +4,10 @@ import { Award, Calendar, ExternalLink } from 'lucide-react';
 
 const certifications = [
   {
-    title: 'MEAN Stack Development Bootcamp',
+    title: 'MERN Stack Development Bootcamp',
     issuer: 'Hami Trainings',
     date: 'January 2025',
-    description: 'Comprehensive bootcamp covering MongoDB, Express, Angular, and Node.js full-stack development.',
+    description: 'Comprehensive bootcamp covering MongoDB, Express, React, and Node.js full-stack development.',
   },
   {
     title: 'Professional Digital Marketing Certification',

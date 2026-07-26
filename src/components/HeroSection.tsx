@@ -86,7 +86,7 @@ const HeroSection = () => {
         >
           <TypeAnimation
             sequence={[
-              'MEAN Stack',
+              'MERN Stack',
               2000,
               'Python',
               2000,

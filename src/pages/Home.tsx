@@ -36,12 +36,12 @@ const Home = () => {
   return (
     <>
       <SEOHead
-        title="Freelance Web Developer"
-        description={portfolioData.hero.description}
+        title="Freelance MERN Stack Developer"
+        description="Expert freelance MERN Stack developer specializing in MongoDB, Express.js, React, and Node.js. Building scalable, modern web applications with JavaScript and TypeScript."
         canonical="https://subhanshahidportfolio.vercel.app/"
       />
       
-      <section className="relative min-h-[90vh] flex items-center justify-center overflow-hidden">
+      <section className="relative min-h-[90vh] flex items-center justify-center overflow-hidden py-12 md:py-16">
         {/* Gradient orbs */}
         <div className="absolute top-1/4 left-1/4 w-[500px] h-[500px] bg-primary/20 rounded-full blur-[120px] animate-pulse" />
         <div className="absolute bottom-1/4 right-1/4 w-[500px] h-[500px] bg-accent/20 rounded-full blur-[120px] animate-pulse" style={{ animationDelay: '1s' }} />
@@ -70,9 +70,15 @@ const Home = () => {
                 variants={itemVariants}
                 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4"
               >
-                <span className="block text-foreground mb-2">Hi, I'm</span>
-                <span className="gradient-text leading-tight">{portfolioData.hero.name}</span>
+                <span className="block text-foreground mb-2">Expert Freelance</span>
+                <span className="gradient-text leading-tight">MERN Stack Developer for Hire</span>
               </motion.h1>
+              <motion.p
+                variants={itemVariants}
+                className="text-lg text-muted-foreground/80 mb-1"
+              >
+                {portfolioData.hero.name}
+              </motion.p>
 
               {/* Tagline */}
               <motion.p
@@ -260,7 +266,7 @@ const Home = () => {
       </section>
 
       {/* Featured Skills Section */}
-      <section className="section-container pb-12 pt-0">
+      <section className="section-container py-16 md:py-24">
         <motion.div
           initial="hidden"
           whileInView="visible"

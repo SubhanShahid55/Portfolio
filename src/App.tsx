@@ -14,6 +14,7 @@ const Projects = React.lazy(() => import("./pages/Projects"));
 const Testimonials = React.lazy(() => import("./pages/Testimonials"));
 const Contact = React.lazy(() => import("./pages/Contact"));
 const NotFound = React.lazy(() => import("./pages/NotFound"));
+const MernStack = React.lazy(() => import("./pages/MernStack"));
 
 const queryClient = new QueryClient();
 
@@ -32,6 +33,7 @@ const App = () => (
               <Route path="/projects" element={<Projects />} />
               <Route path="/testimonials" element={<Testimonials />} />
               <Route path="/contact" element={<Contact />} />
+              <Route path="/mern-stack" element={<MernStack />} />
               <Route path="*" element={<NotFound />} />
             </Routes>
           </Suspense>

@@ -47,11 +47,11 @@ const testimonials = [
 
 const certifications = [
   {
-    title: 'MEAN Stack Development Bootcamp',
+    title: 'MERN Stack Development Bootcamp',
     issuer: 'Hami Trainings',
     date: 'January 2025',
-    description: 'Comprehensive bootcamp covering MongoDB, Express, Angular, and Node.js full-stack development with real-world projects.',
-    credentialId: 'MEAN-2025-001',
+    description: 'Comprehensive bootcamp covering MongoDB, Express, React, and Node.js full-stack development with real-world projects.',
+    credentialId: 'MERN-2025-001',
   },
   {
     title: 'Professional Digital Marketing Certification',

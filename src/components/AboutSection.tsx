@@ -118,7 +118,7 @@ const AboutSection = () => {
         <motion.div variants={itemVariants} className="glass-card p-8 mb-16">
           <p className="text-lg text-muted-foreground leading-relaxed mb-6">
             I'm a dedicated Software Engineering student with a passion for creating innovative digital solutions. 
-            My expertise spans full-stack development using the MEAN stack, Python for machine learning applications, 
+            My expertise spans full-stack development using the MERN stack, Python for machine learning applications, 
             and high-performance backend systems with Rust.
           </p>
           <p className="text-lg text-muted-foreground leading-relaxed mb-6">
