@@ -14,7 +14,7 @@ const Projects = React.lazy(() => import("./pages/Projects"));
 const Testimonials = React.lazy(() => import("./pages/Testimonials"));
 const Contact = React.lazy(() => import("./pages/Contact"));
 const NotFound = React.lazy(() => import("./pages/NotFound"));
-const MernStack = React.lazy(() => import("./pages/MernStack"));
+const MernStack = React.lazy(() => import("@/pages/MernStack"));
 
 const queryClient = new QueryClient();
 

@@ -1,14 +1,14 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Link, useLocation } from 'react-router-dom';
-import { Home, User, Briefcase, Code, MessageSquare, Mail } from 'lucide-react';
+import { Home, User, Briefcase, Code, Layers, MessageSquare, Mail } from 'lucide-react';
 
 const navItems = [
   { label: 'Home', href: '/', icon: Home },
   { label: 'About', href: '/about', icon: User },
   { label: 'Experience', href: '/experience', icon: Briefcase },
   { label: 'Projects', href: '/projects', icon: Code },
-  { label: 'MERN Stack', href: '/mern-stack', icon: Briefcase },
+  { label: 'MERN Stack', href: '/mern-stack', icon: Layers },
   { label: 'Testimonials', href: '/testimonials', icon: MessageSquare },
   { label: 'Contact', href: '/contact', icon: Mail },
 ];
