@@ -36,8 +36,8 @@ const Home = () => {
   return (
     <>
       <SEOHead
-        title="Freelance MERN Stack Developer"
-        description="Expert freelance MERN Stack developer specializing in MongoDB, Express.js, React, and Node.js. Building scalable, modern web applications with JavaScript and TypeScript."
+        title="Expert Web Developer & Software Engineer"
+        description="Muhammad Subhan Shahid — Expert Web Developer & Software Engineer specializing in MERN Stack, React, Node.js, Python, and Rust."
         canonical="https://subhanshahidportfolio.vercel.app/"
       />
       
@@ -65,28 +65,21 @@ const Home = () => {
                 <span className="text-sm text-muted-foreground">{portfolioData.contact.location}</span>
               </motion.div>
 
-              {/* Name */}
+              {/* Main Headline & Name */}
               <motion.h1
                 variants={itemVariants}
-                className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4"
+                className="font-bold mb-6"
               >
-                <span className="block text-foreground mb-2">Expert Freelance</span>
-                <span className="gradient-text leading-tight">MERN Stack Developer for Hire</span>
+                <span className="block text-lg sm:text-xl text-primary font-mono tracking-wider mb-2">
+                  Hi, I'm
+                </span>
+                <span className="gradient-text block text-3xl sm:text-4xl md:text-5xl lg:text-5xl xl:text-6xl leading-tight font-extrabold mb-3 sm:whitespace-nowrap">
+                  {portfolioData.hero.name}
+                </span>
+                <span className="block text-lg sm:text-xl md:text-2xl lg:text-3xl text-foreground/95 font-semibold leading-snug">
+                  Expert Web Developer & Software Engineer
+                </span>
               </motion.h1>
-              <motion.p
-                variants={itemVariants}
-                className="text-lg text-muted-foreground/80 mb-1"
-              >
-                {portfolioData.hero.name}
-              </motion.p>
-
-              {/* Tagline */}
-              <motion.p
-                variants={itemVariants}
-                className="text-lg md:text-xl text-muted-foreground mb-4 max-w-xl"
-              >
-                {portfolioData.hero.title}
-              </motion.p>
 
               {/* Typing Animation */}
               <motion.div

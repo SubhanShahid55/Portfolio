@@ -10,7 +10,7 @@ const stats = [
 
 const testimonials = [
   {
-    quote: "Muhammad delivered exceptional work on our e-commerce platform. His technical expertise and attention to detail exceeded our expectations.",
+    quote: "Muhammad Subhan delivered exceptional work on our e-commerce platform. His technical expertise and attention to detail exceeded our expectations.",
     client: "E-commerce Client",
     industry: "E-commerce",
     rating: 5,

@@ -12,7 +12,7 @@ const stats = [
 
 const testimonials = [
   {
-    quote: "Muhammad built our Homixa home services website with exceptional attention to detail. The modern design and responsive layout perfectly represent our brand. Highly professional and delivered on time!",
+    quote: "Muhammad Subhan built our Homixa home services website with exceptional attention to detail. The modern design and responsive layout perfectly represent our brand. Highly professional and delivered on time!",
     client: "Homixa Team",
     role: "Client",
     company: "Homixa",
@@ -20,7 +20,7 @@ const testimonials = [
     rating: 5,
   },
   {
-    quote: "The Meme Coins Agent platform he developed is fantastic! Real-time crypto data, clean UI, and excellent performance. Muhammad understood our vision and executed it perfectly.",
+    quote: "The Meme Coins Agent platform he developed is fantastic! Real-time crypto data, clean UI, and excellent performance. Muhammad Subhan understood our vision and executed it perfectly.",
     client: "Crypto Client",
     role: "Founder",
     company: "Meme Coins Agent",
@@ -28,7 +28,7 @@ const testimonials = [
     rating: 5,
   },
   {
-    quote: "The Habit Tracker app Muhammad created is intuitive and well-designed. The React implementation is clean, and the visual analytics feature really helps users stay motivated. Great work!",
+    quote: "The Habit Tracker app Muhammad Subhan created is intuitive and well-designed. The React implementation is clean, and the visual analytics feature really helps users stay motivated. Great work!",
     client: "App User",
     role: "User",
     company: "Habit Tracker",
@@ -36,7 +36,7 @@ const testimonials = [
     rating: 5,
   },
   {
-    quote: "Muhammad developed our fraud detection system with impressive accuracy. His Python and machine learning skills are top-notch. The real-time alerting dashboard has been invaluable for our security.",
+    quote: "Muhammad Subhan developed our fraud detection system with impressive accuracy. His Python and machine learning skills are top-notch. The real-time alerting dashboard has been invaluable for our security.",
     client: "University Supervisor",
     role: "Supervisor",
     company: "University Project",
