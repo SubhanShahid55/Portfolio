@@ -73,10 +73,11 @@ const Home = () => {
                 <span className="block text-lg sm:text-xl text-primary font-mono tracking-wider mb-2">
                   Hi, I'm
                 </span>
-                <span className="gradient-text block text-3xl sm:text-4xl md:text-5xl lg:text-5xl xl:text-6xl leading-tight font-extrabold mb-3 sm:whitespace-nowrap">
-                  {portfolioData.hero.name}
+                <span className="gradient-text block text-2xl sm:text-3xl md:text-4xl lg:text-4xl xl:text-5xl leading-tight font-extrabold mb-3">
+                  <span className="inline-block">Muhammad Subhan</span>{' '}
+                  <span className="inline-block">Shahid</span>
                 </span>
-                <span className="block text-lg sm:text-xl md:text-2xl lg:text-3xl text-foreground/95 font-semibold leading-snug">
+                <span className="block text-base sm:text-lg md:text-xl lg:text-2xl text-foreground/95 font-semibold leading-snug">
                   Expert Web Developer & Software Engineer
                 </span>
               </motion.h1>
