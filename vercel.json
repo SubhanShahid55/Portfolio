@@ -1,11 +1,22 @@
 {
+  "rewrites": [
+    {
+      "source": "/.well-known/llms.txt",
+      "destination": "/llms.txt"
+    },
+    {
+      "source": "/((?!assets|llms\\.txt|llms-full\\.txt|robots\\.txt|sitemap\\.xml|favicon\\.ico|logo\\.png|.*\\.svg|.*\\.webp|.*\\.pdf|.*\\.html|.*\\.js|.*\\.css|.*\\.woff2).*)",
+      "destination": "/index.html"
+    }
+  ],
   "headers": [
     {
       "source": "/llms.txt",
       "headers": [
         { "key": "Cache-Control", "value": "public, max-age=86400, s-maxage=604800" },
         { "key": "Content-Type", "value": "text/plain; charset=utf-8" },
-        { "key": "X-Robots-Tag", "value": "all" }
+        { "key": "X-Robots-Tag", "value": "all" },
+        { "key": "Access-Control-Allow-Origin", "value": "*" }
       ]
     },
     {
@@ -13,7 +24,17 @@
       "headers": [
         { "key": "Cache-Control", "value": "public, max-age=86400, s-maxage=604800" },
         { "key": "Content-Type", "value": "text/plain; charset=utf-8" },
-        { "key": "X-Robots-Tag", "value": "all" }
+        { "key": "X-Robots-Tag", "value": "all" },
+        { "key": "Access-Control-Allow-Origin", "value": "*" }
+      ]
+    },
+    {
+      "source": "/.well-known/llms.txt",
+      "headers": [
+        { "key": "Cache-Control", "value": "public, max-age=86400, s-maxage=604800" },
+        { "key": "Content-Type", "value": "text/plain; charset=utf-8" },
+        { "key": "X-Robots-Tag", "value": "all" },
+        { "key": "Access-Control-Allow-Origin", "value": "*" }
       ]
     },
     {

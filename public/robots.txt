@@ -1,10 +1,70 @@
+# https://www.robotstxt.org/robotstxt.html
 User-agent: *
 Allow: /
 
-# LLM-readable files
-# See https://llmstxt.org for the llms.txt standard
+# LLM-readable files — llms.txt standard (https://llmstxt.org)
+Allow: /llms.txt
+Allow: /llms-full.txt
+Allow: /.well-known/llms.txt
+
+# ===========================
+# AI / LLM Bot Permissions
+# ===========================
+
+# OpenAI / ChatGPT
+User-agent: GPTBot
+Allow: /
 Allow: /llms.txt
 Allow: /llms-full.txt
 
-# Sitemaps
+User-agent: ChatGPT-User
+Allow: /
+Allow: /llms.txt
+Allow: /llms-full.txt
+
+# Google Gemini
+User-agent: Google-Extended
+Allow: /
+
+# Anthropic / Claude
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+# Meta AI
+User-agent: FacebookBot
+Allow: /
+
+User-agent: Meta-ExternalAgent
+Allow: /
+
+# Microsoft / Bing / Copilot
+User-agent: Bingbot
+Allow: /
+
+# Perplexity
+User-agent: PerplexityBot
+Allow: /
+
+# Cohere
+User-agent: cohere-ai
+Allow: /
+
+# Common Crawl (used by many LLMs for training)
+User-agent: CCBot
+Allow: /
+
+# Apple Siri / Applebot
+User-agent: Applebot
+Allow: /
+
+# ===========================
+# Sitemaps & LLMs.txt
+# ===========================
 Sitemap: https://subhanshahidportfolio.vercel.app/sitemap.xml
+
+# LLMs.txt discovery
+# Main: https://subhanshahidportfolio.vercel.app/llms.txt
+# Full: https://subhanshahidportfolio.vercel.app/llms-full.txt
