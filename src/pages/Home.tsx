@@ -1,8 +1,11 @@
 import SEOHead from '@/components/SEOHead';
 import HeroSection from '@/components/HeroSection';
-import AboutSection from '@/components/AboutSection';
-import ExperienceSection from '@/components/ExperienceSection';
+import MetricStrip from '@/components/MetricStrip';
+import ProcessMarquee from '@/components/ProcessMarquee';
 import ProjectsSection from '@/components/ProjectsSection';
+import ExperienceSection from '@/components/ExperienceSection';
+import TestimonialsSection from '@/components/TestimonialsSection';
+import AboutSection from '@/components/AboutSection';
 import SkillsSection from '@/components/SkillsSection';
 import ContactSection from '@/components/ContactSection';
 import portfolioData from '@/data/portfolioData';
@@ -11,34 +14,47 @@ const Home = () => {
   return (
     <>
       <SEOHead
-        title={portfolioData.personal.title}
-        description={portfolioData.personal.description}
+        title={`${portfolioData.personal.name} | ${portfolioData.personal.title}`}
+        description={portfolioData.personal.subtitle}
         canonical="https://subhanshahidportfolio.vercel.app/"
       />
-      
-      {/* 
-        Single-Page Layout for Home
-        Each section has an ID that Navbar hash links can scroll to.
-        The .section-divider adds consistent visual separation between major areas.
-      */}
-      
+
+      {/* 01: Hero */}
       <HeroSection />
-      
-      <div className="section-divider" />
-      <AboutSection />
-      
-      <div className="section-divider" />
-      <ExperienceSection />
-      
-      <div className="section-divider" />
+
+      {/* Verified Metric Strip */}
+      <MetricStrip />
+
+      {/* Engineering Process Marquee */}
+      <ProcessMarquee />
+
+      {/* 01: Selected Work */}
       <ProjectsSection />
-      
+
       <div className="section-divider" />
+
+      {/* 02: Work Experience */}
+      <ExperienceSection />
+
+      <div className="section-divider" />
+
+      {/* 03: Testimonials & Endorsements */}
+      <TestimonialsSection />
+
+      <div className="section-divider" />
+
+      {/* 04: About & Engineering Principles */}
+      <AboutSection />
+
+      <div className="section-divider" />
+
+      {/* 05: Skills & Toolkit */}
       <SkillsSection />
-      
+
       <div className="section-divider" />
+
+      {/* 06: Contact Form & Direct Channels */}
       <ContactSection />
-      
     </>
   );
 };

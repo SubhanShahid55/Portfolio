@@ -1,197 +1,241 @@
-import { motion, Easing } from 'framer-motion';
-import { TypeAnimation } from 'react-type-animation';
-import { Github, Linkedin, Mail, Download, ArrowDown } from 'lucide-react';
+import { useRef, useEffect, useState, useCallback } from 'react';
+import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion';
+import { Github, Linkedin, Mail, Download, ArrowDown, ArrowRight, Terminal } from 'lucide-react';
 import portfolioData from '@/data/portfolioData';
 import WhatsAppIcon from './WhatsAppIcon';
 
 const HeroSection = () => {
-  const easeOut: Easing = [0.16, 1, 0.3, 1];
+  const containerRef = useRef<HTMLElement>(null);
+  const mouseX = useMotionValue(0);
+  const mouseY = useMotionValue(0);
+  const [isMobile, setIsMobile] = useState(false);
 
-  const containerVariants = {
+  // Smooth spring for subtle parallax
+  const springConfig = { stiffness: 45, damping: 25 };
+  const smoothX = useSpring(mouseX, springConfig);
+  const smoothY = useSpring(mouseY, springConfig);
+
+  // Low-amplitude pointer parallax
+  const portraitX = useTransform(smoothX, [-0.5, 0.5], [-6, 6]);
+  const portraitY = useTransform(smoothY, [-0.5, 0.5], [-5, 5]);
+  const orbitRotate = useTransform(smoothX, [-0.5, 0.5], [-2, 2]);
+
+  useEffect(() => {
+    const check = () => setIsMobile(window.innerWidth < 1024);
+    check();
+    window.addEventListener('resize', check);
+    return () => window.removeEventListener('resize', check);
+  }, []);
+
+  const handleMouseMove = useCallback(
+    (e: React.MouseEvent) => {
+      if (isMobile || !containerRef.current) return;
+      const rect = containerRef.current.getBoundingClientRect();
+      const x = (e.clientX - rect.left) / rect.width - 0.5;
+      const y = (e.clientY - rect.top) / rect.height - 0.5;
+      mouseX.set(x);
+      mouseY.set(y);
+    },
+    [isMobile, mouseX, mouseY]
+  );
+
+  const scrollToWork = () => {
+    document.getElementById('work')?.scrollIntoView({ behavior: 'smooth' });
+  };
+
+  const scrollToContact = () => {
+    document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
+  };
+
+  const stagger = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
-      transition: {
-        staggerChildren: 0.12,
-        delayChildren: 0.2,
-      },
+      transition: { staggerChildren: 0.08, delayChildren: 0.1 },
     },
   };
 
-  const itemVariants = {
-    hidden: { opacity: 0, y: 24 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: easeOut } },
-  };
-
-  const scrollToProjects = () => {
-    const el = document.querySelector('#projects');
-    if (el) el.scrollIntoView({ behavior: 'smooth' });
+  const fadeUp = {
+    hidden: { opacity: 0, y: 16 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.45, ease: [0.16, 1, 0.3, 1] } },
   };
 
   return (
-    <section id="home" className="relative min-h-[92vh] flex items-center justify-center overflow-hidden py-12 md:py-20">
-      {/* Subtle background glow */}
-      <div className="absolute top-1/3 left-1/4 w-[400px] h-[400px] bg-primary/10 rounded-full blur-[120px]" />
-      <div className="absolute bottom-1/3 right-1/4 w-[350px] h-[350px] bg-accent/8 rounded-full blur-[100px]" />
+    <section
+      id="home"
+      ref={containerRef}
+      onMouseMove={handleMouseMove}
+      className="relative min-h-[85vh] lg:min-h-[88vh] flex items-center overflow-hidden pt-4 pb-12 md:pt-6 md:pb-16"
+    >
+      {/* Background ambient lighting */}
+      <div className="absolute top-1/4 left-1/6 w-[320px] h-[320px] bg-primary/6 rounded-full blur-[100px] pointer-events-none" />
+      <div className="absolute bottom-1/4 right-1/6 w-[300px] h-[300px] bg-accent/6 rounded-full blur-[100px] pointer-events-none" />
 
       <motion.div
-        variants={containerVariants}
+        variants={stagger}
         initial="hidden"
         animate="visible"
-        className="container mx-auto px-4 md:px-6 z-10"
+        className="container mx-auto px-4 sm:px-6 md:px-8 lg:px-10 max-w-[1200px] z-10"
       >
-        <div className="grid lg:grid-cols-5 gap-12 items-center">
-          {/* Left Content — 3 cols */}
-          <div className="lg:col-span-3 text-center lg:text-left">
-            {/* Status Badge */}
+        <div className="grid lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+          {/* ─── Left Column — 7 cols ─── */}
+          <div className="lg:col-span-7 text-center lg:text-left order-2 lg:order-1">
+            {/* Status Eyebrow */}
             <motion.div
-              variants={itemVariants}
-              className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-green-500/30 bg-green-500/5 mb-6"
+              variants={fadeUp}
+              className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-green-500/25 bg-green-500/5 mb-5"
             >
-              <span className="relative flex h-2.5 w-2.5">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75" />
-                <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-green-500" />
+              <span className="relative flex h-2 w-2">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-60" />
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500" />
               </span>
-              <span className="text-sm text-green-400 font-medium">{portfolioData.personal.availability}</span>
+              <span className="text-[11px] font-mono font-medium text-green-400 tracking-wider uppercase">
+                {portfolioData.personal.availability}
+              </span>
             </motion.div>
 
-            {/* Name & Title */}
-            <motion.h1
-              variants={itemVariants}
-              className="mb-4"
-            >
-              <span className="block text-lg sm:text-xl text-muted-foreground font-medium mb-2">
-                Hi, I'm
-              </span>
-              <span className="gradient-text block text-3xl sm:text-4xl md:text-5xl lg:text-5xl xl:text-6xl leading-tight font-bold mb-3">
-                {portfolioData.personal.shortName}
-              </span>
-              <span className="block text-lg sm:text-xl md:text-2xl text-foreground/90 font-semibold">
-                {portfolioData.personal.title}
+            {/* Headline */}
+            <motion.h1 variants={fadeUp} className="mb-4">
+              <span className="block text-3xl sm:text-4xl md:text-5xl lg:text-[3.15rem] xl:text-[3.35rem] font-extrabold leading-[1.12] text-foreground tracking-tight">
+                {portfolioData.personal.headline}
               </span>
             </motion.h1>
 
-            {/* Description */}
+            {/* Supporting Copy */}
             <motion.p
-              variants={itemVariants}
-              className="text-muted-foreground text-base md:text-lg max-w-xl mx-auto lg:mx-0 mb-4 leading-relaxed"
+              variants={fadeUp}
+              className="text-muted-foreground text-sm sm:text-base md:text-lg max-w-xl mx-auto lg:mx-0 mb-6 leading-relaxed"
             >
               {portfolioData.personal.subtitle}
             </motion.p>
 
-            {/* Typing Animation */}
+            {/* Primary & Secondary CTAs */}
             <motion.div
-              variants={itemVariants}
-              className="h-8 mb-8"
-            >
-              <TypeAnimation
-                sequence={[
-                  'React Developer',
-                  2000,
-                  'Next.js Developer',
-                  2000,
-                  'Full-Stack Engineer',
-                  2000,
-                  'MERN Stack Developer',
-                  2000,
-                ]}
-                wrapper="span"
-                speed={50}
-                className="text-base md:text-lg font-mono text-primary/80"
-                repeat={Infinity}
-              />
-              <span className="text-base md:text-lg font-mono text-primary/60 animate-pulse ml-0.5">|</span>
-            </motion.div>
-
-            {/* CTA Buttons */}
-            <motion.div
-              variants={itemVariants}
-              className="flex flex-col sm:flex-row items-center lg:items-start justify-center lg:justify-start gap-3 mb-8"
+              variants={fadeUp}
+              className="flex flex-col sm:flex-row items-center lg:items-start justify-center lg:justify-start gap-3 mb-5"
             >
               <motion.button
-                onClick={scrollToProjects}
-                whileHover={{ scale: 1.03 }}
-                whileTap={{ scale: 0.97 }}
-                className="btn-primary inline-flex items-center gap-2"
+                onClick={scrollToWork}
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+                className="btn-primary inline-flex items-center gap-2 text-xs font-mono uppercase tracking-wider px-6 py-3 w-full sm:w-auto justify-center"
               >
-                View My Work
-                <ArrowDown size={16} />
+                View Selected Work
+                <ArrowDown size={14} />
               </motion.button>
-              <a href={portfolioData.personal.resumeUrl} download>
+
+              <a
+                href={portfolioData.personal.resumeUrl}
+                download
+                className="w-full sm:w-auto"
+              >
                 <motion.button
-                  whileHover={{ scale: 1.03 }}
-                  whileTap={{ scale: 0.97 }}
-                  className="btn-outline inline-flex items-center gap-2"
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
+                  className="btn-outline inline-flex items-center gap-2 text-xs font-mono uppercase tracking-wider px-6 py-3 w-full justify-center"
                 >
-                  <Download size={16} />
+                  <Download size={14} />
                   Download Resume
                 </motion.button>
               </a>
             </motion.div>
 
-            {/* Social Links */}
+            {/* Tertiary Link & Socials */}
             <motion.div
-              variants={itemVariants}
-              className="flex items-center justify-center lg:justify-start gap-3"
+              variants={fadeUp}
+              className="flex flex-wrap items-center justify-center lg:justify-start gap-4 sm:gap-6 pt-1"
             >
-              <a
-                href={portfolioData.personal.socials.github}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="p-2.5 rounded-lg border border-border/50 text-muted-foreground hover:text-foreground hover:border-primary/40 transition-all"
-                aria-label="GitHub Profile"
+              <button
+                onClick={scrollToContact}
+                className="text-xs font-mono uppercase tracking-wider text-muted-foreground hover:text-primary transition-colors inline-flex items-center gap-1.5 group"
               >
-                <Github size={20} />
-              </a>
-              <a
-                href={portfolioData.personal.socials.linkedin}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="p-2.5 rounded-lg border border-border/50 text-muted-foreground hover:text-foreground hover:border-primary/40 transition-all"
-                aria-label="LinkedIn Profile"
-              >
-                <Linkedin size={20} />
-              </a>
-              <a
-                href={`mailto:${portfolioData.personal.email}`}
-                className="p-2.5 rounded-lg border border-border/50 text-muted-foreground hover:text-foreground hover:border-primary/40 transition-all"
-                aria-label="Email"
-              >
-                <Mail size={20} />
-              </a>
-              <a
-                href={portfolioData.personal.socials.whatsapp}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="p-2.5 rounded-lg border border-border/50 text-muted-foreground hover:text-foreground hover:border-primary/40 transition-all"
-                aria-label="WhatsApp"
-              >
-                <WhatsAppIcon className="w-5 h-5" />
-              </a>
+                <span>Let's talk</span>
+                <ArrowRight size={13} className="group-hover:translate-x-1 transition-transform text-primary" />
+              </button>
+
+              <div className="h-4 w-px bg-border/50 hidden sm:block" />
+
+              <div className="flex items-center gap-2">
+                {[
+                  { href: portfolioData.personal.socials.github, icon: Github, label: 'GitHub Profile' },
+                  { href: portfolioData.personal.socials.linkedin, icon: Linkedin, label: 'LinkedIn Profile' },
+                  { href: `mailto:${portfolioData.personal.email}`, icon: Mail, label: 'Email', external: false },
+                  { href: portfolioData.personal.socials.whatsapp, icon: null, label: 'WhatsApp' },
+                ].map(({ href, icon: Icon, label, external }) => (
+                  <a
+                    key={label}
+                    href={href}
+                    target={external !== false ? '_blank' : undefined}
+                    rel={external !== false ? 'noopener noreferrer' : undefined}
+                    className="p-2 rounded-lg border border-border/40 text-muted-foreground hover:text-foreground hover:border-primary/40 hover:bg-primary/5 transition-all"
+                    aria-label={label}
+                  >
+                    {Icon ? <Icon size={16} /> : <WhatsAppIcon className="w-4 h-4" />}
+                  </a>
+                ))}
+              </div>
             </motion.div>
           </div>
 
-          {/* Right Content — Profile Image — 2 cols */}
+          {/* ─── Right Column — Portrait Card (5 cols) ─── */}
           <motion.div
-            variants={itemVariants}
-            className="lg:col-span-2 flex justify-center lg:justify-end"
+            variants={fadeUp}
+            className="lg:col-span-5 flex justify-center lg:justify-end order-1 lg:order-2"
           >
             <div className="relative">
-              {/* Subtle glow */}
-              <div className="absolute inset-0 bg-gradient-to-br from-primary/15 to-accent/10 rounded-2xl blur-2xl scale-105" />
+              {/* Ambient Glow behind Portrait */}
+              <div className="absolute -inset-2 bg-gradient-to-br from-primary/20 via-transparent to-accent/15 rounded-3xl blur-xl opacity-60 pointer-events-none" />
 
-              {/* Image container */}
+              {/* Orbital contour line */}
               <motion.div
-                whileHover={{ scale: 1.02 }}
-                transition={{ duration: 0.3 }}
-                className="relative w-64 h-64 md:w-72 md:h-72 lg:w-80 lg:h-80 rounded-2xl overflow-hidden glass-card p-1.5"
+                style={isMobile ? {} : { rotate: orbitRotate }}
+                className="absolute -inset-4 sm:-inset-6 rounded-3xl border border-primary/20 pointer-events-none"
+              />
+
+              {/* Technical dot grid backdrop */}
+              <div
+                className="absolute -inset-3 rounded-2xl pointer-events-none opacity-30"
+                style={{
+                  backgroundImage: 'radial-gradient(circle, hsl(187 80% 48% / 0.25) 1px, transparent 1px)',
+                  backgroundSize: '14px 14px',
+                }}
+              />
+
+              {/* Main Portrait Card Frame (Clean high-contrast framing) */}
+              <motion.div
+                style={isMobile ? {} : { x: portraitX, y: portraitY }}
+                className="relative w-[260px] h-[330px] sm:w-[290px] sm:h-[370px] md:w-[320px] md:h-[410px] lg:w-[340px] lg:h-[430px] rounded-2xl overflow-hidden glass-card p-1.5 shadow-2xl shadow-black/60 border-primary/35 group"
               >
-                <img
-                  src={portfolioData.personal.profileImage}
-                  alt={portfolioData.personal.name}
-                  className="w-full h-full object-contain rounded-xl"
-                  loading="eager"
-                />
+                {/* Tech Corner Coordinates */}
+                <div className="absolute top-3 left-3 z-20 flex items-center gap-1.5 px-2 py-0.5 rounded bg-background/85 backdrop-blur-md border border-border/40 text-[9px] font-mono text-primary font-medium">
+                  <Terminal size={10} />
+                  <span>ENG-MSS</span>
+                </div>
+
+                {/* Portrait Container: Clean and high contrast, avoiding heavy dark overlays over the face */}
+                <div className="relative w-full h-full rounded-xl overflow-hidden bg-surface-2">
+                  <img
+                    src={portfolioData.personal.profileImage}
+                    alt="3D anime portrait of Muhammad Subhan Shahid, software engineer"
+                    className="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105"
+                    loading="eager"
+                    width={340}
+                    height={430}
+                  />
+                  {/* Subtle edge blend at bottom base only */}
+                  <div className="absolute inset-x-0 bottom-0 h-10 bg-gradient-to-t from-background/70 to-transparent pointer-events-none" />
+                </div>
+              </motion.div>
+
+              {/* Floating Metadata Label */}
+              <motion.div
+                variants={fadeUp}
+                className="absolute -bottom-3.5 left-1/2 -translate-x-1/2 px-4 py-1 rounded-full bg-card/95 backdrop-blur-md border border-border/60 shadow-xl z-20"
+              >
+                <span className="text-[10px] font-mono font-medium text-muted-foreground tracking-wider uppercase whitespace-nowrap flex items-center gap-1.5">
+                  <span className="w-1.5 h-1.5 rounded-full bg-primary" />
+                  FULL-STACK · PRODUCT-MINDED · PAKISTAN
+                </span>
               </motion.div>
             </div>
           </motion.div>

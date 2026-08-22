@@ -8,10 +8,6 @@ import React, { Suspense } from "react";
 import Layout from "@/components/Layout";
 
 const Home = React.lazy(() => import("./pages/Home"));
-const About = React.lazy(() => import("./pages/About"));
-const Experience = React.lazy(() => import("./pages/Experience"));
-const Projects = React.lazy(() => import("./pages/Projects"));
-const Contact = React.lazy(() => import("./pages/Contact"));
 const NotFound = React.lazy(() => import("./pages/NotFound"));
 
 const queryClient = new QueryClient();
@@ -23,13 +19,20 @@ const App = () => (
       <Sonner />
       <BrowserRouter>
         <Layout>
-          <Suspense fallback={<div className="min-h-screen flex items-center justify-center text-primary">Loading...</div>}>
+          <Suspense
+            fallback={
+              <div className="min-h-screen flex items-center justify-center">
+                <div className="w-6 h-6 border-2 border-primary border-t-transparent rounded-full animate-spin" />
+              </div>
+            }
+          >
             <Routes>
               <Route path="/" element={<Home />} />
-              <Route path="/about" element={<About />} />
-              <Route path="/experience" element={<Experience />} />
-              <Route path="/projects" element={<Projects />} />
-              <Route path="/contact" element={<Contact />} />
+              {/* Legacy routes redirect to home — preserves old links */}
+              <Route path="/about" element={<Home />} />
+              <Route path="/experience" element={<Home />} />
+              <Route path="/projects" element={<Home />} />
+              <Route path="/contact" element={<Home />} />
               <Route path="*" element={<NotFound />} />
             </Routes>
           </Suspense>

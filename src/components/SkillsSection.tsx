@@ -1,40 +1,44 @@
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
-import { Monitor, Server, Database, Wrench, Palette } from 'lucide-react';
+import { 
+  Monitor, Server, Database, Wrench, Palette, 
+  Code2, Layers, Cpu, Globe, Box, Terminal
+} from 'lucide-react';
 import portfolioData from '@/data/portfolioData';
+import SectionHeading from './SectionHeading';
 
 const categoryIcons: Record<string, React.ElementType> = {
   Frontend: Monitor,
-  Backend: Server,
+  'Backend & APIs': Server,
   Databases: Database,
-  'Tools & DevOps': Wrench,
+  'DevOps & Deployment': Wrench,
   Design: Palette,
 };
 
-// Devicon URLs for technology logos
-const techIcons: Record<string, string> = {
-  React: 'https://raw.githubusercontent.com/devicons/devicon/master/icons/react/react-original.svg',
-  'Next.js': 'https://raw.githubusercontent.com/devicons/devicon/master/icons/nextjs/nextjs-original.svg',
-  TypeScript: 'https://raw.githubusercontent.com/devicons/devicon/master/icons/typescript/typescript-original.svg',
-  JavaScript: 'https://raw.githubusercontent.com/devicons/devicon/master/icons/javascript/javascript-original.svg',
-  HTML5: 'https://raw.githubusercontent.com/devicons/devicon/master/icons/html5/html5-original.svg',
-  CSS3: 'https://raw.githubusercontent.com/devicons/devicon/master/icons/css3/css3-original.svg',
-  'Tailwind CSS': 'https://raw.githubusercontent.com/devicons/devicon/master/icons/tailwindcss/tailwindcss-original.svg',
-  'Node.js': 'https://raw.githubusercontent.com/devicons/devicon/master/icons/nodejs/nodejs-original.svg',
-  'Express.js': 'https://raw.githubusercontent.com/devicons/devicon/master/icons/express/express-original.svg',
-  'REST APIs': '',
-  Python: 'https://raw.githubusercontent.com/devicons/devicon/master/icons/python/python-original.svg',
-  MongoDB: 'https://raw.githubusercontent.com/devicons/devicon/master/icons/mongodb/mongodb-original.svg',
-  PostgreSQL: 'https://raw.githubusercontent.com/devicons/devicon/master/icons/postgresql/postgresql-original.svg',
-  MySQL: 'https://raw.githubusercontent.com/devicons/devicon/master/icons/mysql/mysql-original.svg',
-  Git: 'https://raw.githubusercontent.com/devicons/devicon/master/icons/git/git-original.svg',
-  GitHub: 'https://raw.githubusercontent.com/devicons/devicon/master/icons/github/github-original.svg',
-  Docker: 'https://raw.githubusercontent.com/devicons/devicon/master/icons/docker/docker-original.svg',
-  Postman: 'https://raw.githubusercontent.com/devicons/devicon/master/icons/postman/postman-original.svg',
-  Vercel: 'https://raw.githubusercontent.com/devicons/devicon/master/icons/vercel/vercel-original.svg',
-  Render: '',
-  Figma: 'https://raw.githubusercontent.com/devicons/devicon/master/icons/figma/figma-original.svg',
-  Photoshop: 'https://raw.githubusercontent.com/devicons/devicon/master/icons/photoshop/photoshop-plain.svg',
+// Local icon map for reliable fallback
+const skillFallbackIcons: Record<string, React.ElementType> = {
+  React: Layers,
+  'Next.js': Globe,
+  TypeScript: Code2,
+  JavaScript: Code2,
+  HTML5: Globe,
+  CSS3: Palette,
+  'Tailwind CSS': Palette,
+  'Node.js': Server,
+  'Express.js': Server,
+  Python: Terminal,
+  'REST APIs': Globe,
+  MongoDB: Database,
+  PostgreSQL: Database,
+  MySQL: Database,
+  Git: Box,
+  GitHub: Box,
+  Docker: Cpu,
+  Postman: Globe,
+  Vercel: Globe,
+  Render: Globe,
+  Figma: Palette,
+  Photoshop: Palette,
 };
 
 const SkillsSection = () => {
@@ -42,15 +46,12 @@ const SkillsSection = () => {
 
   const containerVariants = {
     hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: { staggerChildren: 0.1 },
-    },
+    visible: { opacity: 1, transition: { staggerChildren: 0.08 } },
   };
 
   const itemVariants = {
-    hidden: { opacity: 0, y: 24 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
+    hidden: { opacity: 0, y: 16 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.4 } },
   };
 
   return (
@@ -61,58 +62,55 @@ const SkillsSection = () => {
         initial="hidden"
         animate={inView ? 'visible' : 'hidden'}
       >
-        {/* Section Header */}
-        <motion.div variants={itemVariants} className="text-center mb-14">
-          <h2 className="section-title">
-            Technical <span className="gradient-text">Skills</span>
-          </h2>
-          <p className="section-subtitle max-w-2xl mx-auto">
-            Technologies I use to build production applications
-          </p>
-        </motion.div>
+        <SectionHeading
+          number="05"
+          eyebrow="TOOLKIT"
+          title="Skills &"
+          highlight="technologies."
+          subtitle="Modern toolset for building high-performance web products, APIs, and scalable infrastructure."
+        />
 
-        {/* Skills Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
+        {/* Bento Grid */}
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5 max-w-5xl">
           {portfolioData.skills.map((category) => {
-            const IconComponent = categoryIcons[category.name] || Monitor;
+            const HeaderIcon = categoryIcons[category.name] || Monitor;
 
             return (
               <motion.div
                 key={category.name}
                 variants={itemVariants}
-                className="glass-card p-6"
+                className="glass-card p-5 hover:border-primary/30 transition-all duration-300 flex flex-col justify-between"
               >
-                {/* Category Header */}
-                <div className="flex items-center gap-3 mb-5">
-                  <div className="w-9 h-9 rounded-lg bg-primary/10 flex items-center justify-center">
-                    <IconComponent className="w-4.5 h-4.5 text-primary" />
+                <div>
+                  {/* Category Header */}
+                  <div className="flex items-center gap-2.5 mb-4 pb-2 border-b border-border/20">
+                    <div className="w-7 h-7 rounded-md bg-primary/10 border border-primary/20 flex items-center justify-center text-primary">
+                      <HeaderIcon size={15} />
+                    </div>
+                    <h3 className="text-xs font-mono font-bold text-foreground tracking-wider uppercase">
+                      {category.name}
+                    </h3>
                   </div>
-                  <h3 className="text-lg font-semibold text-foreground">
-                    {category.name}
-                  </h3>
-                </div>
 
-                {/* Skills */}
-                <div className="flex flex-wrap gap-2">
-                  {category.skills.map((skill) => {
-                    const iconUrl = techIcons[skill];
-                    return (
-                      <div
-                        key={skill}
-                        className="flex items-center gap-1.5 px-3 py-1.5 bg-muted/40 rounded-lg text-sm text-foreground/80 border border-border/20 hover:border-primary/30 hover:bg-muted/60 transition-all"
-                      >
-                        {iconUrl && (
-                          <img
-                            src={iconUrl}
-                            alt={skill}
-                            className="w-4 h-4 object-contain"
-                            loading="lazy"
-                          />
-                        )}
-                        <span className="font-medium">{skill}</span>
-                      </div>
-                    );
-                  })}
+                  {/* Skills Tag Cloud */}
+                  <div className="flex flex-wrap gap-2">
+                    {category.skills.map((skill, skillIndex) => {
+                      const FallbackIcon = skillFallbackIcons[skill] || Code2;
+                      return (
+                        <motion.div
+                          key={skill}
+                          initial={{ opacity: 0, scale: 0.95 }}
+                          whileInView={{ opacity: 1, scale: 1 }}
+                          viewport={{ once: true }}
+                          transition={{ delay: skillIndex * 0.03, duration: 0.25 }}
+                          className="skill-tag text-xs font-mono py-1 px-2.5 rounded flex items-center gap-1.5"
+                        >
+                          <FallbackIcon size={12} className="text-primary/70" />
+                          <span>{skill}</span>
+                        </motion.div>
+                      );
+                    })}
+                  </div>
                 </div>
               </motion.div>
             );

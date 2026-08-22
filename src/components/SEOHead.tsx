@@ -9,8 +9,12 @@ interface SEOProps {
 
 const SEOHead = ({ title, description, canonical, type = 'website' }: SEOProps) => {
   useEffect(() => {
-    // Update document title
-    document.title = `${title} | Muhammad Subhan Shahid`;
+    // Avoid repeating name if already included in title
+    const fullTitle = title.includes('Muhammad Subhan Shahid')
+      ? title
+      : `${title} | Muhammad Subhan Shahid`;
+
+    document.title = fullTitle;
     
     // Update meta tags
     const metaDescription = document.querySelector('meta[name="description"]');
@@ -20,7 +24,7 @@ const SEOHead = ({ title, description, canonical, type = 'website' }: SEOProps) 
     
     const ogTitle = document.querySelector('meta[property="og:title"]');
     if (ogTitle) {
-      ogTitle.setAttribute('content', title);
+      ogTitle.setAttribute('content', fullTitle);
     }
     
     const ogDescription = document.querySelector('meta[property="og:description"]');
@@ -34,7 +38,7 @@ const SEOHead = ({ title, description, canonical, type = 'website' }: SEOProps) 
     }
     
     if (canonical) {
-      let canonicalLink = document.querySelector('link[rel="canonical"]');
+      const canonicalLink = document.querySelector('link[rel="canonical"]');
       if (canonicalLink) {
         canonicalLink.setAttribute('href', canonical);
       }

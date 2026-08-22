@@ -2,8 +2,8 @@ import { ReactNode } from 'react';
 import ParticleBackground from './ParticleBackground';
 import Navbar from './Navbar';
 import Footer from './Footer';
-import FloatingWhatsAppButton from './FloatingWhatsAppButton';
 import ChatBot from './ChatBot';
+import FloatingWhatsAppButton from './FloatingWhatsAppButton';
 
 interface LayoutProps {
   children: ReactNode;
@@ -11,18 +11,15 @@ interface LayoutProps {
 
 const Layout = ({ children }: LayoutProps) => {
   return (
-    <div className="min-h-screen bg-background overflow-x-hidden animated-gradient">
+    <div className="min-h-screen bg-background overflow-x-hidden">
       <ParticleBackground />
       <Navbar />
-      <main className="relative z-10 pt-28 md:pt-32 pb-24 md:pb-0 min-h-screen flex flex-col">
+      <main className="relative z-10 pt-20 md:pt-24 min-h-screen">
         {children}
       </main>
       <Footer />
-      {/* Ensure floating elements don't overlap too much */}
-      <div className="fixed bottom-0 right-0 z-50 flex flex-col items-end p-4 gap-4 pointer-events-none [&>*]:pointer-events-auto mb-20 md:mb-0">
-        <FloatingWhatsAppButton />
-        <ChatBot />
-      </div>
+      <FloatingWhatsAppButton />
+      <ChatBot />
     </div>
   );
 };
