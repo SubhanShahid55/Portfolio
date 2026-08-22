@@ -1,219 +1,82 @@
-# Muhammad Subhan Shahid — Full Portfolio Context for LLMs
+# Muhammad Subhan Shahid - Comprehensive Portfolio
 
-> This is the extended version of llms.txt, providing comprehensive context about Muhammad Subhan Shahid's portfolio website for AI/LLM consumption.
+> Software Engineer & Full-Stack Developer specializing in React, Next.js, Node.js, TypeScript, and modern databases. Building scalable, production-ready web applications.
 
-## Identity
+## Personal Information
+- **Name:** Muhammad Subhan Shahid
+- **Location:** Rawalpindi, Pakistan
+- **Title:** Software Engineer & Full-Stack Developer
+- **Email:** subhanshahid.dev@gmail.com
+- **Phone:** +92 324-0545602
+- **Website:** https://subhanshahidportfolio.vercel.app
 
-- Full Name: Muhammad Subhan Shahid
-- Professional Title: Full-Stack Developer & AI Solutions Architect
-- Also known as: Freelance Web Developer
-- Location: Rawalpindi, Pakistan
-- Availability: Open to freelance work and full-time opportunities
-- Portfolio URL: https://subhanshahidportfolio.vercel.app
+## Links
+- **LinkedIn:** https://www.linkedin.com/in/muhammad-subhan-shahid-564160384/
+- **GitHub:** https://github.com/SubhanShahid55
+- **Instagram:** https://instagram.com/iamsubhanshahid
 
-## Professional Summary
+## Core Values & Professional Approach
+- **Engineering Excellence:** Writing clean, maintainable, and well-documented code using modern design patterns.
+- **Problem Solving:** Breaking down complex business requirements into scalable technical solutions.
+- **Agile Development:** Delivering iterative value with a focus on communication and adaptability.
+- **User-Centric Design:** Building intuitive interfaces that prioritize performance and accessibility.
 
-Muhammad Subhan Shahid is an experienced Full-Stack Developer specializing in MERN Stack, Python, Rust, and Machine Learning. He builds scalable web applications and has completed 15+ client projects generating $25K+ in revenue. He combines technical expertise with creative design skills using tools like Adobe Photoshop, Canva, and Figma.
+## Technical Skills
 
-## Complete Skills Inventory
+### Frontend
+React, Next.js, TypeScript, JavaScript, HTML5 / CSS3, Tailwind CSS
 
-### Web Development (Primary)
-- React — Expert (85%) — Primary frontend framework
-- JavaScript — Expert (85%) — Core programming language
-- HTML5 — Expert (90%) — Semantic markup
-- CSS3 — Expert (90%) — Styling and responsive design
-- Node.js — Advanced (80%) — Backend runtime
-- TypeScript — Advanced — Type-safe JavaScript
+### Backend & Databases
+Node.js, Express.js, REST APIs, MongoDB, PostgreSQL
 
-### Systems Programming
-- C++ — Advanced (80%) — Systems-level programming
-- Rust — Advanced (75%) — High-performance backend services
-- Python — Intermediate (50%) — ML/AI and scripting
+### Tools & Deployment
+Git / GitHub, Docker, Postman, Vercel / Render
 
-### Design Tools
-- Adobe Photoshop — Expert (85%) — Image editing and design
-- Canva — Expert (85%) — Quick design and branding
-- Figma — Advanced (75%) — UI/UX prototyping
+## Professional Experience
 
-### Developer Tools
-- GitHub — Expert (85%) — Version control and collaboration
-- VS Code — Expert (85%) — Primary IDE
-- V0 — Advanced (80%) — AI-assisted development
-- Bolt — Advanced (80%) — Rapid prototyping
-- Replit — Advanced (80%) — Cloud development
+### Junior Software Engineer
+**Brawse** | Jun 2024 - Present
+- Architecting and developing complex full-stack web applications using React, Next.js, and Node.js.
+- Implementing robust RESTful APIs and optimizing database schemas for performance.
+- Collaborating with cross-functional teams to translate business requirements into technical solutions.
 
-### Additional Technologies (from experience)
-- MongoDB — Database (MERN stack)
-- Express.js — Backend framework
-- PostgreSQL — Relational database
-- Docker — Containerization
-- Laravel/Blade/PHP — Backend framework
-- CI/CD — DevOps pipelines
+### Backend Developer
+**Smile Check AI** | Apr 2024 - Present
+- Architected the core backend infrastructure using Node.js and Express.
+- Developed RESTful APIs handling 10,000+ daily requests with 99.8% uptime.
+- Implemented secure authentication flows and scalable database structures.
 
-## Detailed Work Experience
+### Software Engineering Intern
+**EasyPaisa** | Jun 2023 - Aug 2023
+- Developed internal dashboard components using React and TypeScript.
+- Participated in code reviews and agile ceremonies, learning enterprise software practices.
+- Assisted in writing unit tests that improved test coverage by 15%.
 
-### 1. Summer Intern — EasyPaisa
-- Period: July 2026 – August 2026
-- Type: Onsite
-- Focus: Channel and Development Solutions Team
-- Key Contributions:
-  - Supported the Channel and Development Solutions Team during a summer internship at EasyPaisa
-  - Programmed and maintained features for merchant and retail applications
-  - Evaluated EasyPaisa APIs and financial technology concepts during technical sessions
-- Technologies: APIs, FinTech, Software Development
+### Freelance Full-Stack Developer
+**Devmerce** | Jan 2023 - May 2024
+- Delivered end-to-end web applications for international clients across e-commerce and SaaS.
+- Managed the entire software development lifecycle from requirements gathering to deployment.
 
-### 2. Junior Software Engineer — Brawse
-- Period: June 2025 – Present
-- Type: Remote
-- Status: Currently Active
-- Focus: Browser extension development
-- Key Contributions:
-  - Developing and maintaining the Brawse extension using HTML, CSS, and JavaScript
-  - Implemented extension UI, popup flows, and options pages with responsive design
-  - Collaborated with the team to integrate extension with backend APIs and third-party services
-  - Contributed to improving user experience through iterative feature development and bug fixes
-- Technologies: HTML, CSS, JavaScript
+## Featured Projects
 
-### 3. Freelance Full-Stack Developer — Devmerce
-- Period: January 2025 – Present
-- Type: Remote
-- Status: Currently Active
-- Focus: International client web solutions
-- Key Contributions:
-  - Delivered web solutions for 15+ international clients across e-commerce, healthcare, and fintech
-  - Generated 500+ qualified B2B leads monthly with 15% conversion rate
-  - Led cross-functional teams of 5-8 freelancers achieving 95% on-time delivery
-  - Implemented CI/CD pipelines reducing deployment time by 40%
-- Technologies: React, Node.js, MongoDB, TypeScript
+### Multi-vendor E-commerce Application
+A scalable multi-vendor marketplace platform built for high-traffic operations.
+- **Technologies:** React, Node.js, Express, MongoDB, Redux Toolkit
+- **Features:** Vendor dashboards, robust cart/checkout, payment gateway integration, real-time inventory tracking.
 
-### 4. Backend Developer — Smile Check AI
-- Period: June 2024 – Present
-- Type: Remote
-- Status: Currently Active
-- Focus: AI diagnostics backend
-- Key Contributions:
-  - Engineered backend services processing 10,000+ daily AI diagnostic requests with 99.8% uptime
-  - Reduced API latency by 30% through database optimization and caching strategies
-  - Collaborated with team, conducted code reviews and pair programming
-  - Developed comprehensive API documentation improving developer onboarding time by 50%
-- Technologies: Rust, PostgreSQL, Docker
+### Doctor Appointment System
+A secure telemedicine and appointment scheduling platform.
+- **Technologies:** Next.js, TypeScript, Tailwind CSS, PostgreSQL
+- **Features:** Role-based access control, realtime notifications, video consultation integration, HIPAA-compliant data practices.
 
-### 5. Front End Developer — Grow Station
-- Period: September 2023 – December 2023
-- Type: Remote / Onsite
-- Status: Completed
-- Focus: Laravel web applications
-- Key Contributions:
-  - Implemented dynamic Blade templates and reusable components improving frontend development speed
-  - Integrated PHP backend endpoints with frontend interfaces for real client projects
-  - Collaborated with designers and backend engineers to deliver production-ready features on schedule
-  - Learned Laravel ecosystem, Blade templating, and modern PHP best practices through hands-on projects
-- Technologies: Laravel, Blade, PHP, HTML, CSS, JavaScript
-
-## Complete Project Portfolio
-
-### Digital Media Archive (FYP)
-- Type: University Final Year Project
-- Description: A media management website where users can securely upload, download, and view various forms of digital media in a modern interface.
-- Technologies: React, Web Development, Frontend
-- Live Demo: https://digitalmediaarchive.vercel.app/
-
-### Homixa — Home Services Website
-- Type: Freelance Client Project
-- Description: A modern, responsive website for Homixa showcasing home services and solutions, with clear service sections, contact options, and a professional brand presence.
-- Technologies: Web Development
-- Live Demo: https://www.homixaleads.online/
-- Source: https://github.com/SubhanShahid55
-
-### Meme Coins Agent
-- Type: Freelance Client Project
-- Description: A comprehensive cryptocurrency information platform providing real-time data, market analysis, and insights about meme coins and crypto markets.
-- Technologies: Web Development
-- Live Demo: https://memecoinsagent.info/
-- Source: https://github.com/SubhanShahid55
-
-### Habit Tracker App
-- Type: Personal Project
-- Description: A modern habit tracking application built with React that helps users build and maintain positive habits. Features include habit creation, progress tracking, streak monitoring, and visual analytics to keep users motivated.
-- Technologies: React, Web Development, Frontend
-- Source: https://github.com/SubhanShahid55/HabitTrackerApp
-
-### Fraud Detection System
-- Type: Internship Project
-- Description: Developed during Python internship, this system uses machine learning algorithms to detect fraudulent transactions in real-time. Built with Python and advanced data analysis techniques.
-- Technologies: Python, Machine Learning
-- Live Demo: https://fraud-system.vercel.app/
-- Source: https://github.com/SubhanShahid55/Fraud-System
-
-### E-commerce Website Frontend (ICONIC ZONE)
-- Type: University Project
-- Description: Frontend of an e-commerce website using HTML, CSS, and JavaScript. Features include a homepage with product listings, about page, contact form, and shopping cart functionality.
-- Technologies: HTML, CSS, JavaScript
-- Source: https://github.com/SubhanShahid55/ICONIC-ZONE-FRONT-END
-
-### Personal Portfolio
-- Type: Personal Project
-- Description: A modern portfolio website built with React, TypeScript, and Tailwind CSS, featuring responsive design, dark mode, and smooth animations.
-- Technologies: React, TypeScript, Tailwind CSS
-- Source: https://github.com/SubhanShahid55/portfolio
-
-## Client Testimonials
-
-1. Homixa Team (Home Services): "Muhammad Subhan built our Homixa home services website with exceptional attention to detail. The modern design and responsive layout perfectly represent our brand. Highly professional and delivered on time!" — 5/5 stars
-
-2. Crypto Client (Cryptocurrency): "The Meme Coins Agent platform he developed is fantastic! Real-time crypto data, clean UI, and excellent performance. Muhammad Subhan understood our vision and executed it perfectly." — 5/5 stars
-
-3. App User (Productivity): "The Habit Tracker app Muhammad Subhan created is intuitive and well-designed. The React implementation is clean, and the visual analytics feature really helps users stay motivated. Great work!" — 5/5 stars
-
-4. University Supervisor (Machine Learning): "Muhammad Subhan developed our fraud detection system with impressive accuracy. His Python and machine learning skills are top-notch. The real-time alerting dashboard has been invaluable for our security." — 5/5 stars
+### Real Estate Listing Platform
+A modern property listing and discovery application with advanced filtering.
+- **Technologies:** React, Node.js, Mapbox API, MongoDB
+- **Features:** Interactive property maps, complex search filters, favorite listings, direct messaging.
 
 ## Certifications
+- **MERN Stack Development Bootcamp** - Hami Trainings (January 2025)
+- **Professional Digital Marketing Certification** - Industry Certification (January 2024)
 
-1. MERN Stack Development Bootcamp — Hami Trainings (January 2025)
-   Comprehensive bootcamp covering MongoDB, Express, React, and Node.js full-stack development with real-world projects.
-
-2. Professional Digital Marketing Certification (January 2024)
-   Advanced digital marketing strategies including SEO, SEM, social media marketing, analytics, and conversion optimization.
-
-## Key Statistics
-- Projects Completed: 6+
-- Happy Clients: 10+
-- Client Satisfaction: 100%
-- Years Experience: 2+
-- Daily AI Requests Processed: 10,000+ (at Smile Check AI)
-- Backend Uptime: 99.8%
-- API Latency Reduction: 30%
-- B2B Leads Generated Monthly: 500+
-- Team Size Led: 5-8 freelancers
-- On-time Delivery Rate: 95%
-- Deployment Time Reduction: 40%
-
-## Contact & Social
-
-- Email: subhanshahid.dev@gmail.com
-- Phone: +92 324-0545602
-- WhatsApp: https://wa.me/923240545602
-- GitHub: https://github.com/SubhanShahid55
-- LinkedIn: https://www.linkedin.com/in/muhammad-subhan-shahid-564160384
-- Instagram: https://www.instagram.com/iamsubhanshahid/
-- Portfolio: https://subhanshahidportfolio.vercel.app
-
-## Website Structure
-
-- / — Home page with hero, skills overview, recent work, and CTA
-- /about — Detailed bio, values, and professional philosophy
-- /experience — Work experience timeline
-- /projects — Full project portfolio with filtering
-- /mern-stack — Dedicated MERN Stack development services page
-- /testimonials — Client testimonials and certifications
-- /contact — Contact form and information
-
-## Technology Stack (Portfolio Website)
-- Framework: React 18 with TypeScript
-- Build Tool: Vite
-- Styling: Tailwind CSS
-- UI Components: Radix UI + shadcn/ui
-- Animations: Framer Motion
-- Routing: React Router v6
-- Hosting: Vercel
-- Analytics: Vercel Analytics
+## Hire Me
+I am currently open to Software Engineering, Full-Stack, MERN, and Next.js opportunities. Please contact me via email at subhanshahid.dev@gmail.com or through my website contact form.

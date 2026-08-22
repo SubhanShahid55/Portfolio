@@ -1,143 +1,33 @@
-# Muhammad Subhan Shahid — Portfolio
+# Muhammad Subhan Shahid - Portfolio
 
-> Full-Stack Developer & AI Solutions Architect based in Rawalpindi, Pakistan.
-> Specializing in React, JavaScript, TypeScript, Rust, Python, and Machine Learning.
+> Software Engineer & Full-Stack Developer specializing in React, Next.js, Node.js, TypeScript, and modern databases. Building scalable, production-ready web applications.
 
-## About
+## Personal Information
+- **Name:** Muhammad Subhan Shahid
+- **Location:** Rawalpindi, Pakistan
+- **Title:** Software Engineer & Full-Stack Developer
+- **Email:** subhanshahid.dev@gmail.com
+- **Phone:** +92 324-0545602
+- **Website:** https://subhanshahidportfolio.vercel.app
 
-Muhammad Subhan Shahid is a freelance web developer and full-stack engineer with 2+ years of professional experience. He builds modern, scalable web applications using React, Node.js, TypeScript, and the MERN stack. He also has expertise in Rust backend development, Python machine learning, and UI/UX design with Adobe Photoshop, Canva, and Figma.
+## Links
+- **LinkedIn:** https://www.linkedin.com/in/muhammad-subhan-shahid-564160384/
+- **GitHub:** https://github.com/SubhanShahid55
+- **Instagram:** https://instagram.com/iamsubhanshahid
 
-He has delivered 6+ projects for 10+ clients with a 100% satisfaction rate. He is currently available for freelance work and full-time opportunities.
+## Key Statistics
+- **6+** Projects Completed
+- **10+** Happy Clients
+- **100%** Client Satisfaction
+- **2+** Years Experience
 
-## Contact
+## Quick Links
+- [About Me](https://subhanshahidportfolio.vercel.app/about)
+- [Experience](https://subhanshahidportfolio.vercel.app/experience)
+- [Projects](https://subhanshahidportfolio.vercel.app/projects)
+- [Contact](https://subhanshahidportfolio.vercel.app/contact)
 
-- Email: subhanshahid.dev@gmail.com
-- Phone: +92 324-0545602
-- Location: Rawalpindi, Pakistan
-- Website: https://subhanshahidportfolio.vercel.app
-- GitHub: https://github.com/SubhanShahid55
-- LinkedIn: https://www.linkedin.com/in/muhammad-subhan-shahid-564160384
-- Instagram: https://www.instagram.com/iamsubhanshahid/
-- WhatsApp: https://wa.me/923240545602
+## Summary
+Muhammad Subhan Shahid is a Software Engineer focused on full-stack web development. He builds responsive, production-ready applications using React, Next.js, TypeScript, Node.js, MongoDB, and PostgreSQL. He has worked on client projects across fintech, healthcare, e-commerce, and SaaS, with experience spanning frontend development, backend APIs, databases, integrations, and deployment.
 
-## Skills
-
-### Development
-- React (85%)
-- JavaScript (85%)
-- HTML5 (90%)
-- CSS3 (90%)
-- Node.js (80%)
-- TypeScript
-
-### Programming
-- C++ (80%)
-- Python (50%)
-- Rust (75%)
-
-### Design
-- Adobe Photoshop (85%)
-- Canva (85%)
-- Figma (75%)
-
-### Tools
-- V0
-- Bolt
-- Replit
-- GitHub (85%)
-- VS Code (85%)
-
-## Work Experience
-
-### Summer Intern — EasyPaisa (July 2026 – August 2026, Onsite)
-Supported the Channel and Development Solutions Team at EasyPaisa digital banks. Programmed and maintained features for merchant and retail applications. Evaluated EasyPaisa APIs and financial technology concepts during technical sessions.
-Technologies: APIs, FinTech, Software Development
-
-### Junior Software Engineer — Brawse (June 2025 – Present, Remote)
-Developing and maintaining the Brawse browser extension using HTML, CSS, and JavaScript. Implemented extension UI, popup flows, and options pages with responsive design. Collaborated with the team to integrate extension with backend APIs and third-party services. Contributed to improving user experience through iterative feature development and bug fixes.
-Technologies: HTML, CSS, JavaScript
-
-### Freelance Full-Stack Developer — Devmerce (January 2025 – Present, Remote)
-Delivered web solutions for 15+ international clients across e-commerce, healthcare, and fintech. Generated 500+ qualified B2B leads monthly with 15% conversion rate. Led cross-functional teams of 5-8 freelancers achieving 95% on-time delivery. Implemented CI/CD pipelines reducing deployment time by 40%.
-Technologies: React, Node.js, MongoDB, TypeScript
-
-### Backend Developer — Smile Check AI (June 2024 – Present, Remote)
-Engineered backend services processing 10,000+ daily AI diagnostic requests with 99.8% uptime. Reduced API latency by 30% through database optimization and caching strategies. Developed comprehensive API documentation improving developer onboarding time by 50%.
-Technologies: Rust, PostgreSQL, Docker
-
-### Front End Developer — Grow Station (September 2023 – December 2023, Remote/Onsite)
-Implemented dynamic Blade templates and reusable components improving frontend development speed. Integrated PHP backend endpoints with frontend interfaces for real client projects. Collaborated with designers and backend engineers to deliver production-ready features. Learned Laravel ecosystem, Blade templating, and modern PHP best practices.
-Technologies: Laravel, Blade, PHP, HTML, CSS, JavaScript
-
-## Projects
-
-### Digital Media Archive (FYP)
-A media management website where users can securely upload, download, and view various forms of digital media in a modern interface.
-Tags: Web Development, React, Frontend, University Projects
-Demo: https://digitalmediaarchive.vercel.app/
-
-### Homixa — Home Services Website
-A modern, responsive website for Homixa showcasing home services and solutions, with clear service sections, contact options, and a professional brand presence.
-Tags: Web Development, Freelance
-Demo: https://www.homixaleads.online/
-
-### Meme Coins Agent
-A comprehensive cryptocurrency information platform providing real-time data, market analysis, and insights about meme coins and crypto markets.
-Tags: Web Development, Freelance
-Demo: https://memecoinsagent.info/
-
-### Habit Tracker App
-A modern habit tracking application built with React that helps users build and maintain positive habits. Features include habit creation, progress tracking, streak monitoring, and visual analytics.
-Tags: React, Web Development, Frontend
-Code: https://github.com/SubhanShahid55/HabitTrackerApp
-
-### Fraud Detection System
-Developed during a Python internship, this system uses machine learning algorithms to detect fraudulent transactions in real-time. Built with Python and advanced data analysis techniques.
-Tags: Python, University Projects
-Demo: https://fraud-system.vercel.app/
-Code: https://github.com/SubhanShahid55/Fraud-System
-
-### E-commerce Website Frontend
-Frontend of an e-commerce website as a university project using HTML, CSS, and JavaScript. Features include homepage with product listings, about page, contact form, and shopping cart functionality.
-Tags: University Projects, Frontend
-Code: https://github.com/SubhanShahid55/ICONIC-ZONE-FRONT-END
-
-### Personal Portfolio
-A modern portfolio website built with React, TypeScript, and Tailwind CSS, featuring responsive design, dark mode, and smooth animations.
-Tags: Frontend, React
-Code: https://github.com/SubhanShahid55/portfolio
-
-## Certifications
-
-### MERN Stack Development Bootcamp — Hami Trainings (January 2025)
-Comprehensive bootcamp covering MongoDB, Express, React, and Node.js full-stack development with real-world projects.
-
-### Professional Digital Marketing Certification (January 2024)
-Advanced digital marketing strategies including SEO, SEM, social media marketing, analytics, and conversion optimization.
-
-## FAQ
-
-### What services does Muhammad Subhan Shahid offer?
-Muhammad offers freelance web development, full-stack development (MERN stack), UI/UX design, Python/ML solutions, and Rust backend engineering.
-
-### What technologies does Muhammad specialize in?
-He specializes in React, JavaScript, TypeScript, Node.js, Rust, Python, and the MERN stack (MongoDB, Express, React, Node.js).
-
-### How can I hire Muhammad Subhan Shahid?
-You can contact him via email at subhanshahid.dev@gmail.com, through WhatsApp at +92 324-0545602, or via the contact form on his portfolio website.
-
-### Where is Muhammad Subhan Shahid located?
-He is based in Rawalpindi, Pakistan, and is available for both remote and onsite work.
-
-### What is Muhammad's professional experience?
-He has 2+ years of professional experience across multiple companies including EasyPaisa, Brawse, Devmerce, Smile Check AI, and Grow Station, working on projects ranging from browser extensions to AI diagnostic platforms.
-
-## Pages
-
-- Home: https://subhanshahidportfolio.vercel.app/
-- About: https://subhanshahidportfolio.vercel.app/about
-- Experience: https://subhanshahidportfolio.vercel.app/experience
-- Projects: https://subhanshahidportfolio.vercel.app/projects
-- MERN Stack: https://subhanshahidportfolio.vercel.app/mern-stack
-- Testimonials: https://subhanshahidportfolio.vercel.app/testimonials
-- Contact: https://subhanshahidportfolio.vercel.app/contact
+He is currently seeking Software Engineer, Full-Stack Developer, MERN, and Next.js opportunities.

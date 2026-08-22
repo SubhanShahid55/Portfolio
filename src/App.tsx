@@ -11,10 +11,8 @@ const Home = React.lazy(() => import("./pages/Home"));
 const About = React.lazy(() => import("./pages/About"));
 const Experience = React.lazy(() => import("./pages/Experience"));
 const Projects = React.lazy(() => import("./pages/Projects"));
-const Testimonials = React.lazy(() => import("./pages/Testimonials"));
 const Contact = React.lazy(() => import("./pages/Contact"));
 const NotFound = React.lazy(() => import("./pages/NotFound"));
-const MernStack = React.lazy(() => import("@/pages/MernStack"));
 
 const queryClient = new QueryClient();
 
@@ -31,9 +29,7 @@ const App = () => (
               <Route path="/about" element={<About />} />
               <Route path="/experience" element={<Experience />} />
               <Route path="/projects" element={<Projects />} />
-              <Route path="/testimonials" element={<Testimonials />} />
               <Route path="/contact" element={<Contact />} />
-              <Route path="/mern-stack" element={<MernStack />} />
               <Route path="*" element={<NotFound />} />
             </Routes>
           </Suspense>

@@ -246,6 +246,10 @@
   .section-subtitle {
     @apply text-muted-foreground text-lg md:text-xl mb-12;
   }
+
+  .section-divider {
+    @apply w-full h-px bg-gradient-to-r from-transparent via-border/50 to-transparent my-8 md:my-16;
+  }
 }
 
 @layer utilities {

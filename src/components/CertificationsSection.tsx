@@ -1,21 +1,7 @@
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
-import { Award, Calendar, ExternalLink } from 'lucide-react';
-
-const certifications = [
-  {
-    title: 'MERN Stack Development Bootcamp',
-    issuer: 'Hami Trainings',
-    date: 'January 2025',
-    description: 'Comprehensive bootcamp covering MongoDB, Express, React, and Node.js full-stack development.',
-  },
-  {
-    title: 'Professional Digital Marketing Certification',
-    issuer: 'Industry Certification',
-    date: 'January 2024',
-    description: 'Advanced digital marketing strategies including SEO, SEM, social media marketing, and analytics.',
-  },
-];
+import { Award, Calendar } from 'lucide-react';
+import portfolioData from '@/data/portfolioData';
 
 const CertificationsSection = () => {
   const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.1 });
@@ -29,12 +15,19 @@ const CertificationsSection = () => {
   };
 
   const itemVariants = {
-    hidden: { opacity: 0, y: 30 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.6 } },
+    hidden: { opacity: 0, y: 24 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
   };
 
+  // Sort certifications so primary ones appear first
+  const sortedCertifications = [...portfolioData.certifications].sort((a, b) => {
+    if (a.relevance === 'primary' && b.relevance === 'secondary') return -1;
+    if (a.relevance === 'secondary' && b.relevance === 'primary') return 1;
+    return 0;
+  });
+
   return (
-    <section className="section-container">
+    <section id="certifications" className="section-container">
       <motion.div
         ref={ref}
         variants={containerVariants}
@@ -42,55 +35,43 @@ const CertificationsSection = () => {
         animate={inView ? 'visible' : 'hidden'}
       >
         {/* Section Header */}
-        <motion.div variants={itemVariants} className="text-center mb-16">
+        <motion.div variants={itemVariants} className="text-center mb-12">
           <h2 className="section-title">
             <span className="gradient-text">Certifications</span>
           </h2>
-          <p className="section-subtitle max-w-2xl mx-auto">
-            Professional certifications and continuous learning achievements
-          </p>
         </motion.div>
 
         {/* Certifications Grid */}
-        <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-          {certifications.map((cert, index) => (
+        <div className="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto">
+          {sortedCertifications.map((cert) => (
             <motion.div
-              key={index}
+              key={cert.title}
               variants={itemVariants}
-              whileHover={{ y: -10, scale: 1.02 }}
-              className="glass-card p-6 group"
+              className={`glass-card p-6 ${cert.relevance === 'primary' ? 'border-primary/20 bg-primary/5' : ''}`}
             >
-              {/* Icon */}
-              <div className="w-14 h-14 rounded-lg bg-primary/10 flex items-center justify-center mb-4 group-hover:bg-primary/20 transition-colors">
-                <Award className="w-7 h-7 text-primary" />
-              </div>
-
-              {/* Title */}
-              <h3 className="text-xl font-bold text-foreground mb-2 group-hover:text-primary transition-colors">
-                {cert.title}
-              </h3>
-
-              {/* Issuer & Date */}
-              <div className="flex flex-wrap items-center gap-4 mb-4">
-                <span className="text-muted-foreground">{cert.issuer}</span>
-                <span className="flex items-center gap-1 text-sm text-muted-foreground">
-                  <Calendar size={14} />
-                  {cert.date}
-                </span>
+              {/* Header */}
+              <div className="flex items-start gap-4 mb-4">
+                <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0">
+                  <Award className="w-6 h-6 text-primary" />
+                </div>
+                <div>
+                  <h3 className="text-lg font-bold text-foreground leading-tight mb-1">
+                    {cert.title}
+                  </h3>
+                  <div className="flex flex-wrap items-center gap-x-3 gap-y-1 text-sm text-muted-foreground">
+                    <span className="font-medium">{cert.issuer}</span>
+                    <span className="flex items-center gap-1">
+                      <Calendar size={13} />
+                      {cert.date}
+                    </span>
+                  </div>
+                </div>
               </div>
 
               {/* Description */}
-              <p className="text-sm text-muted-foreground mb-4">{cert.description}</p>
-
-              {/* View Certificate Link */}
-              <motion.a
-                href="#"
-                whileHover={{ x: 5 }}
-                className="inline-flex items-center gap-2 text-sm text-primary hover:text-accent transition-colors"
-              >
-                View Certificate
-                <ExternalLink size={14} />
-              </motion.a>
+              <p className="text-sm text-muted-foreground leading-relaxed">
+                {cert.description}
+              </p>
             </motion.div>
           ))}
         </div>
