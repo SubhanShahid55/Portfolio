@@ -31,8 +31,12 @@ const Footer = () => {
           {/* Brand & Availability Statement (5 cols) */}
           <div className="md:col-span-5 space-y-2.5">
             <div className="flex items-center gap-2">
-              <div className="w-6 h-6 rounded bg-primary/10 border border-primary/30 flex items-center justify-center font-mono font-bold text-[10px] text-primary">
-                {portfolioData.personal.monogram}
+              <div className="w-7 h-7 rounded-lg overflow-hidden border border-primary/30 bg-surface-2 flex items-center justify-center flex-shrink-0">
+                <img
+                  src="/images/subhan-avatar.jpg"
+                  alt="Muhammad Subhan Shahid Logo"
+                  className="w-full h-full object-cover object-top"
+                />
               </div>
               <h3 className="text-sm font-bold text-foreground">
                 {portfolioData.personal.name}

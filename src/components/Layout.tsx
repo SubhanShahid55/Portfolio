@@ -3,7 +3,6 @@ import ParticleBackground from './ParticleBackground';
 import Navbar from './Navbar';
 import Footer from './Footer';
 import ChatBot from './ChatBot';
-import FloatingWhatsAppButton from './FloatingWhatsAppButton';
 
 interface LayoutProps {
   children: ReactNode;
@@ -18,7 +17,6 @@ const Layout = ({ children }: LayoutProps) => {
         {children}
       </main>
       <Footer />
-      <FloatingWhatsAppButton />
       <ChatBot />
     </div>
   );

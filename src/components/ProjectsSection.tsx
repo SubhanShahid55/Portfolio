@@ -17,7 +17,7 @@ const isProjectMatch = (project: Project, filter: FilterCategory): boolean => {
     return (
       project.category === 'Full-Stack' ||
       project.tags.some((t) => t.toLowerCase().includes('full-stack')) ||
-      project.techStack.some((t) => ['node.js', 'mongodb', 'express.js', 'postgresql'].includes(t.toLowerCase()))
+      project.techStack.some((t) => ['node.js', 'mongodb', 'express.js', 'postgresql', 'react'].includes(t.toLowerCase()))
     );
   }
 
@@ -58,7 +58,7 @@ const ProjectsSection = () => {
     return portfolioData.projects.filter((project) => isProjectMatch(project, activeFilter));
   }, [activeFilter]);
 
-  // Compute count for each category for quick preview badge
+  // Compute count for each category badge
   const categoryCounts = useMemo(() => {
     return FILTER_CATEGORIES.reduce((acc, cat) => {
       acc[cat] = portfolioData.projects.filter((p) => isProjectMatch(p, cat)).length;
@@ -76,23 +76,13 @@ const ProjectsSection = () => {
     setTimeout(() => setSelectedProject(null), 300);
   }, []);
 
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: { opacity: 1, transition: { staggerChildren: 0.08 } },
-  };
-
-  const itemVariants = {
-    hidden: { opacity: 0, y: 16 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.35 } },
-  };
-
   return (
     <section id="work" className="section-container">
       <motion.div
         ref={ref}
-        variants={containerVariants}
-        initial="hidden"
-        animate={inView ? 'visible' : 'hidden'}
+        initial={{ opacity: 0, y: 20 }}
+        animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+        transition={{ duration: 0.45 }}
       >
         <SectionHeading
           number="01"
@@ -103,8 +93,7 @@ const ProjectsSection = () => {
         />
 
         {/* Filter Chips */}
-        <motion.div
-          variants={itemVariants}
+        <div
           className="flex flex-wrap gap-2 mb-8 overflow-x-auto pb-2 scrollbar-none"
           role="tablist"
           aria-label="Filter projects by category"
@@ -118,10 +107,10 @@ const ProjectsSection = () => {
                 key={cat}
                 type="button"
                 onClick={() => setActiveFilter(cat)}
-                className={`filter-chip text-xs font-mono uppercase tracking-wider py-1.5 px-4 rounded-full border transition-all inline-flex items-center gap-1.5 ${
+                className={`text-xs font-mono uppercase tracking-wider py-1.5 px-4 rounded-full border transition-all inline-flex items-center gap-1.5 cursor-pointer ${
                   isSelected
-                    ? 'active bg-primary/20 text-primary border-primary font-semibold shadow-[0_0_14px_hsla(187,80%,48%,0.3)]'
-                    : 'bg-surface-2/60 text-muted-foreground border-border/40 hover:border-primary/40 hover:text-foreground'
+                    ? 'bg-primary/20 text-primary border-primary font-semibold shadow-[0_0_14px_hsla(187,80%,48%,0.3)]'
+                    : 'bg-surface-2/70 text-muted-foreground border-border/50 hover:border-primary/40 hover:text-foreground'
                 }`}
                 role="tab"
                 aria-selected={isSelected}
@@ -130,7 +119,7 @@ const ProjectsSection = () => {
               >
                 <span>{cat}</span>
                 <span
-                  className={`text-[10px] px-1.5 py-0.2 rounded-full font-mono ${
+                  className={`text-[10px] px-1.5 py-0.5 rounded-full font-mono ${
                     isSelected ? 'bg-primary text-primary-foreground font-bold' : 'bg-surface-3 text-muted-foreground'
                   }`}
                 >
@@ -139,25 +128,25 @@ const ProjectsSection = () => {
               </button>
             );
           })}
-        </motion.div>
+        </div>
 
         {/* Unified Project Grid */}
         <AnimatePresence mode="wait">
           <motion.div
             id="project-grid"
             key={activeFilter}
-            initial={{ opacity: 0, y: 12 }}
+            initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -12 }}
+            exit={{ opacity: 0, y: -10 }}
             transition={{ duration: 0.25 }}
             className="grid md:grid-cols-2 lg:grid-cols-3 gap-6"
           >
-            {filteredProjects.map((project) => (
+            {filteredProjects.map((project, index) => (
               <ProjectCard
                 key={project.id}
                 project={project}
+                index={index}
                 onOpen={openDrawer}
-                variants={itemVariants}
                 isFeatured={project.featured}
               />
             ))}
@@ -173,7 +162,7 @@ const ProjectsSection = () => {
         </AnimatePresence>
 
         {/* GitHub CTA */}
-        <motion.div variants={itemVariants} className="text-center pt-10">
+        <div className="text-center pt-10">
           <a
             href={portfolioData.personal.socials.github}
             target="_blank"
@@ -185,7 +174,7 @@ const ProjectsSection = () => {
             <span>Explore All Repositories On GitHub</span>
             <ArrowUpRight size={14} />
           </a>
-        </motion.div>
+        </div>
       </motion.div>
 
       {/* Project Detail Drawer */}
@@ -201,17 +190,18 @@ const ProjectsSection = () => {
 /* ─── Project Card Component ─── */
 interface ProjectCardProps {
   project: Project;
+  index: number;
   onOpen: (project: Project) => void;
-  variants: Record<string, unknown>;
   isFeatured: boolean;
 }
 
-const ProjectCard = ({ project, onOpen, variants, isFeatured }: ProjectCardProps) => {
+const ProjectCard = ({ project, index, onOpen, isFeatured }: ProjectCardProps) => {
   return (
     <motion.article
-      variants={variants}
-      layout
-      className={`glass-card group flex flex-col h-full hover:border-primary/40 transition-all duration-300 shadow-lg shadow-black/20 ${
+      initial={{ opacity: 0, y: 15 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.3, delay: Math.min(index * 0.05, 0.25) }}
+      className={`glass-card group flex flex-col h-full hover:border-primary/50 transition-all duration-300 shadow-lg shadow-black/20 ${
         isFeatured ? 'border-primary/25' : 'border-border/40'
       }`}
     >
