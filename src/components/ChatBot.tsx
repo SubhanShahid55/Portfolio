@@ -12,12 +12,11 @@ import {
 } from 'lucide-react';
 import { generateChatResponse, ChatMessage } from '@/lib/chatbotEngine';
 import { profileKnowledge } from '@/data/profile';
-import portfolioData from '@/data/portfolioData';
 
 const INITIAL_MESSAGE: ChatMessage = {
   id: 'welcome-0',
   sender: 'assistant',
-  text: `Hi — I can help you explore Subhan's portfolio.`,
+  text: `Hi — I'm **Chip**, Subhan's AI portfolio assistant. I can answer questions about his experience, projects, skills, or how to get in touch!`,
   timestamp: new Date(),
   suggestedActions: [
     { label: 'What does Subhan specialize in?', query: 'What does Subhan specialize in?' },
@@ -29,19 +28,18 @@ const INITIAL_MESSAGE: ChatMessage = {
   ],
 };
 
+const CHIP_AVATAR = '/images/chip.jpg';
+
 const ChatBot: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [messages, setMessages] = useState<ChatMessage[]>([INITIAL_MESSAGE]);
   const [inputValue, setInputValue] = useState('');
   const [isChecking, setIsChecking] = useState(false);
-  const [hasPulsed, setHasPulsed] = useState(false);
   const [imgError, setImgError] = useState(false);
 
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const textareaRef = useRef<HTMLTextAreaElement>(null);
   const panelRef = useRef<HTMLDivElement>(null);
-
-  const avatarSrc = portfolioData.personal.profileImage || '/images/image.png';
 
   // Auto-scroll on new message or loading state change
   const scrollToBottom = useCallback(() => {
@@ -60,14 +58,6 @@ const ChatBot: React.FC = () => {
       }, 150);
     }
   }, [isOpen]);
-
-  // Mark initial discovery pulse complete after 3 seconds
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setHasPulsed(true);
-    }, 3000);
-    return () => clearTimeout(timer);
-  }, []);
 
   // Handle escape key to close panel
   useEffect(() => {
@@ -97,8 +87,8 @@ const ChatBot: React.FC = () => {
     }
     setIsChecking(true);
 
-    // Responsive delay (400 - 700ms)
-    const delay = 400 + Math.random() * 300;
+    // Responsive delay (350 - 650ms)
+    const delay = 380 + Math.random() * 280;
     setTimeout(() => {
       const responseResult = generateChatResponse(query, messages, profileKnowledge);
 
@@ -288,51 +278,52 @@ const ChatBot: React.FC = () => {
       <AnimatePresence>
         {!isOpen && (
           <motion.div
-            initial={{ scale: 0.8, opacity: 0, y: 20 }}
+            initial={{ scale: 0.75, opacity: 0, y: 24 }}
             animate={{ scale: 1, opacity: 1, y: 0 }}
-            exit={{ scale: 0.8, opacity: 0, y: 20 }}
-            transition={{ duration: 0.25, ease: 'easeOut' }}
+            exit={{ scale: 0.75, opacity: 0, y: 24 }}
+            transition={{ type: 'spring', damping: 20, stiffness: 300 }}
             className="fixed z-40 right-4 bottom-6 md:right-6 md:bottom-6"
           >
             <div className="relative group">
-              {/* Single initial discovery pulse halo */}
-              {!hasPulsed && (
-                <span className="absolute -inset-1 rounded-full bg-primary/30 animate-ping opacity-60 pointer-events-none motion-reduce:hidden" />
-              )}
+              {/* Subtle ambient breathing glow halo */}
+              <span className="absolute -inset-1 rounded-full bg-gradient-to-r from-primary/30 via-accent/20 to-primary/30 blur-md opacity-70 group-hover:opacity-100 transition-opacity duration-500 animate-pulse pointer-events-none motion-reduce:hidden" />
 
-              <button
+              <motion.button
                 type="button"
                 onClick={() => setIsOpen(true)}
-                aria-label="Open Subhan AI assistant"
-                className="relative flex items-center gap-3 px-4 py-2.5 rounded-full bg-surface-1/95 hover:bg-surface-2 text-foreground border border-primary/35 hover:border-primary/70 shadow-xl shadow-black/50 backdrop-blur-md transition-all duration-200 group-hover:scale-105 active:scale-95 focus-visible:ring-2 focus-visible:ring-primary focus-visible:outline-none"
+                whileHover={{ scale: 1.05, y: -2 }}
+                whileTap={{ scale: 0.95 }}
+                aria-label="Open Chip AI assistant"
+                className="relative flex items-center gap-3 px-4 py-2.5 rounded-full bg-surface-1/95 hover:bg-surface-2 text-foreground border border-primary/40 hover:border-primary/80 shadow-2xl shadow-black/60 backdrop-blur-xl transition-all duration-300 focus-visible:ring-2 focus-visible:ring-primary focus-visible:outline-none"
               >
-                {/* Subhan Avatar with status ping */}
-                <div className="relative flex items-center justify-center w-9 h-9 rounded-full overflow-hidden border-2 border-primary/50 shadow-sm bg-surface-2 flex-shrink-0">
+                {/* Chip Avatar with glowing ring */}
+                <div className="relative flex items-center justify-center w-10 h-10 rounded-full overflow-hidden border-2 border-primary shadow-md shadow-primary/20 bg-surface-2 flex-shrink-0 group-hover:border-primary transition-colors">
                   {!imgError ? (
                     <img
-                      src={avatarSrc}
-                      alt="Subhan AI Avatar"
+                      src={CHIP_AVATAR}
+                      alt="Chip AI"
                       onError={() => setImgError(true)}
-                      className="w-full h-full object-cover object-top"
+                      className="w-full h-full object-cover"
                     />
                   ) : (
                     <div className="w-full h-full bg-primary/20 text-primary flex items-center justify-center">
-                      <Bot size={18} />
+                      <Bot size={20} />
                     </div>
                   )}
-                  <span className="absolute bottom-0 right-0 w-2.5 h-2.5 rounded-full bg-emerald-400 border-2 border-surface-1" />
+                  {/* Active online pulse dot */}
+                  <span className="absolute bottom-0 right-0 w-2.5 h-2.5 rounded-full bg-emerald-400 border-2 border-surface-1 shadow-sm" />
                 </div>
 
                 <div className="flex flex-col text-left pr-1">
-                  <span className="text-xs font-bold tracking-wide text-foreground flex items-center gap-1.5">
-                    Ask Subhan
-                    <Sparkles size={11} className="text-primary animate-pulse motion-reduce:hidden" />
+                  <span className="text-xs font-bold tracking-wide text-foreground flex items-center gap-1.5 group-hover:text-primary transition-colors">
+                    Ask Chip
+                    <Sparkles size={12} className="text-primary animate-pulse motion-reduce:hidden" />
                   </span>
                   <span className="text-[10px] font-mono text-muted-foreground leading-tight">
-                    AI Portfolio Assistant
+                    Subhan's AI Assistant
                   </span>
                 </div>
-              </button>
+              </motion.button>
             </div>
           </motion.div>
         )}
@@ -343,40 +334,43 @@ const ChatBot: React.FC = () => {
         {isOpen && (
           <motion.div
             ref={panelRef}
-            initial={{ opacity: 0, y: 30, scale: 0.96 }}
+            initial={{ opacity: 0, y: 35, scale: 0.94 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
-            exit={{ opacity: 0, y: 30, scale: 0.96 }}
-            transition={{ duration: 0.22, ease: [0.16, 1, 0.3, 1] }}
+            exit={{ opacity: 0, y: 30, scale: 0.94 }}
+            transition={{ type: 'spring', damping: 24, stiffness: 320 }}
             role="dialog"
             aria-modal="true"
-            aria-label="Subhan AI Portfolio Assistant"
-            className="fixed z-50 right-3 bottom-3 sm:right-6 sm:bottom-6 w-[calc(100vw-24px)] sm:w-[410px] max-w-[430px] h-[calc(100vh-32px)] max-h-[640px] flex flex-col rounded-2xl bg-surface-1/95 border border-primary/25 shadow-2xl shadow-black/70 backdrop-blur-xl overflow-hidden"
+            aria-label="Chip — AI Portfolio Assistant"
+            className="fixed z-50 right-3 bottom-3 sm:right-6 sm:bottom-6 w-[calc(100vw-24px)] sm:w-[415px] max-w-[430px] h-[calc(100vh-32px)] max-h-[640px] flex flex-col rounded-2xl bg-surface-1/95 border border-primary/30 shadow-2xl shadow-black/80 backdrop-blur-2xl overflow-hidden ring-1 ring-primary/20"
           >
             {/* Header */}
-            <div className="flex flex-col border-b border-border/40 bg-surface-2/80 px-4 py-3">
+            <div className="flex flex-col border-b border-border/40 bg-surface-2/85 px-4 py-3.5 backdrop-blur-md">
               <div className="flex items-center justify-between gap-2">
                 <div className="flex items-center gap-2.5">
-                  {/* Portrait Avatar */}
-                  <div className="relative w-9 h-9 rounded-xl overflow-hidden border border-primary/40 flex-shrink-0 bg-surface-3 shadow-sm">
+                  {/* Chip Avatar */}
+                  <div className="relative w-10 h-10 rounded-xl overflow-hidden border-2 border-primary/60 flex-shrink-0 bg-surface-3 shadow-md shadow-primary/10">
                     {!imgError ? (
                       <img
-                        src={avatarSrc}
-                        alt="Subhan AI Avatar"
+                        src={CHIP_AVATAR}
+                        alt="Chip AI"
                         onError={() => setImgError(true)}
-                        className="w-full h-full object-cover object-top"
+                        className="w-full h-full object-cover"
                       />
                     ) : (
                       <div className="w-full h-full bg-primary/20 text-primary flex items-center justify-center">
-                        <Bot size={18} />
+                        <Bot size={20} />
                       </div>
                     )}
-                    <span className="absolute -top-0.5 -right-0.5 w-2.5 h-2.5 rounded-full bg-emerald-400 border-2 border-surface-2" />
+                    <span className="absolute -top-0.5 -right-0.5 w-2.5 h-2.5 rounded-full bg-emerald-400 border-2 border-surface-2 shadow-sm" />
                   </div>
 
                   <div>
                     <div className="flex items-center gap-1.5">
-                      <h2 className="text-sm font-bold text-foreground tracking-tight">Subhan AI</h2>
-                      <span className="inline-flex items-center gap-1 px-1.5 py-0.5 rounded text-[9px] font-mono font-medium bg-primary/10 text-primary border border-primary/20">
+                      <h2 className="text-sm font-bold text-foreground tracking-tight flex items-center gap-1">
+                        Chip
+                        <span className="text-[11px] font-normal text-muted-foreground">· Subhan AI</span>
+                      </h2>
+                      <span className="inline-flex items-center gap-1 px-1.5 py-0.5 rounded text-[9px] font-mono font-medium bg-primary/15 text-primary border border-primary/25">
                         <ShieldCheck size={10} />
                         Portfolio Knowledge
                       </span>
@@ -398,7 +392,7 @@ const ChatBot: React.FC = () => {
                   <button
                     type="button"
                     onClick={() => setIsOpen(false)}
-                    aria-label="Close assistant"
+                    aria-label="Close Chip assistant"
                     title="Close assistant"
                     className="p-1.5 rounded-lg text-muted-foreground hover:text-foreground hover:bg-muted/50 transition-colors focus-visible:ring-1 focus-visible:ring-primary"
                   >
@@ -409,44 +403,47 @@ const ChatBot: React.FC = () => {
 
               {/* Sub-header description */}
               <p className="text-[11px] text-muted-foreground mt-1.5 line-clamp-1 leading-snug">
-                Ask about Subhan's experience, projects, skills, availability, or how to get in touch.
+                Ask Chip about Subhan's experience, projects, skills, availability, or contact.
               </p>
 
               {/* Verified disclosure */}
               <div className="mt-2 pt-1.5 border-t border-border/20 flex items-center gap-1 text-[10px] font-mono text-muted-foreground/80">
-                <span>AI assistant for this portfolio. Answers are based on the information published here.</span>
+                <span>AI assistant for this portfolio. Answers are based on verified data.</span>
               </div>
             </div>
 
             {/* Messages Scroll Area */}
             <div className="flex-1 overflow-y-auto px-4 py-3 space-y-3.5 scrollbar-thin scrollbar-thumb-primary/20 scrollbar-track-transparent">
               {messages.map((msg) => (
-                <div
+                <motion.div
                   key={msg.id}
+                  initial={{ opacity: 0, y: 12, scale: 0.97 }}
+                  animate={{ opacity: 1, y: 0, scale: 1 }}
+                  transition={{ duration: 0.22, ease: 'easeOut' }}
                   className={`flex flex-col ${msg.sender === 'user' ? 'items-end' : 'items-start'}`}
                 >
                   <div className="flex items-end gap-2 max-w-[92%]">
                     {msg.sender === 'assistant' && (
-                      <div className="w-6 h-6 rounded-full overflow-hidden border border-primary/30 flex-shrink-0 mb-1 bg-surface-3">
+                      <div className="w-7 h-7 rounded-full overflow-hidden border border-primary/50 flex-shrink-0 mb-1 bg-surface-3 shadow-sm">
                         {!imgError ? (
                           <img
-                            src={avatarSrc}
-                            alt="Subhan AI"
-                            className="w-full h-full object-cover object-top"
+                            src={CHIP_AVATAR}
+                            alt="Chip"
+                            className="w-full h-full object-cover"
                           />
                         ) : (
                           <div className="w-full h-full bg-primary/20 text-primary flex items-center justify-center text-[10px]">
-                            <Bot size={12} />
+                            <Bot size={14} />
                           </div>
                         )}
                       </div>
                     )}
 
                     <div
-                      className={`rounded-2xl px-3.5 py-2.5 text-foreground ${
+                      className={`rounded-2xl px-3.5 py-2.5 text-foreground transition-all ${
                         msg.sender === 'user'
                           ? 'bg-primary text-primary-foreground font-medium rounded-br-sm shadow-md'
-                          : 'bg-surface-2/90 border border-border/40 rounded-bl-sm shadow-sm'
+                          : 'bg-surface-2/95 border border-border/45 rounded-bl-sm shadow-sm'
                       }`}
                     >
                       {msg.sender === 'user' ? (
@@ -466,11 +463,13 @@ const ChatBot: React.FC = () => {
                   {msg.suggestedActions && msg.suggestedActions.length > 0 && (
                     <div className="flex flex-wrap gap-1.5 mt-2 max-w-[95%]">
                       {msg.suggestedActions.map((action, idx) => (
-                        <button
+                        <motion.button
                           key={`${msg.id}-action-${idx}`}
                           type="button"
+                          whileHover={{ scale: 1.03, y: -1 }}
+                          whileTap={{ scale: 0.96 }}
                           onClick={() => handleActionClick(action)}
-                          className="inline-flex items-center gap-1 text-[11px] font-medium px-2.5 py-1 rounded-full bg-primary/10 hover:bg-primary/20 text-primary border border-primary/25 transition-colors active:scale-95 focus-visible:ring-1 focus-visible:ring-primary text-left"
+                          className="inline-flex items-center gap-1 text-[11px] font-medium px-2.5 py-1 rounded-full bg-primary/10 hover:bg-primary/20 text-primary border border-primary/25 hover:border-primary/50 transition-all shadow-sm active:scale-95 focus-visible:ring-1 focus-visible:ring-primary text-left"
                         >
                           <span>{action.label}</span>
                           {action.href ? (
@@ -478,40 +477,57 @@ const ChatBot: React.FC = () => {
                           ) : (
                             <ChevronRight size={11} className="opacity-70 flex-shrink-0" />
                           )}
-                        </button>
+                        </motion.button>
                       ))}
                     </div>
                   )}
-                </div>
+                </motion.div>
               ))}
 
               {/* Typing / Checking Indicator */}
               {isChecking && (
-                <div className="flex items-start gap-2">
-                  <div className="w-6 h-6 rounded-full overflow-hidden border border-primary/30 flex-shrink-0 mt-0.5 bg-surface-3">
+                <motion.div
+                  initial={{ opacity: 0, y: 8 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: 8 }}
+                  className="flex items-start gap-2"
+                >
+                  <div className="w-7 h-7 rounded-full overflow-hidden border border-primary/50 flex-shrink-0 mt-0.5 bg-surface-3 shadow-sm">
                     {!imgError ? (
                       <img
-                        src={avatarSrc}
-                        alt="Subhan AI"
-                        className="w-full h-full object-cover object-top"
+                        src={CHIP_AVATAR}
+                        alt="Chip"
+                        className="w-full h-full object-cover"
                       />
                     ) : (
                       <div className="w-full h-full bg-primary/20 text-primary flex items-center justify-center text-[10px]">
-                        <Bot size={12} />
+                        <Bot size={14} />
                       </div>
                     )}
                   </div>
-                  <div className="px-3.5 py-2.5 rounded-2xl rounded-bl-sm bg-surface-2 border border-border/40 flex items-center gap-2">
-                    <div className="flex items-center gap-1">
-                      <span className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse" />
-                      <span className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse delay-150" />
-                      <span className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse delay-300" />
+                  <div className="px-3.5 py-2.5 rounded-2xl rounded-bl-sm bg-surface-2 border border-border/40 flex items-center gap-2 shadow-sm">
+                    <div className="flex items-center gap-1.5">
+                      <motion.span
+                        animate={{ y: [0, -4, 0] }}
+                        transition={{ repeat: Infinity, duration: 0.6, delay: 0 }}
+                        className="w-1.5 h-1.5 rounded-full bg-primary"
+                      />
+                      <motion.span
+                        animate={{ y: [0, -4, 0] }}
+                        transition={{ repeat: Infinity, duration: 0.6, delay: 0.2 }}
+                        className="w-1.5 h-1.5 rounded-full bg-primary"
+                      />
+                      <motion.span
+                        animate={{ y: [0, -4, 0] }}
+                        transition={{ repeat: Infinity, duration: 0.6, delay: 0.4 }}
+                        className="w-1.5 h-1.5 rounded-full bg-primary"
+                      />
                     </div>
                     <span className="text-xs font-mono text-muted-foreground">
-                      Checking Subhan's portfolio...
+                      Chip is checking Subhan's portfolio...
                     </span>
                   </div>
-                </div>
+                </motion.div>
               )}
 
               <div ref={messagesEndRef} />
@@ -524,29 +540,31 @@ const ChatBot: React.FC = () => {
                   e.preventDefault();
                   handleSendMessage();
                 }}
-                className="relative flex items-end gap-1.5 bg-surface-3/80 border border-border/60 focus-within:border-primary/50 focus-within:ring-1 focus-within:ring-primary/40 rounded-xl p-1.5 transition-all"
+                className="relative flex items-end gap-1.5 bg-surface-3/85 border border-border/60 focus-within:border-primary/60 focus-within:ring-1 focus-within:ring-primary/40 rounded-xl p-1.5 transition-all shadow-inner"
               >
                 <textarea
                   ref={textareaRef}
                   value={inputValue}
                   onChange={(e) => setInputValue(e.target.value)}
                   onKeyDown={handleTextareaKeyDown}
-                  placeholder="Ask a question about Subhan's portfolio..."
+                  placeholder="Ask Chip a question about Subhan..."
                   rows={1}
                   disabled={isChecking}
-                  aria-label="Ask Subhan AI a question"
+                  aria-label="Ask Chip AI a question"
                   className="w-full bg-transparent text-xs sm:text-sm text-foreground placeholder:text-muted-foreground resize-none max-h-24 py-1.5 px-2 focus:outline-none scrollbar-none"
                   style={{ minHeight: '34px' }}
                 />
 
-                <button
+                <motion.button
                   type="submit"
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
                   disabled={!inputValue.trim() || isChecking}
-                  aria-label="Send message to Subhan AI"
-                  className="p-2 rounded-lg bg-primary text-primary-foreground hover:bg-primary/90 disabled:opacity-40 disabled:hover:bg-primary transition-all active:scale-95 flex-shrink-0 focus-visible:ring-1 focus-visible:ring-primary"
+                  aria-label="Send message to Chip AI"
+                  className="p-2 rounded-lg bg-primary text-primary-foreground hover:bg-primary/90 disabled:opacity-40 disabled:hover:bg-primary transition-all active:scale-95 flex-shrink-0 focus-visible:ring-1 focus-visible:ring-primary shadow-sm"
                 >
                   <Send size={14} />
-                </button>
+                </motion.button>
               </form>
 
               <div className="flex items-center justify-between text-[10px] font-mono text-muted-foreground/70 px-1 pt-1.5">

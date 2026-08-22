@@ -1,5 +1,5 @@
 /**
- * Subhan AI Grounded Chatbot Engine
+ * Chip — Subhan AI Grounded Chatbot Engine
  * 
  * Safe, zero-API-key client-side NLP and semantic retrieval engine grounded
  * strictly in the verified ProfileKnowledge model.
@@ -102,7 +102,6 @@ export function generateChatResponse(
   };
 
   // 1. Permission to ask / Meta-questions / Help requests / Capabilities
-  // e.g., "can i ask something ?", "can i ask a question", "i have a question", "help", "what can you do?"
   if (
     hasPhrase([
       'can i ask',
@@ -134,9 +133,9 @@ export function generateChatResponse(
     normalized === 'assist'
   ) {
     return {
-      text: `Yes, absolutely! I'm **Subhan AI**, and I can answer any questions regarding **${data.identity.fullName}**'s portfolio and background.
+      text: `Yes, absolutely! I'm **Chip**, an AI portfolio assistant for **${data.identity.fullName}**.
 
-Here are some topics you can ask me about:
+Here are some key topics you can explore with me:
 • **Experience:** Roles at EasyPaisa, Smile Check AI, Brawse, Devmerce, and Grow Station.
 • **Projects:** Digital Media Archive, Meme Coins Agent, Homixa, Fraud Detection, Habit Tracker.
 • **Tech Stack:** React, Next.js, TypeScript, Node.js, Express, MongoDB, PostgreSQL, Python.
@@ -153,9 +152,12 @@ What would you like to know?`,
     };
   }
 
-  // 2. Identity / Persona Inquiries (Are you Muhammad? Who are you?)
+  // 2. Identity / Persona Inquiries (Are you Chip? Who are you? Are you Muhammad?)
   if (
     hasPhrase([
+      'are you chip',
+      'who is chip',
+      'what is chip',
       'are you subhan',
       'are you muhammad',
       'are you a bot',
@@ -172,11 +174,11 @@ What would you like to know?`,
     ])
   ) {
     return {
-      text: `I am **Subhan AI**, an AI portfolio assistant for **${data.identity.fullName}**.
+      text: `I am **Chip**, an AI assistant representing **${data.identity.fullName}**'s portfolio.
 
-I am not Muhammad personally and not a human support representative. My purpose is to help visitors navigate his verified engineering background, projects, technical skills, and availability using the verified data on this portfolio.
+I am not Muhammad personally and not a human support representative. My purpose is to help visitors explore Subhan's verified engineering background, production projects, technical skills, and availability.
 
-If you would like to speak directly with Muhammad, you can reach him at:
+If you would like to speak directly with Muhammad, you can connect through:
 • **Email:** [${data.contact.email}](mailto:${data.contact.email})
 • **WhatsApp:** [Message on WhatsApp](${data.contact.whatsapp})
 • **LinkedIn:** [View LinkedIn Profile](${data.contact.linkedin})`,
@@ -212,7 +214,7 @@ If you would like to speak directly with Muhammad, you can reach him at:
     normalized.startsWith('hey ')
   ) {
     return {
-      text: `Hello! I'm **Subhan AI**, your guide to **${data.identity.fullName}**'s software engineering portfolio.
+      text: `Hello! I'm **Chip**, your interactive guide to **${data.identity.fullName}**'s software engineering portfolio.
 
 I can help you explore his production projects, work experience across fintech and healthcare AI, full-stack toolkit, or connect directly with him.
 
@@ -240,7 +242,7 @@ How can I help you today?`,
     ])
   ) {
     return {
-      text: `I'm doing great, thank you for asking! 😊 I'm ready to help you explore Subhan's projects, technical experience, or get in touch.
+      text: `I'm doing great, thank you! 😊 Ready to help you explore Subhan's projects, technical experience, or get in touch.
 
 What would you like to explore?`,
       suggestedActions: [
@@ -854,7 +856,7 @@ ${certList}
     };
   }
 
-  // 15. General Skills & Specialization Overview (handles "What does Subhan specialize in?", "skills", "technologies", "who is subhan")
+  // 15. General Skills & Specialization Overview
   if (
     hasPhrase([
       'specialize',
@@ -932,9 +934,9 @@ He has delivered 15+ client projects across fintech, healthcare, e-commerce, and
     };
   }
 
-  // 19. Graceful helpful fallback for any unexpected queries
+  // 19. Graceful helpful fallback
   return {
-    text: `I'm specifically focused on Muhammad Subhan Shahid's portfolio, verified engineering background, and projects. While I don't have information on that specific topic, I'd be glad to help you explore Subhan's work or connect you directly with him.
+    text: `I'm **Chip**, specifically trained on Muhammad Subhan Shahid's software engineering portfolio and verified background. While I don't have information on that specific topic, I'd be glad to help you explore Subhan's work or connect you directly with him.
 
 What would you like to know?`,
     suggestedActions: [

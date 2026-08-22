@@ -3,7 +3,7 @@ import { generateChatResponse, levenshteinDistance, tokenSimilarity } from '@/li
 import { profileKnowledge } from '@/data/profile';
 
 describe('chatbotEngine — Conversational Edge Cases & Meta Inquiries', () => {
-  it('handles "can i ask something ?" and permission queries with a warm, helpful response', () => {
+  it('handles "can i ask something ?" and permission queries with a warm, helpful response from Chip', () => {
     const metaQueries = [
       'can i ask something ?',
       'can I ask a question?',
@@ -18,7 +18,7 @@ describe('chatbotEngine — Conversational Edge Cases & Meta Inquiries', () => {
 
     for (const q of metaQueries) {
       const res = generateChatResponse(q);
-      expect(res.text).toContain('Subhan AI');
+      expect(res.text).toContain('Chip');
       expect(res.text).toContain('Muhammad Subhan Shahid');
       expect(res.suggestedActions?.length).toBeGreaterThanOrEqual(4);
     }
@@ -76,10 +76,12 @@ describe('chatbotEngine — String similarity & Typo tolerance', () => {
 });
 
 describe('chatbotEngine — Persona & AI Safety Guardrails', () => {
-  it('clarifies it is an AI assistant representing the portfolio and not Muhammad personally', () => {
+  it('clarifies it is Chip, an AI assistant representing the portfolio and not Muhammad personally', () => {
     const questions = [
       'Are you Muhammad?',
       'Are you Subhan?',
+      'Are you Chip?',
+      'Who is Chip?',
       'Are you a bot?',
       'Are you human?',
       'Who are you?',
@@ -88,7 +90,7 @@ describe('chatbotEngine — Persona & AI Safety Guardrails', () => {
 
     for (const q of questions) {
       const res = generateChatResponse(q);
-      expect(res.text).toContain('Subhan AI');
+      expect(res.text).toContain('Chip');
       expect(res.text).toContain('not Muhammad personally');
       expect(res.text).toContain('subhanshahid.dev@gmail.com');
       expect(res.suggestedActions?.length).toBeGreaterThan(0);
