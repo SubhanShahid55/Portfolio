@@ -285,10 +285,11 @@ export const TechUniverseOrbit: React.FC<TechUniverseOrbitProps> = ({
   }, []);
 
   const orbitRadii = {
-    mobile: { 1: 58, 2: 98, 3: 138 },
-    tablet: { 1: 85, 2: 145, 3: 205 },
-    desktop: { 1: 105, 2: 175, 3: 245 },
+    mobile: { 1: 54, 2: 102, 3: 150 },
+    tablet: { 1: 80, 2: 145, 3: 210 },
+    desktop: { 1: 105, 2: 180, 3: 255 },
   }[screenSize];
+
 
   // Smooth continuous orbital physics engine
   useEffect(() => {
@@ -411,42 +412,43 @@ export const TechUniverseOrbit: React.FC<TechUniverseOrbitProps> = ({
             </motion.div>
           </div>
 
-          {/* Concentric Orbit Rings SVG */}
-          <svg className="absolute inset-0 w-full h-full pointer-events-none" viewBox="0 0 600 600">
+          {/* Concentric Orbit Rings SVG (Pixel-Matched to Planet Coordinates) */}
+          <svg className="absolute inset-0 w-full h-full pointer-events-none">
             {/* Orbit 1 */}
             <circle
-              cx="300"
-              cy="300"
+              cx="50%"
+              cy="50%"
               r={orbitRadii[1]}
               fill="none"
               stroke="#06b6d4"
-              strokeWidth="1"
+              strokeWidth="1.2"
               strokeDasharray="4 6"
-              className="opacity-35"
+              className="opacity-40"
             />
             {/* Orbit 2 */}
             <circle
-              cx="300"
-              cy="300"
+              cx="50%"
+              cy="50%"
               r={orbitRadii[2]}
               fill="none"
               stroke="#3b82f6"
-              strokeWidth="1"
+              strokeWidth="1.2"
               strokeDasharray="5 8"
-              className="opacity-30"
+              className="opacity-35"
             />
             {/* Orbit 3 */}
             <circle
-              cx="300"
-              cy="300"
+              cx="50%"
+              cy="50%"
               r={orbitRadii[3]}
               fill="none"
               stroke="#8b5cf6"
-              strokeWidth="1"
+              strokeWidth="1.2"
               strokeDasharray="6 10"
-              className="opacity-25"
+              className="opacity-30"
             />
           </svg>
+
 
           {/* Planetary Tech Nodes Distributed on Orbits */}
           <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
