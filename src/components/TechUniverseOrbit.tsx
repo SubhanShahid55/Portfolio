@@ -243,12 +243,6 @@ export const TECH_PLANETS: TechPlanet[] = [
 ];
 
 
-const ORBIT_RADII = {
-  1: 120, // Inner orbit radius in px
-  2: 195, // Mid orbit radius in px
-  3: 270, // Outer orbit radius in px
-};
-
 const ORBIT_DURATIONS = {
   1: 34, // Seconds per revolution
   2: 52,
@@ -268,9 +262,33 @@ export const TechUniverseOrbit: React.FC<TechUniverseOrbitProps> = ({
   const [isOrbiting, setIsOrbiting] = useState(true);
   const [speedMultiplier, setSpeedMultiplier] = useState(1);
   const [rotationAngle, setRotationAngle] = useState({ 1: 0, 2: 0, 3: 0 });
+  const [screenSize, setScreenSize] = useState<'mobile' | 'tablet' | 'desktop'>('desktop');
 
   const animFrameRef = useRef<number | null>(null);
   const lastTimeRef = useRef<number | null>(null);
+
+  // Responsive orbit dimensions
+  useEffect(() => {
+    const handleResize = () => {
+      const w = window.innerWidth;
+      if (w < 640) {
+        setScreenSize('mobile');
+      } else if (w < 1024) {
+        setScreenSize('tablet');
+      } else {
+        setScreenSize('desktop');
+      }
+    };
+    handleResize();
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  const orbitRadii = {
+    mobile: { 1: 58, 2: 98, 3: 138 },
+    tablet: { 1: 85, 2: 145, 3: 205 },
+    desktop: { 1: 105, 2: 175, 3: 245 },
+  }[screenSize];
 
   // Smooth continuous orbital physics engine
   useEffect(() => {
@@ -298,9 +316,9 @@ export const TechUniverseOrbit: React.FC<TechUniverseOrbitProps> = ({
   return (
     <div className="relative w-full flex flex-col items-center select-none">
       {/* Category Pills & Physics Controls Toolbar */}
-      <div className="w-full flex flex-wrap items-center justify-between gap-3 mb-6 px-1">
+      <div className="w-full flex flex-wrap items-center justify-between gap-2.5 mb-4 sm:mb-6 px-1">
         {/* Category selector */}
-        <div className="flex flex-wrap items-center gap-1.5">
+        <div className="flex items-center gap-1.5 overflow-x-auto no-scrollbar py-1 w-full sm:w-auto max-w-full">
           {categories.map((cat) => {
             const isSelected = selectedCategory === cat;
             return (
@@ -308,7 +326,7 @@ export const TechUniverseOrbit: React.FC<TechUniverseOrbitProps> = ({
                 key={cat}
                 type="button"
                 onClick={() => onSelectCategory?.(cat)}
-                className={`px-3 py-1 rounded-full text-xs font-mono transition-all flex items-center gap-1.5 ${
+                className={`px-2.5 sm:px-3 py-1 rounded-full text-[11px] sm:text-xs font-mono transition-all flex items-center gap-1.5 flex-shrink-0 ${
                   isSelected
                     ? 'bg-primary text-primary-foreground font-bold shadow-md shadow-primary/25 border border-primary'
                     : 'bg-surface-2/80 text-muted-foreground hover:text-foreground hover:bg-surface-3 border border-border/40'
@@ -322,7 +340,7 @@ export const TechUniverseOrbit: React.FC<TechUniverseOrbitProps> = ({
         </div>
 
         {/* Orbit speed & pause controls */}
-        <div className="flex items-center gap-2 bg-surface-2/80 border border-border/40 rounded-full px-3 py-1 text-xs font-mono">
+        <div className="flex items-center gap-2 bg-surface-2/80 border border-border/40 rounded-full px-2.5 sm:px-3 py-1 text-[11px] sm:text-xs font-mono">
           <button
             type="button"
             onClick={() => setIsOrbiting((prev) => !prev)}
@@ -347,9 +365,9 @@ export const TechUniverseOrbit: React.FC<TechUniverseOrbitProps> = ({
       </div>
 
       {/* Main Solar System Interactive Stage */}
-      <div className="relative w-full grid lg:grid-cols-12 gap-6 items-center">
+      <div className="relative w-full grid lg:grid-cols-12 gap-5 lg:gap-6 items-center">
         {/* Left / Center: Interactive Orbit Canvas */}
-        <div className="lg:col-span-7 flex items-center justify-center relative w-full h-[460px] sm:h-[580px] overflow-hidden rounded-3xl bg-surface-1/60 border border-primary/20 backdrop-blur-xl shadow-2xl shadow-black/80">
+        <div className="lg:col-span-7 flex items-center justify-center relative w-full h-[340px] xs:h-[370px] sm:h-[480px] lg:h-[540px] overflow-hidden rounded-2xl sm:rounded-3xl bg-surface-1/60 border border-primary/20 backdrop-blur-xl shadow-2xl shadow-black/80">
           {/* Deep Space Starfield & Cosmic Nebula Backdrop */}
           <div className="absolute inset-0 pointer-events-none overflow-hidden">
             <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-cyan-950/20 via-background/90 to-background" />
@@ -369,25 +387,25 @@ export const TechUniverseOrbit: React.FC<TechUniverseOrbitProps> = ({
                 opacity: [0.6, 0.9, 0.6],
               }}
               transition={{ repeat: Infinity, duration: 4, ease: 'easeInOut' }}
-              className="absolute w-36 h-36 rounded-full bg-gradient-to-tr from-cyan-500/30 via-primary/40 to-blue-600/30 blur-2xl pointer-events-none"
+              className="absolute w-24 h-24 sm:w-36 sm:h-36 rounded-full bg-gradient-to-tr from-cyan-500/30 via-primary/40 to-blue-600/30 blur-2xl pointer-events-none"
             />
             <motion.div
               animate={{ rotate: 360 }}
               transition={{ repeat: Infinity, duration: 24, ease: 'linear' }}
-              className="absolute w-24 h-24 rounded-full border border-cyan-400/30 border-dashed pointer-events-none"
+              className="absolute w-16 h-16 sm:w-24 sm:h-24 rounded-full border border-cyan-400/30 border-dashed pointer-events-none"
             />
 
             {/* Core Sphere */}
             <motion.div
               whileHover={{ scale: 1.08 }}
-              className="relative w-18 h-18 sm:w-20 sm:h-20 rounded-full bg-gradient-to-br from-surface-1 via-surface-2 to-surface-3 border-2 border-cyan-400 shadow-xl shadow-cyan-500/30 flex flex-col items-center justify-center text-center p-2 cursor-pointer z-10"
+              className="relative w-12 h-12 sm:w-18 sm:h-18 md:w-20 md:h-20 rounded-full bg-gradient-to-br from-surface-1 via-surface-2 to-surface-3 border-2 border-cyan-400 shadow-xl shadow-cyan-500/30 flex flex-col items-center justify-center text-center p-1 sm:p-2 cursor-pointer z-10"
               onClick={() => setActivePlanet(null)}
             >
-              <Zap size={20} className="text-cyan-300 animate-pulse mb-0.5" />
-              <span className="text-[10px] sm:text-[11px] font-bold font-mono text-foreground tracking-tight leading-none">
+              <Zap size={screenSize === 'mobile' ? 13 : 18} className="text-cyan-300 animate-pulse mb-0.5" />
+              <span className="text-[7.5px] sm:text-[10px] md:text-[11px] font-bold font-mono text-foreground tracking-tight leading-none">
                 FULL STACK
               </span>
-              <span className="text-[8px] font-mono text-cyan-400 uppercase tracking-widest mt-0.5">
+              <span className="text-[6px] sm:text-[8px] font-mono text-cyan-400 uppercase tracking-widest mt-0.5">
                 CORE
               </span>
             </motion.div>
@@ -399,41 +417,41 @@ export const TechUniverseOrbit: React.FC<TechUniverseOrbitProps> = ({
             <circle
               cx="300"
               cy="300"
-              r={ORBIT_RADII[1]}
+              r={orbitRadii[1]}
               fill="none"
               stroke="#06b6d4"
               strokeWidth="1"
               strokeDasharray="4 6"
-              className="opacity-30"
+              className="opacity-35"
             />
             {/* Orbit 2 */}
             <circle
               cx="300"
               cy="300"
-              r={ORBIT_RADII[2]}
+              r={orbitRadii[2]}
               fill="none"
               stroke="#3b82f6"
               strokeWidth="1"
               strokeDasharray="5 8"
-              className="opacity-25"
+              className="opacity-30"
             />
             {/* Orbit 3 */}
             <circle
               cx="300"
               cy="300"
-              r={ORBIT_RADII[3]}
+              r={orbitRadii[3]}
               fill="none"
               stroke="#8b5cf6"
               strokeWidth="1"
               strokeDasharray="6 10"
-              className="opacity-20"
+              className="opacity-25"
             />
           </svg>
 
           {/* Planetary Tech Nodes Distributed on Orbits */}
           <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
             {TECH_PLANETS.map((planet) => {
-              const radius = ORBIT_RADII[planet.orbit];
+              const radius = orbitRadii[planet.orbit];
               const currentOrbitAngle = rotationAngle[planet.orbit];
               const totalAngleDeg = (planet.angleOffset + currentOrbitAngle) % 360;
               const totalAngleRad = (totalAngleDeg * Math.PI) / 180;
@@ -458,11 +476,11 @@ export const TechUniverseOrbit: React.FC<TechUniverseOrbitProps> = ({
                     {/* Glowing Planet Aura */}
                     <div
                       style={{ backgroundColor: planet.color }}
-                      className={`absolute -inset-1.5 rounded-full blur-md transition-opacity duration-300 ${
+                      className={`absolute -inset-1 rounded-full blur-md transition-opacity duration-300 ${
                         isSelectedPlanet
-                          ? 'opacity-80 scale-125'
+                          ? 'opacity-85 scale-125'
                           : isMatchCategory
-                          ? 'opacity-40 group-hover:opacity-80'
+                          ? 'opacity-35 group-hover:opacity-80'
                           : 'opacity-10'
                       }`}
                     />
@@ -474,32 +492,30 @@ export const TechUniverseOrbit: React.FC<TechUniverseOrbitProps> = ({
                       whileTap={{ scale: 0.92 }}
                       onClick={() => setActivePlanet(planet)}
                       aria-label={`Inspect ${planet.name} skill`}
-                      className={`relative w-8 h-8 sm:w-10 sm:h-10 rounded-full flex items-center justify-center transition-all ${
+                      className={`relative w-7 h-7 sm:w-9 sm:h-9 md:w-10 md:h-10 rounded-full flex items-center justify-center transition-all ${
                         isSelectedPlanet
-                          ? 'bg-surface-1 border-2 border-white shadow-xl shadow-cyan-500/50'
+                          ? 'bg-surface-1 border-2 border-white shadow-xl shadow-cyan-500/50 scale-110'
                           : isMatchCategory
                           ? 'bg-surface-2/95 border border-border/80 hover:border-white shadow-md'
-                          : 'bg-surface-2/40 border border-border/20 opacity-40 hover:opacity-100'
+                          : 'bg-surface-2/40 border border-border/20 opacity-30 hover:opacity-100'
                       }`}
                       style={{
                         borderColor: isSelectedPlanet ? '#ffffff' : isMatchCategory ? planet.color : undefined,
                       }}
                     >
                       <IconComp
-                        size={16}
+                        size={screenSize === 'mobile' ? 13 : 16}
                         style={{ color: isSelectedPlanet || isMatchCategory ? planet.color : '#94a3b8' }}
                         className="transition-transform group-hover:rotate-12"
                       />
                     </motion.button>
 
-                    {/* Micro Planet Label Tooltip */}
+                    {/* Micro Planet Label: Clean & Decluttered (Only Active Planet or Desktop Hover) */}
                     <div
-                      className={`absolute top-full mt-1.5 px-2 py-0.5 rounded-md bg-surface-1/95 border border-border/40 backdrop-blur-md whitespace-nowrap text-[10px] font-mono font-medium text-foreground transition-all duration-200 pointer-events-none ${
+                      className={`absolute top-full mt-1.5 px-2 py-0.5 rounded-md bg-surface-1/95 border border-border/40 backdrop-blur-md whitespace-nowrap text-[9px] sm:text-[10px] font-mono font-medium text-foreground transition-all duration-200 pointer-events-none z-30 ${
                         isSelectedPlanet
-                          ? 'opacity-100 scale-100 text-cyan-300 font-bold border-cyan-400/60'
-                          : isMatchCategory
-                          ? 'opacity-85 group-hover:opacity-100 scale-95 group-hover:scale-100'
-                          : 'opacity-0'
+                          ? 'opacity-100 scale-100 text-cyan-300 font-bold border-cyan-400/60 shadow-lg shadow-black/50'
+                          : 'opacity-0 sm:group-hover:opacity-100 scale-95 sm:group-hover:scale-100'
                       }`}
                     >
                       {planet.name}
@@ -509,6 +525,8 @@ export const TechUniverseOrbit: React.FC<TechUniverseOrbitProps> = ({
               );
             })}
           </div>
+
+
         </div>
 
         {/* Right: Holographic Tech Planet Detail Card */}

@@ -1,6 +1,6 @@
 import React, { useRef, useEffect, useState, useCallback } from 'react';
 import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion';
-import { Download, ArrowDown } from 'lucide-react';
+import { Download, ArrowDown, Terminal } from 'lucide-react';
 import portfolioData from '@/data/portfolioData';
 import AmbientDragonCompanion from './AmbientDragonCompanion';
 
@@ -55,8 +55,8 @@ const HeroSection = () => {
   const smoothY = useSpring(mouseY, springConfig);
 
   // Low-amplitude pointer parallax
-  const portraitX = useTransform(smoothX, [-0.5, 0.5], [-6, 6]);
-  const portraitY = useTransform(smoothY, [-0.5, 0.5], [-5, 5]);
+  const portraitX = useTransform(smoothX, [-0.5, 0.5], [-8, 8]);
+  const portraitY = useTransform(smoothY, [-0.5, 0.5], [-6, 6]);
   const orbitRotate = useTransform(smoothX, [-0.5, 0.5], [-2, 2]);
 
   useEffect(() => {
@@ -183,33 +183,75 @@ const HeroSection = () => {
             </motion.div>
           </div>
 
-          {/* ─── Right Column — 5 cols (Portrait with Parallax) ─── */}
-          <div className="lg:col-span-5 flex justify-center lg:justify-end order-1 lg:order-2">
-            <motion.div
-              variants={fadeUp}
-              style={{ x: portraitX, y: portraitY, rotate: orbitRotate }}
-              className="relative w-64 h-64 sm:w-72 sm:h-72 md:w-80 md:h-80"
-            >
-              {/* Outer decorative ring */}
-              <div className="absolute inset-0 rounded-full border border-primary/20 animate-[spin_40s_linear_infinite] pointer-events-none" />
-              <div className="absolute -inset-2 rounded-full border border-dashed border-primary/15 animate-[spin_60s_linear_infinite_reverse] pointer-events-none" />
+          {/* ─── Right Column — 5 cols (High-End Portrait Card Frame) ─── */}
+          <motion.div
+            variants={fadeUp}
+            className="lg:col-span-5 flex justify-center items-center lg:justify-end order-1 lg:order-2 w-full mb-2 lg:mb-0"
+          >
+            <div className="relative max-w-full">
+              {/* Ambient Glow behind Portrait Card */}
+              <div className="absolute -inset-2 sm:-inset-3 bg-gradient-to-br from-primary/25 via-transparent to-accent/20 rounded-3xl blur-xl sm:blur-2xl opacity-70 pointer-events-none" />
 
-              {/* Glowing back-layer */}
-              <div className="absolute inset-4 rounded-full bg-gradient-to-tr from-primary/20 via-accent/15 to-transparent blur-xl pointer-events-none" />
+              {/* Orbital contour line */}
+              <motion.div
+                style={isMobile ? {} : { rotate: orbitRotate }}
+                className="absolute -inset-2.5 sm:-inset-4 md:-inset-6 rounded-2xl sm:rounded-3xl border border-primary/20 pointer-events-none"
+              />
 
-              {/* Portrait container */}
-              <div className="relative w-full h-full rounded-full overflow-hidden border-2 border-primary/30 shadow-[0_0_40px_hsla(187,80%,48%,0.15)] bg-surface-2 flex items-center justify-center">
-                <img
-                  src={portfolioData.personal.profileImage}
-                  alt={portfolioData.personal.name}
-                  className="w-full h-full object-cover object-top filter brightness-95 contrast-105"
-                  onError={(e) => {
-                    (e.currentTarget as HTMLImageElement).src = portfolioData.personal.profileImageFallback;
-                  }}
-                />
-              </div>
-            </motion.div>
-          </div>
+              {/* Technical dot grid backdrop */}
+              <div
+                className="absolute -inset-2 sm:-inset-3 rounded-2xl pointer-events-none opacity-25"
+                style={{
+                  backgroundImage: 'radial-gradient(circle, hsl(187 80% 48% / 0.25) 1px, transparent 1px)',
+                  backgroundSize: '12px 12px',
+                }}
+              />
+
+              {/* Main Portrait Card Frame */}
+              <motion.div
+                style={isMobile ? {} : { x: portraitX, y: portraitY }}
+                whileHover={{ scale: 1.02 }}
+                transition={{ duration: 0.3 }}
+                className="relative w-[235px] h-[300px] xs:w-[255px] xs:h-[325px] sm:w-[290px] sm:h-[370px] md:w-[320px] md:h-[410px] lg:w-[340px] lg:h-[430px] rounded-2xl overflow-hidden glass-card p-1.5 shadow-2xl shadow-black/70 border-primary/40 group mx-auto"
+              >
+                {/* Tech Corner Coordinates */}
+                <div className="absolute top-2.5 left-2.5 sm:top-3 sm:left-3 z-20 flex items-center gap-1.5 px-2 py-0.5 rounded-md bg-background/90 backdrop-blur-md border border-border/40 text-[8.5px] sm:text-[9px] font-mono text-cyan-400 font-medium shadow-sm">
+                  <Terminal size={10} />
+                  <span>ENG-MSS</span>
+                </div>
+
+                {/* Portrait Container */}
+                <div className="relative w-full h-full rounded-xl overflow-hidden bg-surface-2">
+                  <img
+                    src={portfolioData.personal.profileImage}
+                    alt="Muhammad Subhan Shahid, full-stack software engineer"
+                    className="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105"
+                    loading="eager"
+                    width={340}
+                    height={430}
+                    onError={(e) => {
+                      (e.currentTarget as HTMLImageElement).src = portfolioData.personal.profileImageFallback;
+                    }}
+                  />
+                  {/* Subtle edge blend at bottom base */}
+                  <div className="absolute inset-x-0 bottom-0 h-10 sm:h-12 bg-gradient-to-t from-background/80 to-transparent pointer-events-none" />
+                </div>
+              </motion.div>
+
+              {/* Floating Metadata Label Pill */}
+              <motion.div
+                variants={fadeUp}
+                className="absolute -bottom-3 sm:-bottom-3.5 left-1/2 -translate-x-1/2 px-2.5 sm:px-4 py-0.5 sm:py-1 rounded-full bg-card/95 backdrop-blur-md border border-border/60 shadow-xl z-20 w-max max-w-[92vw]"
+              >
+                <span className="text-[8.5px] xs:text-[9px] sm:text-[10px] font-mono font-medium text-muted-foreground tracking-wider uppercase flex items-center gap-1.5 justify-center">
+                  <span className="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-ping flex-shrink-0" />
+                  <span className="truncate">FULL-STACK · PRODUCT-MINDED</span>
+                  <span className="hidden xs:inline">· PAKISTAN</span>
+                </span>
+              </motion.div>
+            </div>
+          </motion.div>
+
         </div>
       </motion.div>
     </section>
