@@ -152,13 +152,15 @@ const Navbar = () => {
               className="flex items-center gap-2.5 group text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded-xl"
               aria-label="Muhammad Subhan Shahid - Back to top"
             >
-              <div className="relative w-8 h-8 sm:w-9 sm:h-9 rounded-xl overflow-hidden border border-primary/40 bg-surface-2 shadow-sm group-hover:border-primary group-hover:shadow-[0_0_12px_hsla(187,80%,48%,0.4)] transition-all duration-300 flex-shrink-0">
+              <div className="relative w-9 h-9 sm:w-10 sm:h-10 rounded-xl overflow-hidden border border-cyan-400/50 bg-surface-2 shadow-md shadow-cyan-950/40 group-hover:border-cyan-400 group-hover:shadow-[0_0_14px_rgba(6,182,212,0.4)] transition-all duration-300 flex-shrink-0">
                 <img
                   src="/images/subhan-avatar.jpg"
+                  onError={(e) => {
+                    (e.currentTarget as HTMLImageElement).src = '/images/subhan-anime-portrait.png';
+                  }}
                   alt="Subhan Shahid Logo"
                   className="w-full h-full object-cover object-top transition-transform duration-300 group-hover:scale-105"
                 />
-                <span className="absolute bottom-0 right-0 w-2 h-2 sm:w-2.5 sm:h-2.5 rounded-full bg-emerald-400 border-2 border-surface-1" />
               </div>
 
               <div className="flex flex-col">
@@ -170,6 +172,7 @@ const Navbar = () => {
                 </span>
               </div>
             </button>
+
 
             {/* Desktop Navigation Links */}
             <nav className="hidden lg:flex items-center gap-1 bg-surface-2/60 border border-border/40 rounded-full px-2 py-1 backdrop-blur-md">
@@ -295,13 +298,15 @@ const Navbar = () => {
                 {/* Drawer Header */}
                 <div className="flex items-center justify-between p-4 border-b border-border/30 bg-surface-2/60">
                   <div className="flex items-center gap-2.5">
-                    <div className="relative w-8 h-8 rounded-lg overflow-hidden border border-primary/40 bg-surface-3 flex items-center justify-center flex-shrink-0">
+                    <div className="relative w-9 h-9 rounded-xl overflow-hidden border border-cyan-400/50 bg-surface-3 flex items-center justify-center flex-shrink-0 shadow-sm">
                       <img
                         src="/images/subhan-avatar.jpg"
+                        onError={(e) => {
+                          (e.currentTarget as HTMLImageElement).src = '/images/subhan-anime-portrait.png';
+                        }}
                         alt="Subhan Shahid"
                         className="w-full h-full object-cover object-top"
                       />
-                      <span className="absolute bottom-0 right-0 w-2 h-2 rounded-full bg-emerald-400 border border-surface-1" />
                     </div>
                     <div className="flex flex-col">
                       <span className="text-xs font-bold text-foreground leading-none">
@@ -312,6 +317,7 @@ const Navbar = () => {
                       </span>
                     </div>
                   </div>
+
 
                   <button
                     type="button"

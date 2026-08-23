@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" fill="none">
+  <defs>
+    <linearGradient id="dragonGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#00e5ff"/>
+      <stop offset="50%" stop-color="#00a8cc"/>
+      <stop offset="100%" stop-color="#193251"/>
+    </linearGradient>
+    <radialGradient id="eyeGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#00f0ff" stop-opacity="1"/>
+      <stop offset="100%" stop-color="#00e5ff" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="cyanGlow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="2.5" result="blur"/>
+      <feComposite in="SourceGraphic" in2="blur" operator="over"/>
+    </filter>
+  </defs>
+
+  <!-- Background disk -->
+  <circle cx="50" cy="50" r="46" fill="#0d1527" stroke="#00e5ff" stroke-opacity="0.3" stroke-width="1.5"/>
+  <circle cx="50" cy="50" r="41" fill="#141f36" stroke="#00e5ff" stroke-opacity="0.15" stroke-width="1"/>
+
+  <!-- Dragon Silhouette Body & Horns -->
+  <g filter="url(#cyanGlow)">
+    <!-- Horns -->
+    <path d="M42 34 C36 24 30 18 24 16 C25 22 29 28 35 36 Z" fill="url(#dragonGrad)" opacity="0.9"/>
+    <path d="M58 34 C64 24 70 18 76 16 C75 22 71 28 65 36 Z" fill="url(#dragonGrad)" opacity="0.9"/>
+    
+    <!-- Central Head/Crown Crest -->
+    <path d="M47 28 C48 20 50 17 50 17 C50 17 52 20 53 28 Z" fill="#00e5ff"/>
+
+    <!-- Head Shape -->
+    <path d="M35 36 C35 36 30 45 32 55 C34 65 42 72 50 74 C58 72 66 65 68 55 C70 45 65 36 65 36 C60 38 55 35 50 35 C45 35 40 38 35 36 Z" fill="#101b30" stroke="#00e5ff" stroke-width="1.2"/>
+    
+    <!-- Snout & Scale Ridges -->
+    <path d="M43 55 C46 62 50 64 50 64 C50 64 54 62 57 55 C54 53 46 53 43 55 Z" fill="#182b4a" stroke="#00e5ff" stroke-opacity="0.5" stroke-width="1"/>
+    
+    <!-- Nostrils -->
+    <circle cx="47" cy="58" r="0.8" fill="#00e5ff"/>
+    <circle cx="53" cy="58" r="0.8" fill="#00e5ff"/>
+
+    <!-- Bioluminescent Eyes -->
+    <ellipse cx="40" cy="46" rx="4.5" ry="3.5" transform="rotate(-10 40 46)" fill="#ffb830"/>
+    <ellipse cx="40" cy="46" rx="3" ry="2" transform="rotate(-10 40 46)" fill="#00f0ff"/>
+    <circle cx="39.5" cy="45.5" r="1.2" fill="#ffffff"/>
+
+    <ellipse cx="60" cy="46" rx="4.5" ry="3.5" transform="rotate(10 60 46)" fill="#ffb830"/>
+    <ellipse cx="60" cy="46" rx="3" ry="2" transform="rotate(10 60 46)" fill="#00f0ff"/>
+    <circle cx="60.5" cy="45.5" r="1.2" fill="#ffffff"/>
+
+    <!-- Neck & Chest plates -->
+    <path d="M42 73 C42 84 40 90 38 94 C44 95 56 95 62 94 C60 90 58 84 58 73 Z" fill="#14233c" stroke="#00e5ff" stroke-opacity="0.4" stroke-width="1"/>
+    <line x1="43" y1="78" x2="57" y2="78" stroke="#00e5ff" stroke-opacity="0.6" stroke-width="0.8"/>
+    <line x1="42" y1="84" x2="58" y2="84" stroke="#00e5ff" stroke-opacity="0.6" stroke-width="0.8"/>
+    <line x1="40" y1="90" x2="60" y2="90" stroke="#00e5ff" stroke-opacity="0.6" stroke-width="0.8"/>
+  </g>
+
+  <!-- Glowing circuit trace accents -->
+  <circle cx="50" cy="22" r="1.5" fill="#00f0ff"/>
+  <circle cx="28" cy="20" r="1" fill="#00f0ff"/>
+  <circle cx="72" cy="20" r="1" fill="#00f0ff"/>
+</svg>

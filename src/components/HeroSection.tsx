@@ -1,8 +1,47 @@
-import { useRef, useEffect, useState, useCallback } from 'react';
+import React, { useRef, useEffect, useState, useCallback } from 'react';
 import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion';
-import { Github, Linkedin, Mail, Download, ArrowDown, ArrowRight, Terminal } from 'lucide-react';
+import { Download, ArrowDown } from 'lucide-react';
 import portfolioData from '@/data/portfolioData';
-import WhatsAppIcon from './WhatsAppIcon';
+import AmbientDragonCompanion from './AmbientDragonCompanion';
+
+// Dedicated Animated Highlighter Ribbon for key buzzwords
+const AnimatedMarker: React.FC<{
+  children: React.ReactNode;
+  delay?: number;
+  variant?: 'cyan' | 'emerald' | 'purple';
+}> = ({ children, delay = 0.2, variant = 'cyan' }) => {
+  const gradientMap = {
+    cyan: 'from-cyan-500/30 via-primary/35 to-cyan-400/30 border-cyan-400/70 shadow-cyan-500/25',
+    emerald: 'from-emerald-500/30 via-teal-500/35 to-emerald-400/30 border-emerald-400/70 shadow-emerald-500/25',
+    purple: 'from-indigo-500/30 via-purple-500/35 to-blue-400/30 border-indigo-400/70 shadow-indigo-500/25',
+  };
+
+  return (
+    <span className="relative inline-block whitespace-nowrap px-1.5 mx-0.5 z-10">
+      {/* Animated Highlighter Ribbon Sweep */}
+      <motion.span
+        initial={{ scaleX: 0, opacity: 0 }}
+        animate={{ scaleX: 1, opacity: 1 }}
+        transition={{
+          duration: 0.65,
+          delay: delay,
+          ease: [0.16, 1, 0.3, 1],
+        }}
+        style={{ originX: 0 }}
+        className={`absolute inset-x-0 bottom-0.5 top-1.5 -z-10 rounded-md bg-gradient-to-r ${gradientMap[variant]} border-b-2 shadow-lg -skew-x-3 pointer-events-none`}
+      />
+      {/* Ambient Pulsing Glow on Highlight */}
+      <motion.span
+        animate={{
+          opacity: [0.3, 0.7, 0.3],
+        }}
+        transition={{ repeat: Infinity, duration: 3.6, ease: 'easeInOut', delay: delay + 0.4 }}
+        className="absolute inset-0 -z-10 rounded-md bg-cyan-400/15 blur-sm pointer-events-none"
+      />
+      <span className="relative text-foreground font-black">{children}</span>
+    </span>
+  );
+};
 
 const HeroSection = () => {
   const containerRef = useRef<HTMLElement>(null);
@@ -41,10 +80,6 @@ const HeroSection = () => {
 
   const scrollToWork = () => {
     document.getElementById('work')?.scrollIntoView({ behavior: 'smooth' });
-  };
-
-  const scrollToContact = () => {
-    document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
   };
 
   const stagger = {
@@ -94,14 +129,16 @@ const HeroSection = () => {
               </span>
             </motion.div>
 
-            {/* Headline */}
+            {/* Headline with 3 Animated Marker Highlights */}
             <motion.h1 variants={fadeUp} className="mb-4">
-              <span className="block text-3xl sm:text-4xl md:text-5xl lg:text-[3.15rem] xl:text-[3.35rem] font-extrabold leading-[1.12] text-foreground tracking-tight">
-                {portfolioData.personal.headline}
+              <span className="block text-3xl sm:text-4xl md:text-5xl lg:text-[3.15rem] xl:text-[3.35rem] font-extrabold leading-[1.14] text-foreground tracking-tight">
+                I build <AnimatedMarker delay={0.35} variant="cyan">reliable</AnimatedMarker> digital products from{' '}
+                <AnimatedMarker delay={0.65} variant="cyan">interface</AnimatedMarker> to{' '}
+                <AnimatedMarker delay={0.95} variant="cyan">infrastructure</AnimatedMarker>.
               </span>
             </motion.h1>
 
-            {/* Supporting Copy */}
+            {/* Clean, Readable Supporting Copy */}
             <motion.p
               variants={fadeUp}
               className="text-muted-foreground text-sm sm:text-base md:text-lg max-w-xl mx-auto lg:mx-0 mb-6 leading-relaxed"
@@ -140,105 +177,39 @@ const HeroSection = () => {
               </a>
             </motion.div>
 
-            {/* Tertiary Link & Socials */}
-            <motion.div
-              variants={fadeUp}
-              className="flex flex-wrap items-center justify-center lg:justify-start gap-4 sm:gap-6 pt-1"
-            >
-              <button
-                onClick={scrollToContact}
-                className="text-xs font-mono uppercase tracking-wider text-muted-foreground hover:text-primary transition-colors inline-flex items-center gap-1.5 group"
-              >
-                <span>Let's talk</span>
-                <ArrowRight size={13} className="group-hover:translate-x-1 transition-transform text-primary" />
-              </button>
-
-              <div className="h-4 w-px bg-border/50 hidden sm:block" />
-
-              <div className="flex items-center gap-2">
-                {[
-                  { href: portfolioData.personal.socials.github, icon: Github, label: 'GitHub Profile' },
-                  { href: portfolioData.personal.socials.linkedin, icon: Linkedin, label: 'LinkedIn Profile' },
-                  { href: `mailto:${portfolioData.personal.email}`, icon: Mail, label: 'Email', external: false },
-                  { href: portfolioData.personal.socials.whatsapp, icon: null, label: 'WhatsApp' },
-                ].map(({ href, icon: Icon, label, external }) => (
-                  <a
-                    key={label}
-                    href={href}
-                    target={external !== false ? '_blank' : undefined}
-                    rel={external !== false ? 'noopener noreferrer' : undefined}
-                    className="p-2 rounded-lg border border-border/40 text-muted-foreground hover:text-foreground hover:border-primary/40 hover:bg-primary/5 transition-all"
-                    aria-label={label}
-                  >
-                    {Icon ? <Icon size={16} /> : <WhatsAppIcon className="w-4 h-4" />}
-                  </a>
-                ))}
-              </div>
+            {/* Ambient Guardian Companion */}
+            <motion.div variants={fadeUp} className="pt-2">
+              <AmbientDragonCompanion />
             </motion.div>
           </div>
 
-          {/* ─── Right Column — Portrait Card (5 cols) ─── */}
-          <motion.div
-            variants={fadeUp}
-            className="lg:col-span-5 flex justify-center lg:justify-end order-1 lg:order-2"
-          >
-            <div className="relative">
-              {/* Ambient Glow behind Portrait */}
-              <div className="absolute -inset-2 bg-gradient-to-br from-primary/20 via-transparent to-accent/15 rounded-3xl blur-xl opacity-60 pointer-events-none" />
+          {/* ─── Right Column — 5 cols (Portrait with Parallax) ─── */}
+          <div className="lg:col-span-5 flex justify-center lg:justify-end order-1 lg:order-2">
+            <motion.div
+              variants={fadeUp}
+              style={{ x: portraitX, y: portraitY, rotate: orbitRotate }}
+              className="relative w-64 h-64 sm:w-72 sm:h-72 md:w-80 md:h-80"
+            >
+              {/* Outer decorative ring */}
+              <div className="absolute inset-0 rounded-full border border-primary/20 animate-[spin_40s_linear_infinite] pointer-events-none" />
+              <div className="absolute -inset-2 rounded-full border border-dashed border-primary/15 animate-[spin_60s_linear_infinite_reverse] pointer-events-none" />
 
-              {/* Orbital contour line */}
-              <motion.div
-                style={isMobile ? {} : { rotate: orbitRotate }}
-                className="absolute -inset-4 sm:-inset-6 rounded-3xl border border-primary/20 pointer-events-none"
-              />
+              {/* Glowing back-layer */}
+              <div className="absolute inset-4 rounded-full bg-gradient-to-tr from-primary/20 via-accent/15 to-transparent blur-xl pointer-events-none" />
 
-              {/* Technical dot grid backdrop */}
-              <div
-                className="absolute -inset-3 rounded-2xl pointer-events-none opacity-30"
-                style={{
-                  backgroundImage: 'radial-gradient(circle, hsl(187 80% 48% / 0.25) 1px, transparent 1px)',
-                  backgroundSize: '14px 14px',
-                }}
-              />
-
-              {/* Main Portrait Card Frame (Clean high-contrast framing) */}
-              <motion.div
-                style={isMobile ? {} : { x: portraitX, y: portraitY }}
-                className="relative w-[260px] h-[330px] sm:w-[290px] sm:h-[370px] md:w-[320px] md:h-[410px] lg:w-[340px] lg:h-[430px] rounded-2xl overflow-hidden glass-card p-1.5 shadow-2xl shadow-black/60 border-primary/35 group"
-              >
-                {/* Tech Corner Coordinates */}
-                <div className="absolute top-3 left-3 z-20 flex items-center gap-1.5 px-2 py-0.5 rounded bg-background/85 backdrop-blur-md border border-border/40 text-[9px] font-mono text-primary font-medium">
-                  <Terminal size={10} />
-                  <span>ENG-MSS</span>
-                </div>
-
-                {/* Portrait Container: Clean and high contrast, avoiding heavy dark overlays over the face */}
-                <div className="relative w-full h-full rounded-xl overflow-hidden bg-surface-2">
-                  <img
-                    src={portfolioData.personal.profileImage}
-                    alt="3D anime portrait of Muhammad Subhan Shahid, software engineer"
-                    className="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105"
-                    loading="eager"
-                    width={340}
-                    height={430}
-                  />
-                  {/* Subtle edge blend at bottom base only */}
-                  <div className="absolute inset-x-0 bottom-0 h-10 bg-gradient-to-t from-background/70 to-transparent pointer-events-none" />
-                </div>
-              </motion.div>
-
-              {/* Floating Metadata Label */}
-              <motion.div
-                variants={fadeUp}
-                className="absolute -bottom-3.5 left-1/2 -translate-x-1/2 px-4 py-1 rounded-full bg-card/95 backdrop-blur-md border border-border/60 shadow-xl z-20"
-              >
-                <span className="text-[10px] font-mono font-medium text-muted-foreground tracking-wider uppercase whitespace-nowrap flex items-center gap-1.5">
-                  <span className="w-1.5 h-1.5 rounded-full bg-primary" />
-                  FULL-STACK · PRODUCT-MINDED · PAKISTAN
-                </span>
-              </motion.div>
-            </div>
-          </motion.div>
+              {/* Portrait container */}
+              <div className="relative w-full h-full rounded-full overflow-hidden border-2 border-primary/30 shadow-[0_0_40px_hsla(187,80%,48%,0.15)] bg-surface-2 flex items-center justify-center">
+                <img
+                  src={portfolioData.personal.profileImage}
+                  alt={portfolioData.personal.name}
+                  className="w-full h-full object-cover object-top filter brightness-95 contrast-105"
+                  onError={(e) => {
+                    (e.currentTarget as HTMLImageElement).src = portfolioData.personal.profileImageFallback;
+                  }}
+                />
+              </div>
+            </motion.div>
+          </div>
         </div>
       </motion.div>
     </section>

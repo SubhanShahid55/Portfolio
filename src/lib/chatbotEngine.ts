@@ -152,12 +152,18 @@ What would you like to know?`,
     };
   }
 
-  // 2. Identity / Persona Inquiries (Are you Chip? Who are you? Are you Muhammad?)
+  // 2. Identity / Persona Inquiries (Are you Chip? Who are you? Are you a dragon?)
   if (
     hasPhrase([
       'are you chip',
       'who is chip',
       'what is chip',
+      'dragon',
+      'mascot',
+      'are you a dragon',
+      'why a dragon',
+      'tell me about chip',
+      'chip ai',
       'are you subhan',
       'are you muhammad',
       'are you a bot',
@@ -174,18 +180,19 @@ What would you like to know?`,
     ])
   ) {
     return {
-      text: `I am **Chip**, an AI assistant representing **${data.identity.fullName}**'s portfolio.
+      text: `I am **Chip**, a guardian dragon AI companion living inside **${data.identity.fullName}**'s software engineering portfolio.
 
-I am not Muhammad personally and not a human support representative. My purpose is to help visitors explore Subhan's verified engineering background, production projects, technical skills, and availability.
+I protect Subhan's knowledge archive and guide visitors through his verified production projects, technical experience across fintech and healthcare AI, toolkit, and direct contact channels. I am not Muhammad personally and not a human representative.
 
-If you would like to speak directly with Muhammad, you can connect through:
+If you'd like to speak directly with Muhammad:
 • **Email:** [${data.contact.email}](mailto:${data.contact.email})
 • **WhatsApp:** [Message on WhatsApp](${data.contact.whatsapp})
 • **LinkedIn:** [View LinkedIn Profile](${data.contact.linkedin})`,
       suggestedActions: [
-        { label: 'How can I contact him?', query: 'How can I contact him?' },
-        { label: 'What is his experience?', query: 'What is his experience?' },
+        { label: 'What does Subhan specialize in?', query: 'What does Subhan specialize in?' },
         { label: 'Tell me about his projects', query: 'Tell me about his projects' },
+        { label: 'What is his experience?', query: 'What is his experience?' },
+        { label: 'How can I contact him?', query: 'How can I contact him?' },
       ],
     };
   }
@@ -691,7 +698,10 @@ ${p?.codeUrl ? `📦 **[View GitHub Code](${p.codeUrl})**` : ''}`,
   }
 
   // 11. Specific Tech Deep Dives
-  if (hasPhrase(['react', 'next.js', 'nextjs', 'tailwind', 'typescript', 'javascript', 'frontend', 'ui/ux', 'css', 'html', 'figma'])) {
+  if (
+    hasPhrase(['react', 'next.js', 'nextjs', 'tailwind', 'typescript', 'javascript', 'frontend', 'ui/ux', 'figma']) ||
+    hasToken(['css', 'html', 'frontend', 'ui'])
+  ) {
     return {
       text: `**Frontend & UI Engineering:**
 Subhan specializes in **React**, **Next.js**, **TypeScript**, and **Tailwind CSS**.
@@ -706,7 +716,10 @@ Subhan specializes in **React**, **Next.js**, **TypeScript**, and **Tailwind CSS
     };
   }
 
-  if (hasPhrase(['node', 'backend', 'express', 'api', 'rest', 'restful', 'python', 'docker', 'postman'])) {
+  if (
+    hasPhrase(['node', 'backend', 'express', 'restful', 'python', 'docker', 'postman', 'backend engineering', 'api engineering']) ||
+    hasToken(['api', 'apis', 'rest', 'node', 'express', 'python', 'docker'])
+  ) {
     return {
       text: `**Backend & API Engineering:**
 Subhan builds production backend services with **Node.js**, **Express.js**, and **Python**.
@@ -722,7 +735,10 @@ Subhan builds production backend services with **Node.js**, **Express.js**, and 
     };
   }
 
-  if (hasPhrase(['database', 'databases', 'mongodb', 'postgresql', 'postgres', 'sql', 'mysql', 'prisma', 'mongoose'])) {
+  if (
+    hasPhrase(['database', 'databases', 'mongodb', 'postgresql', 'postgres', 'mysql', 'prisma', 'mongoose']) ||
+    hasToken(['sql', 'db', 'mongo', 'postgres'])
+  ) {
     return {
       text: `**Databases & Data Modeling:**
 Subhan works with both NoSQL and relational SQL databases:
@@ -936,9 +952,9 @@ He has delivered 15+ client projects across fintech, healthcare, e-commerce, and
 
   // 19. Graceful helpful fallback
   return {
-    text: `I'm **Chip**, specifically trained on Muhammad Subhan Shahid's software engineering portfolio and verified background. While I don't have information on that specific topic, I'd be glad to help you explore Subhan's work or connect you directly with him.
+    text: `I don’t have a confirmed answer for that in the published portfolio. You can explore the verified sections above or contact Subhan directly for the most accurate information.
 
-What would you like to know?`,
+What would you like to explore?`,
     suggestedActions: [
       { label: 'What does Subhan specialize in?', query: 'What does Subhan specialize in?' },
       { label: 'Tell me about his projects', query: 'Tell me about his projects' },
