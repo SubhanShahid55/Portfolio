@@ -417,13 +417,6 @@ const Navbar = () => {
                   </a>
                 </div>
 
-                {/* Availability status badge */}
-                <div className="text-center pt-1">
-                  <span className="inline-flex items-center gap-1.5 text-[10px] font-mono text-muted-foreground">
-                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
-                    Open to Work · Rawalpindi, PK
-                  </span>
-                </div>
               </div>
             </motion.div>
           </>

@@ -48,11 +48,6 @@ const Footer = () => {
             </p>
 
             <div className="flex flex-wrap items-center gap-x-3 gap-y-1 text-[11px] font-mono text-muted-foreground pt-1">
-              <span className="text-green-400 flex items-center gap-1.5">
-                <span className="w-1.5 h-1.5 rounded-full bg-green-400" />
-                Available for Engineering Opportunities
-              </span>
-              <span>·</span>
               <span>{portfolioData.personal.location}</span>
             </div>
           </div>

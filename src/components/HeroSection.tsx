@@ -115,19 +115,7 @@ const HeroSection = () => {
         <div className="grid lg:grid-cols-12 gap-8 lg:gap-12 items-center">
           {/* ─── Left Column — 7 cols ─── */}
           <div className="lg:col-span-7 text-center lg:text-left order-2 lg:order-1">
-            {/* Status Eyebrow */}
-            <motion.div
-              variants={fadeUp}
-              className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-green-500/25 bg-green-500/5 mb-5"
-            >
-              <span className="relative flex h-2 w-2">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-60" />
-                <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500" />
-              </span>
-              <span className="text-[11px] font-mono font-medium text-green-400 tracking-wider uppercase">
-                {portfolioData.personal.availability}
-              </span>
-            </motion.div>
+
 
             {/* Headline with 3 Animated Marker Highlights */}
             <motion.h1 variants={fadeUp} className="mb-4">
