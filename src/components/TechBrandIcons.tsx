@@ -507,6 +507,48 @@ export const Css3Icon: React.FC<TechIconProps> = ({ size = 20, className = '' })
   </svg>
 );
 
+// Canva (Accurate brand mark — thick rounded-cap 'C' arc with official purple→teal gradient)
+export const CanvaIcon: React.FC<TechIconProps> = ({ size = 20, className = '' }) => (
+  <svg
+    width={size}
+    height={size}
+    viewBox="0 0 100 100"
+    fill="none"
+    className={className}
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <defs>
+      <linearGradient id="canva-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stopColor="#7D2AE8" />
+        <stop offset="50%" stopColor="#A855F7" />
+        <stop offset="100%" stopColor="#00C4CC" />
+      </linearGradient>
+    </defs>
+    {/* Outer thick arc: the real Canva 'C' — arc from ~35° to ~325° (leaving a small gap on the right) */}
+    {/*
+      Centre: 50,50  Outer r=46  Inner r=28
+      Gap angle: ±32° from 0° (right side)
+      Arc start (outer, top-gap): cos(32°)=0.848, sin(32°)=-0.530 → 50+46*0.848, 50-46*0.530 = 89.0, 25.6
+      Arc end   (outer, bot-gap): 89.0, 74.4
+      Arc start (inner, bot-gap): 50+28*0.848, 50+28*0.530 = 73.7, 64.8
+      Arc end   (inner, top-gap): 73.7, 35.2
+    */}
+    <path
+      d="
+        M 89.0 25.6
+        A 46 46 0 1 0 89.0 74.4
+        L 73.7 64.8
+        A 28 28 0 1 1 73.7 35.2
+        Z
+      "
+      fill="url(#canva-grad)"
+    />
+    {/* Rounded end-caps on the gap tips */}
+    <circle cx="89.0" cy="25.6" r="9" fill="url(#canva-grad)" />
+    <circle cx="89.0" cy="74.4" r="9" fill="url(#canva-grad)" />
+  </svg>
+);
+
 // Master Map of Tech Names to Authentic Brand SVG Icons
 export const BRAND_ICON_MAP: Record<string, React.FC<TechIconProps>> = {
   'React': ReactIcon,
@@ -535,6 +577,7 @@ export const BRAND_ICON_MAP: Record<string, React.FC<TechIconProps>> = {
   'Render': RenderIcon,
   'Vercel & Render': VercelIcon,
   'Figma': FigmaIcon,
+  'Canva': CanvaIcon,
   'Photoshop': PhotoshopIcon,
 };
 

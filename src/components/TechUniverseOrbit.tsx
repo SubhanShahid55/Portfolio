@@ -23,6 +23,7 @@ import {
   GitIcon,
   VercelIcon,
   FigmaIcon,
+  CanvaIcon,
 } from './TechBrandIcons';
 
 export interface TechPlanet {
@@ -239,6 +240,19 @@ export const TECH_PLANETS: TechPlanet[] = [
     description: 'Wireframing, interactive prototyping, auto-layout design systems, and developer handoff.',
     proficiency: 86,
     projects: ['UI Mockups', 'Portfolio Wireframes'],
+  },
+  {
+    id: 'canva',
+    name: 'Canva',
+    category: 'Design',
+    orbit: 3,
+    angleOffset: 345,
+    color: '#7D2AE8',
+    icon: CanvaIcon,
+    tagline: 'Rapid Visual Design & Branding',
+    description: 'Quick-turnaround social media graphics, pitch decks, brand kits, and marketing collateral for clients.',
+    proficiency: 80,
+    projects: ['Client Brand Assets', 'Social Media Graphics', 'Portfolio Decks'],
   },
 ];
 

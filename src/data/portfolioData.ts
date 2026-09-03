@@ -432,7 +432,7 @@ const portfolioData: PortfolioData = {
     },
     {
       name: 'Design',
-      skills: ['Figma', 'Photoshop'],
+      skills: ['Figma', 'Canva', 'Photoshop'],
     },
   ],
 
