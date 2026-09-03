@@ -1,6 +1,6 @@
 import { useState, useEffect, useCallback, useRef } from 'react';
 import { motion, AnimatePresence, useScroll, useSpring } from 'framer-motion';
-import { Download, Menu, X, Mail, Linkedin, ArrowUpRight } from 'lucide-react';
+import { Download, Menu, X, Mail, Linkedin, Github } from 'lucide-react';
 import portfolioData from '@/data/portfolioData';
 
 const navItems = [
@@ -413,7 +413,7 @@ const Navbar = () => {
                     aria-label="GitHub"
                     title="GitHub"
                   >
-                    <ArrowUpRight size={15} />
+                    <Github size={15} />
                   </a>
                 </div>
 
