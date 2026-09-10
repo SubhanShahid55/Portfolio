@@ -21,7 +21,7 @@ export const knowledgeBase: ChatResponse[] = [
   },
   {
     keywords: ['experience', 'work', 'job', 'career', 'company', 'companies', 'worked'],
-    response: `Subhan has professional experience at multiple companies:\n\n• **EasyPaisa** — Summer Intern (Jul–Aug 2026): Worked with the Channel & Development Solutions Team on merchant and retail applications at one of Pakistan's leading fintech platforms.\n• **Brawse** — Junior Software Engineer (Jun 2025–Present): Building and maintaining a browser extension with frontend features and API integrations.\n• **Devmerce** — Freelance Full-Stack Developer (Jan 2025–Present): Delivered 15+ web applications for international clients across e-commerce, healthcare, and fintech.\n• **Smile Check AI** — Backend Developer (Jun 2024–Present): Engineering backend services processing 10,000+ daily AI diagnostic requests.\n• **Grow Station** — Front End Developer (Sep–Dec 2023): Built web applications using Laravel and PHP.`,
+    response: `Subhan has professional experience at multiple companies:\n\n• **IMANT Group** — Full Stack Developer Intern (Sep 2026–Present): Developing web applications and delivering software solutions across frontend and backend development. Collaborating on new features, code reviews, and continuous improvement.\n• **Brawse** — Junior Software Engineer (Jun 2025–Aug 2026): Built and maintained the Brawse browser extension with frontend features and API integrations.\n• **Devmerce** — Freelance Full-Stack Developer (Jan 2025–Dec 2025): Delivered 15+ web applications for international clients across e-commerce, healthcare, and fintech.\n• **Smile Check AI** — Backend Developer Intern (Jun 2024–Jun 2026): Engineering backend services processing 10,000+ daily AI diagnostic requests.\n• **EasyPaisa** — Summer Intern (Jul–Aug 2024): Worked with the Channel & Development Solutions Team on merchant and retail applications.\n• **Grow Station** — Front End Developer (Sep–Dec 2023): Built web applications using Laravel and PHP.`,
   },
   {
     keywords: ['easypaisa', 'easypay', 'fintech', 'intern', 'internship'],
@@ -77,7 +77,7 @@ export const knowledgeBase: ChatResponse[] = [
   },
   {
     keywords: ['strength', 'strong', 'best', 'good at'],
-    response: `Subhan's key strengths include:\n\n• Full-stack development across React, Node.js, TypeScript, and modern databases\n• Professional experience at established companies (EasyPaisa, Brawse)\n• Track record of delivering 15+ client projects on time\n• Backend optimization — reduced API latency by 30%, maintained 99.8% uptime\n• Collaborative team player with experience leading 5–8 person teams`,
+    response: `Subhan's key strengths include:\n\n• Full-stack development across React, Node.js, TypeScript, and modern databases\n• Professional experience at established companies (IMANT Group, Brawse, EasyPaisa)\n• Track record of delivering 15+ client projects on time\n• Backend optimization — reduced API latency by 30%, maintained 99.8% uptime\n• Collaborative team player with experience leading 5–8 person teams`,
   },
 ];
 

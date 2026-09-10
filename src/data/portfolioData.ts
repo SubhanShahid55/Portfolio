@@ -147,6 +147,23 @@ const portfolioData: PortfolioData = {
 
   experience: [
     {
+      title: 'Full Stack Developer Intern',
+      company: 'IMANT Group',
+      location: 'United States · Remote',
+      type: 'Internship',
+      period: 'Sep 2026 – Present',
+      description: 'Working as a Full-Stack Developer Intern, developing web applications and delivering software solutions across frontend and backend development. Involved in team meetings, technical discussions, code reviews, testing, debugging, and continuous improvement of application features.',
+      highlights: [
+        'Collaborating with the development team on new features and technical solutions',
+        'Participating in code reviews and following clean, maintainable development practices',
+        'Developing web applications and delivering software solutions across frontend and backend',
+        'Contributing to testing, debugging, and continuous improvement of application features',
+      ],
+      technologies: ['React', 'Node.js', 'MongoDB', 'Express.js', 'TypeScript', 'MERN Stack'],
+      current: true,
+      status: 'Current',
+    },
+    {
       title: 'Junior Software Engineer',
       company: 'Brawse',
       location: 'Remote',

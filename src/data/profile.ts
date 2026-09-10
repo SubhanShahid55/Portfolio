@@ -164,6 +164,24 @@ export const profileKnowledge: ProfileKnowledge = {
   ],
   experience: [
     {
+      company: 'IMANT Group',
+      role: 'Full Stack Developer Intern',
+      type: 'Internship',
+      location: 'United States · Remote',
+      startDate: 'Sep 2026',
+      endDate: 'Present',
+      status: 'Current',
+      summary: 'Working as a Full-Stack Developer Intern, developing web applications and delivering software solutions across frontend and backend development.',
+      highlights: [
+        'Collaborating with the development team on new features and technical solutions.',
+        'Participating in code reviews and following clean, maintainable development practices.',
+        'Developing web applications across frontend and backend in a collaborative team environment.',
+        'Contributing to testing, debugging, and continuous improvement of application features.',
+      ],
+      technologies: ['React', 'Node.js', 'MongoDB', 'Express.js', 'TypeScript', 'MERN Stack'],
+      verified: true,
+    },
+    {
       company: 'Brawse',
       role: 'Junior Software Engineer',
       type: 'Full-time',

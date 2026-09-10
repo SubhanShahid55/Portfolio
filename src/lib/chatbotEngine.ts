@@ -136,7 +136,7 @@ export function generateChatResponse(
       text: `Yes, absolutely! I'm **Chip**, an AI portfolio assistant for **${data.identity.fullName}**.
 
 Here are some key topics you can explore with me:
-• **Experience:** Roles at EasyPaisa, Smile Check AI, Brawse, Devmerce, and Grow Station.
+• **Experience:** Roles at IMANT Group, Brawse, Smile Check AI, Devmerce, EasyPaisa, and Grow Station.
 • **Projects:** Digital Media Archive, Meme Coins Agent, Homixa, Fraud Detection, Habit Tracker.
 • **Tech Stack:** React, Next.js, TypeScript, Node.js, Express, MongoDB, PostgreSQL, Python.
 • **Hiring & Availability:** Open to full-time, contract, remote, and onsite software engineering roles.
@@ -414,7 +414,7 @@ To discuss budget, quotes, or salary expectations for an engineering opportunity
 
 📄 **[Download Resume (PDF)](${data.contact.resumeUrl})**
 
-His resume includes comprehensive details of his software engineering roles at EasyPaisa, Smile Check AI, Brawse, and Devmerce, as well as full-stack production projects and technical certifications.`,
+His resume includes comprehensive details of his software engineering roles at IMANT Group, Brawse, Smile Check AI, Devmerce, and EasyPaisa, as well as full-stack production projects and technical certifications.`,
       suggestedActions: [
         { label: 'Download Resume (PDF)', href: data.contact.resumeUrl },
         { label: 'What is his experience?', query: 'What is his experience?' },
